@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Inviwo - Interactive Visualization Workshop</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inviwo Homepage">
+    <!-- generics -->
+    <link rel="icon" type="image/png" href="favicons/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicons/favicon-57.png" sizes="57x57">
+    <link rel="icon" type="image/png" href="favicons/favicon-76.png" sizes="76x76">
+    <link rel="icon" type="image/png" href="favicons/favicon-96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128">
+    <link rel="icon" type="image/png" href="favicons/favicon-228.png" sizes="228x228">
+    <!-- Android -->
+    <link rel="shortcut icon" href="favicons/favicon-196.png" sizes="196x196">
+    <!-- iOS -->
+    <link rel="apple-touch-icon" href="favicons/favicon-120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="favicons/favicon-152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="favicons/favicon-180.png" sizes="180x180">
+    <!-- windows -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/favicons/favicon-144.png">
+    <!--<link rel="shortcut icon" href="favicon.ico">-->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.1.0-web/css/all.css">
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <!-- ******HEADER****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-md main-nav">
+                    <h1 class="logo float-left">
+                        <a class="scrollto" href="#promo">
+                            <span class="logo-title">Inviwo</span>
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse ml-auto w-100 justify-content-end" id="collapsingNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link scrollto sr-only active" href="#promo">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto" href="#gallery">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto" href="#downloads">Download</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto" href="#funding">Funding</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto" href="#team">Team</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            <!--//main-nav-->
+        </div>
+    </header>
+    <!--//header-->
+    <!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header">
+        <div id="promotitle" class="container text-center">
+            <div class="titlewrapper">
+                <img src="assets/images/inviwo-logo2.svg" alt="logo-inviwo" height="150px" width="150px">
+                <h2 class="title">Inviwo</h2>
+            </div>
+            <p class="intro">Free configurable visualizations for scientific data.</p>
+            <div class="btns">
+                <a class="btn btn-cta-secondary scrollto" href="#downloads">Download</a>
+            </div>
+        </div>
+        <!--//container-->
+        <div class="social-media">
+            <div class="social-media-inner container text-center">
+                <ul class="list-inline social-icons">
+                    <li><a href="https://twitter.com/inviwo_org" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/inviwo" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://github.com/inviwo/inviwo#inviwo---interactive-visualization-workshop"><i class="fab fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--//promo-->
+
+    <!-- ******ABOUT****** -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="title text-center">What is Inviwo?</h2>
+            <p class="intro text-center">Inviwo is a software framework for the rapid prototyping of visualizations. It is written in C++, exploits modern graphics hardware, and is available under the BSD license, which permits free use in any setup - also commercially</p>
+            <div class="row">
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-edit"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">Rapid prototyping</h3>
+                        <p>Inviwo provides a rich visual interface for the easy creation of custom visualizations. These visualizations can be saved, modified, and reused on other data.</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//item-->
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">Python integration</h3>
+                        <p>Besides being realized in C++, Inviwo exposes a Python 3.7 API, supports Python development, and has Python scripting integrated for batch processing.</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//item-->
+                <div class="clearfix visible-sm"></div>
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-arrows-alt"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">Full extentability</h3>
+                        <p>Inviwo can be extended by implementing own Processors, which can be organized in modules. See our tutorials on creating processors and modules.</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//item-->
+                <div class="clearfix visible-md"></div>
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-cubes"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">Data types</h3>
+                        <p>Inviwo can read and visualize many data types, such as HD5, DICOM, RAW and TIFF stacks. So you can visualize data from many simulations and imaging modalities.</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//item-->
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">Documentation</h3>
+                        <p>To get started with Inviwo, we provide guides on how to install, develop new processors, and create new modules. We are currently working on video tutorials.</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//item-->
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">Community</h3>
+                        <p>Inviwo is used and maintained by researchers at many international universities, core development takes place at Linköping U, Ulm U, and Karolinska U.</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//item-->
+            </div>
+            <!--//row-->
+        </div>
+        <!--//container-->
+    </section>
+    <!--//about-->
+    <!-- ******Carousel****** -->
+    <section id="carousel" class="carousel section">
+        <div class="container">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-80" src="assets/images/gallery/carousel1.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="assets/images/gallery/carousel1.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="assets/images/gallery/carousel1.jpg" alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <!--//carousel-->
+        </div>
+        <!--//container-->
+    </section>
+
+    <!-- ******GALLERY****** -->
+    <section id="gallery" class="gallery section">
+        <div class="container">
+            <div class="gallery-inner">
+                <h2 class="title text-center">Gallery</h2>
+                <p>Inviwo provides many visualization methods for a range of data types such as triangular meshes, images, volumes, vector fields and multidimensional arrays.</p>
+                <div class="block-left">
+                    <div class="row">
+                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="assets/images/gallery/geometry-visualization.png" alt="heightfield" onclick="openModal(this)" />
+                        </div>
+                        <!--//item-->
+                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h4>Geometry</h4>
+                            <ul>
+                                <li>Mesh rendering</li>
+                                <li>Point cloud rendering</li>
+                                <li>Line rendering</li>
+                                <li>Transparent geometry rendering<br>(using an A-Buffer)</li>
+                                <li>Height fields (foto)</li>
+                            </ul>
+                        </div>
+                        <!--//item-->
+                    </div>
+                    <!--//row-->
+                </div>
+                <!--//block-left-->
+                <div class="block-right">
+                    <div class="row">
+                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h4>Scalar field visualization (Image,&nbsp;Volume)</h4>
+                            <ul>
+                                <li>GPU-based volume ray-casting with global illumination</li>
+                                <li>2D image slice inspection (foto)</li>
+                                <li>Contour extraction and visualization<br>(ISO surface )</li>
+                            </ul>
+                        </div>
+                        <!--//item-->
+                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="assets/images/gallery/skalar-field-visualization.png" alt="leftimage" onclick="openModal(this)" />
+                        </div>
+                        <!--//item-->
+                    </div>
+                    <!--//row-->
+                </div>
+                <!--//block-right-->
+                <div class="block-left">
+                    <div class="row">
+                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <img src="assets/images/gallery/vector-field-visualization.png" alt="leftimage" onclick="openModal(this)" />
+                        </div>
+                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <h4>Vector field visualization</h4>
+                            <ul>
+                                <li>Line integral convolution (LIC)</li>
+                                <li>Hedgehog</li>
+                                <li>Path lines</li>
+                                <li>Stream ribbons</li>
+                                <li>Stream lines</li>
+                            </ul>
+                        </div>
+                        <!--//item-->
+                    </div>
+                    <!--//row-->
+                </div>
+                <!--//block-left-->
+
+
+                <div id="galleryModal" class="imageModal" onclick="this.style.display='none'; enableScroll();">
+                    <!-- Modal Content (The Image) -->
+                    <img class="modal-content" id="horizontalImage">
+                </div>
+            </div>
+            <!--//gallery-inner-->
+        </div>
+        <!--//container-->
+        <!-- The Modal -->
+    </section>
+    <!--//gallery-->
+
+    <!-- ******DOWNLOADS****** -->
+    <section id="downloads" class="downloads section">
+        <div class="container text-center">
+            <div class="downloads-inner">
+                <h2 class="title text-center">Downloads</h2>
+                <p class="intro text-center">Either download the latest application binaries or checkout/download the source code and extend Inviwo with the functionality you are missing, such as processors, readers/writers etc etc.</p>
+
+                <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-secondary" id="windows" onclick="checkOS('windows');">
+                        <input type="radio" name="options" autocomplete="off"> Windows
+                      </label>
+                      <label class="btn btn-secondary" id="mac" onclick="checkOS('macos');">
+                        <input type="radio" name="options" autocomplete="off"> macOS
+                      </label>
+                      <label class="btn btn-secondary" id="linux" onclick="checkOS('linux');">
+                        <input type="radio" name="options"  autocomplete="off"> Linux
+                      </label>
+                </div><!--//button-group-->
+
+                <div class="downloads-list windowsdownload">
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fab fa-github"></i>GitHub</span>
+                            <span></span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo" target="_blank" >Clone</a></li>
+                    </ul>
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fab fa-windows"></i>Windows</span>
+                            <span>Install Wizard</span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.exe">Download</a></li>
+                    </ul>
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fab fa-windows"></i>Windows</span>
+                            <span>Portable</span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                    </ul>
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                    </ul>
+                </div>
+
+                <div class="downloads-list macosdownload">
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fab fa-github"></i>GitHub</span>
+                            <span></span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo" target="_blank" >Clone</a></li>
+                    </ul>
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                    </ul>
+                </div>
+
+                <div class="downloads-list linuxdownload">
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fab fa-github"></i>GitHub</span>
+                            <span></span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo" target="_blank" >Clone</a></li>
+                    </ul>
+                    <ul class="list-horizontal">
+                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
+                        <li class="li-version">
+                            <span class="version">0.9.9</span>
+                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
+                        </li>
+                        <li class="li-os">
+                            <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
+                        </li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                    </ul>
+                </div>
+
+                <!--//downloads-list-->
+                <div class="btns">
+                    <a class="btn btn-cta-primary" href="https://github.com/inviwo/inviwo/releases" target="_blank" rel="noopener noreferrer">Previous Versions</a></li>
+                </div>
+                <!--//meta-->
+            </div>
+            <!--//downloads-inner-->
+        </div>
+        <!--//container-->
+    </section>
+    <!--//downloads-->
+
+    <!-- ******FUNDING****** -->
+    <section id="funding" class="funding section">
+        <div class="container">
+            <div class="funding-inner">
+                <h2 class="title text-center">Funding</h2>
+                <p>This work was supported by Linköping University, Ulm University, and through grants from the Swedish e-Science Research Centre (SeRC).</p>
+                <div class="row">
+                    <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <a target="_blank" rel="noopener noreferrer" href="https://liu.se/en">
+                            <img class="media-object" src="assets/images/sponsors/liu.png" alt="liu">
+                        </a>
+                    </div>
+                    <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <a target="_blank" rel="noopener noreferrer" href="https://e-science.se/">
+                            <img class="media-object" src="assets/images/sponsors/serc.png" alt="serc">
+                        </a>
+                    </div>
+                    <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-12 align-middle">
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/">
+                                <img class="media-object" src="assets/images/sponsors/logo-uni-ulm.svg" alt="uulm">
+                            </a>
+                    </div>
+                </div>
+                <!--//row-->
+            </div>
+            <!--//funding-inner-->
+        </div>
+        <!--//container-->
+    </section>
+    <!--//funding-->
+
+    <!-- ******CONTACT****** -->
+    <section id="team" class="contact section has-pattern">
+        <div class="container">
+            <h2 class="title text-center">Team</h2>
+            <p class="intro text-center">The team currently developing Inviwo</p>
+                <div class="row flexme">
+                    <div id="dev1" class="item  col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/in/mi/institute/mi-mitarbeiter/timo-ropinski/">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/timo_ropinski.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Timo Ropinski</h3>
+                            </a>
+                            <p>Project Initiator and Manager</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev2" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/peter-steneteg">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/peter_steneteg.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Peter Steneteg</h3>
+                            </a>
+                            <p>Project Manager and <br>Lead Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev3" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/rickard-englund">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/rickard_englund.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Rickard Englund</h3>
+                            </a>
+                            <p>Project Manager and <br>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev4" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/daniel-jonsson">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/daniel_jonsson.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Daniel Jönsson</h3>
+                            </a>
+                            <p>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev5" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/martin-falk">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/martin_falk.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Martin Falk</h3>
+                            </a>
+                            <p>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev6" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/erik-sunden">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/erik_sunden.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Erik Sundén</h3>
+                            </a>
+                            <p>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev7" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/sathish-kottravel">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/sathish_kottravel.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Sathish Kottravel</h3>
+                            </a>
+                            <p>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev8" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/jochen-jankowai">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/jochen_jankowai.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Jochen Jankowai</h3>
+                            </a>
+                            <p>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev9" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/robin-sklnberg">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/robin_skanberg.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Robin Skånberg</h3>
+                            </a>
+                            <p>Core Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                    <div id="dev10" class="item col">
+                        <div class="profile">
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/in/mi/institut/mi-mitarbeiter/julian-kreiser/">
+                                <div class="image-container">
+                                    <div class="image-overlay"></div>
+                                    <img class="img-responsive" src="assets/images/julian_kreiser.png" alt="" />
+                                </div>
+                                <!--//image-container-->
+                                <h3 class="title">Julian Kreiser</h3>
+                            </a>
+                            <p>Developer</p>
+                        </div>
+                        <!--//profile-->
+                    </div>
+                    <!--//item-->
+                </div>
+            <!--//row-->
+        </div>
+        <!--//container-->
+        <div class="container">
+            <div class="contact-inner">
+                <div class="clearfix"></div>
+                <div class="info text-center">
+                    <h4 class="sub-title">Student Developers</h4>
+                    <p>Tobias&nbsp;Badura, Dominik&nbsp;Engel, Marius&nbsp;Kircher, Kaith&nbsp;Menken</p>
+                    <h4 class="sub-title">Former Developers</h4>
+                    <p>Viktor&nbsp;Axelsson, Hans-Christian&nbsp;Helltegen, Alexander&nbsp;Johansson, Mathias&nbsp;Jörg, David&nbsp;Neuscheler, Johan&nbsp;Norén, Andreas&nbsp;Valter, Emanuel&nbsp;Winblad</p>
+                    <h4 class="sub-title">Aknowledgement</h4>
+                    <p>We would like to acknowledge Nadine Richard for transferring the inviwo.org domain and the graphic designer Sophie Gudmann Knutsson for improving the Inviwo logo.</p>
+                </div>
+                <!--//info-->
+            </div>
+            <!--//contact-inner-->
+        </div>
+        <!--//container-->
+        <div class="container">
+            <div class="contact-inner">
+                <div class="clearfix"></div>
+                <div class="info text-center social-bar">
+                    <h4 class="sub-title">Get Connected</h4>
+                    <ul class="social-icons list-inline">
+                        <li><a href="https://twitter.com/inviwo_org" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/inviwo" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://github.com/inviwo/inviwo" target="_blank"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </div>
+                <!--//info-->
+            </div>
+            <!--//contact-inner-->
+        </div>
+        <!--//container-->
+    </section>
+    <!--//contact-->
+
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div>
+        <!--//container-->
+    </footer>
+    <!--//footer-->
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+
+</html>
