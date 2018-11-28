@@ -381,6 +381,16 @@ pre code {
 .carousel-indicators {
   bottom: 60px;
 }
+.carousel-control-prev{
+  left: -120px;
+}
+.carousel-control-next{
+  right: -120px;
+}
+.carousel-control-prev i, .carousel-control-next i{
+  font-size: 2em;
+  color: #103A54;
+}
 /* ======= Gallery Section ======= */
 .gallery {
   padding: 80px 0;
