@@ -730,6 +730,9 @@ pre code {
   background-clip: padding-box;
   margin: 0 auto;
 }
+.funding-inner .row{
+  margin-top: 40px;
+}
 .funding .info {
   max-width: 760px;
   margin: 0 auto;
