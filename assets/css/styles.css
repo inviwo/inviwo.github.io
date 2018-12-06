@@ -367,26 +367,40 @@ pre code {
 
 /* ======= Carousel Section ======= */
 .carousel {
-    padding: 20px 0;
-    background: #f5f5f5;
+  padding: 20px 0;
+  background: #f5f5f5;
+}
+.carousel-inner {
+  margin-bottom: 50px;
 }
 .carousel-inner img{
-    display: block;
-    height: auto;
-    min-width: 100%;
-    width: 100%;
-    max-width: 100%;
-    line-height: 1;
+  display: block;
+  height: auto;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
 }
 .carousel-indicators {
-  bottom: 60px;
+  bottom: 20px;
+}
+.carousel-indicators li{
+  background-color: rgba(16, 58, 84, 0.5);
+}
+.carousel-indicators .active{
+  background-color: #103A54;
 }
 .carousel-control-prev{
-  left: -120px;
+  top: unset;
+  bottom: 10px;
+  opacity: 1;
 }
 .carousel-control-next{
-  right: -120px;
+  top: unset;
+  bottom: 10px;
+  opacity: 1;
 }
+
 .carousel-control-prev i, .carousel-control-next i{
   font-size: 2em;
   color: #103A54;
