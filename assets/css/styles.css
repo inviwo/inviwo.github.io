@@ -130,7 +130,8 @@ pre code {
   text-decoration: none;
 }
 .header .main-nav button {
-  background: #268BD2;
+  /*background: #268BD2;*/
+  background: #2073A5;
   color: #fff !important;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
