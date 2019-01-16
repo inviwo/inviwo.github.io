@@ -198,6 +198,8 @@
                     <li data-target="#showcase" data-slide-to="0" class="active"></li>
                     <li data-target="#showcase" data-slide-to="1"></li>
                     <li data-target="#showcase" data-slide-to="2"></li>
+                    <li data-target="#showcase" data-slide-to="3"></li>
+                    <li data-target="#showcase" data-slide-to="4"></li>
                 </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -232,6 +234,11 @@
         <div class="container">
             <div class="gallery-inner">
                 <h2 class="title text-center">Gallery</h2>
+                <div class="embed-responsive embed-responsive-16by9 video">
+                    <video class="video-fluid embed-" onclick="this.play();" poster="assets/images/gallery/video-thumbnail.png" loop controls muted>
+                        <source src="assets/videos/inviwo-features.mp4" type="video/mp4" />
+                    </video>
+                </div>
                 <p>Inviwo provides many visualization methods for a range of data types such as triangular meshes, images, volumes, vector fields and multidimensional arrays.</p>
                 <div class="block-left">
                     <div class="row">
@@ -294,6 +301,7 @@
                 </div>
                 <!--//block-left-->
 
+                
 
                 <div id="galleryModal" class="imageModal" onclick="this.style.display='none'; enableScroll();">
                     <!-- Modal Content (The Image) -->

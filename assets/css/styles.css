@@ -476,6 +476,10 @@ pre code {
   width: 60%;
 }
 
+.video {
+  margin-bottom: 30px;
+}
+
 
 /* Add Animation - Zoom in the Modal */
 .modal-content{
