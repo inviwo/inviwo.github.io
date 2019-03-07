@@ -95,6 +95,7 @@ a.btn-cta-secondary:hover,
 .offset-header {
   padding-top: 90px;
 }
+
 pre code {
   font-size: 16px;
 }
@@ -302,6 +303,14 @@ pre code {
   font-size: 26px;
   text-align: center;
   padding: 0;
+}
+
+.promo .circle {
+    background: white;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-right: 20px;
 }
 
 /* ======= About Section ======= */
@@ -762,12 +771,20 @@ pre code {
 .funding-inner .row{
   margin-top: 40px;
 }
+
+.funding-inner .col{
+  float: none; 
+  margin: 0 auto;
+}
+
 .funding .info {
   max-width: 760px;
   margin: 0 auto;
 }
 .funding img {
   width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 /* ======= Contact Section ======= */
 .contact {
@@ -927,6 +944,16 @@ pre code {
     flex: 0 1 20%;
 }
 
+.flexfunding {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.flexfunding > .item {
+    flex: 0 1 50%;
+}
+
 /* ======= Footer ======= */
 .footer {
   padding: 15px 0;
@@ -965,6 +992,9 @@ pre code {
   }
   .flexme > .item {
       flex: 0 0 33%;
+  }
+  .flexfunding > .item {
+      flex: 0 0 50%;
   }
 }
 @media (max-width: 991px) {
@@ -1040,6 +1070,10 @@ pre code {
     width: 90%;
   }
   .flexme > .item {
+      flex: 1 0 50%;
+      min-width: 220px;
+  }
+  .flexfunding > .item {
       flex: 1 0 50%;
       min-width: 220px;
   }

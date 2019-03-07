@@ -89,7 +89,9 @@
     <section id="promo" class="promo section offset-header">
         <div id="promotitle" class="container text-center">
             <div class="titlewrapper">
-                <img src="assets/images/inviwo-logo2.svg" alt="logo-inviwo" height="150px" width="150px">
+                <div class="circle">
+                    <img src="assets/images/inviwo-logo.png" alt="logo-inviwo" height="150px" width="150px">
+                </div>
                 <h2 class="title">Inviwo</h2>
             </div>
             <p class="intro">Free configurable visualizations for scientific data.</p>
@@ -103,6 +105,7 @@
                 <ul class="list-inline social-icons">
                     <li><a href="https://twitter.com/inviwo_org" target="_blank"><i class="fab fa-twitter"></i></a></li>
                     <li><a href="https://www.facebook.com/inviwo" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCsxhwNEcoqQtGkuMaA-L2IQ" target="_blank"><i class="fab fa-youtube"></i></a></li>
                     <li><a href="https://github.com/inviwo/inviwo#inviwo---interactive-visualization-workshop"><i class="fab fa-github"></i></a></li>
                 </ul>
             </div>
@@ -235,10 +238,14 @@
             <div class="gallery-inner">
                 <h2 class="title text-center">Gallery</h2>
                 <div class="embed-responsive embed-responsive-16by9 video">
+                    <!-- 
                     <video class="video-fluid embed-" onclick="this.play();" poster="assets/images/gallery/video-thumbnail3.png" loop controls muted>
                         <source src="assets/videos/inviwo-features.mp4" type="video/mp4" />
                     </video>
+                    -->
+                    <iframe src="https://www.youtube.com/embed/9yZWjxlV6OQ" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>
                 </div>
+
                 <p>Inviwo provides many visualization methods for a range of data types such as triangular meshes, images, volumes, vector fields and multidimensional arrays.</p>
                 <div class="block-left">
                     <div class="row">
@@ -380,7 +387,7 @@
                         <li class="li-os">
                             <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
                         </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/archive/v0.9.9.zip">Download</a></li>
                     </ul>
                 </div>
 
@@ -406,7 +413,7 @@
                         <li class="li-os">
                             <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
                         </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/archive/v0.9.9.zip">Download</a></li>
                     </ul>
                 </div>
 
@@ -432,7 +439,7 @@
                         <li class="li-os">
                             <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
                         </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
+                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/archive/v0.9.9.zip">Download</a></li>
                     </ul>
                 </div>
 
@@ -454,22 +461,28 @@
             <div class="funding-inner">
                 <h2 class="title text-center">Funding support</h2>
                 <p>This work is supported by Linköping University, Ulm University and KTH Royal Institute of Technology as well as grants from the Swedish e-Science Research Centre (SeRC).</p>
-                <div class="row">
-                    <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="row flexfunding">
+                    <div class="item col">
                         <a target="_blank" rel="noopener noreferrer" href="https://liu.se/en">
-                            <img class="media-object" src="assets/images/sponsors/liu.png" alt="liu">
+                            <img class="media-object" src="assets/images/sponsors/liu-600x600.png" alt="liu">
                         </a>
                     </div>
-                    <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <a target="_blank" rel="noopener noreferrer" href="https://e-science.se/">
-                            <img class="media-object" src="assets/images/sponsors/serc.png" alt="serc">
+                    <div class="item col">
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.kth.se/en">
+                            <img class="media-object" src="assets/images/sponsors/kth-600x600.svg" alt="kth">
                         </a>
                     </div>
-                    <div class="item col-lg-4 col-md-4 col-sm-4 col-xs-12 align-middle">
+                    <div class="item col">
                         <a target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/">
-                                <img class="media-object" src="assets/images/sponsors/logo-uni-ulm.svg" alt="uulm">
+                                <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="assets/images/sponsors/uulm-600x600.svg" alt="uulm">
                             </a>
                     </div>
+                    <div class="item col">
+                        <a target="_blank" rel="noopener noreferrer" href="https://e-science.se/">
+                            <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="assets/images/sponsors/serc-600x600.png" alt="serc">
+                        </a>
+                    </div>
+                    
                 </div>
                 <!--//row-->
             </div>
@@ -663,6 +676,7 @@
                     <ul class="social-icons list-inline">
                         <li><a href="https://twitter.com/inviwo_org" target="_blank"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="https://www.facebook.com/inviwo" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCsxhwNEcoqQtGkuMaA-L2IQ" target="_blank"><i class="fab fa-youtube"></i></a></li>
                         <li><a href="https://github.com/inviwo/inviwo" target="_blank"><i class="fab fa-github"></i></a></li>
                     </ul>
                 </div>
