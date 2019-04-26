@@ -120,6 +120,9 @@ pre code {
 .header.navbar-fixed-top .main-nav .nav .nav-item a {
   color: #666;
 }
+.header.navbar-fixed-top .nav-item a {
+  color: #18587F;
+}
 .header .logo {
   margin: 0;
   font-size: 26px;
@@ -162,7 +165,7 @@ pre code {
   background: none;
 }
 .header .nav-link{
-  color: #18587F;
+  color: white;
   -webkit-transition: none;
   -moz-transition: none;
   -ms-transition: none;
@@ -616,6 +619,7 @@ pre code {
 }
 .downloads .list-horizontal .li-os {
     width: 30%;
+    text-align: left;
 }
 .downloads .list-horizontal .li-icon {
     width: 15%;
@@ -743,8 +747,81 @@ pre code {
 .license .cta-container .intro {
   margin-bottom: 30px;
 }
+/* ======= Citation Section ======= */
+.citation {
+  padding: 80px 0;
+  background: #f5f5f5;
+}
+.citation-codeblock{
+  position: relative;
+  margin-top: 30px;
+}
+.citation pre{
+  background: #103A54;
+  border-radius: 3px;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+  padding-left: 28px;
+  margin-bottom: 0;
+  display: flex;
+}
+.citation .btn{
+  position: absolute;
+  right: 30px;
+  top: 16px;
+  background: #0C2C3F;
+}
+.citation .btn:not(:disabled):not(.disabled){
+  color: white;
+}
+.citation a:not([href]):not([tabindex]):hover{
+  color: white;
+  background: rgb(8, 29, 41);
+}
+.citation pre code{
+  font-size: 95%;
+  color: #fff;
+}
+.citation .title {
+  margin-top: 0;
+  margin-bottom: 60px;
+  color: #103A54;
+}
+.citation .citation-inner {
+  max-width: 800px;
+  background: #fff;
+  padding: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin: 0 auto;
+}
+.citation-inner .row{
+  margin-top: 40px;
+}
 
-/* ======= License Section ======= */
+.citation-inner .col{
+  float: none; 
+  margin: 0 auto;
+}
+
+.citation .info {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.citation img {
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* ======= Funding Section ======= */
 .funding {
   padding: 80px 0;
   background: #f5f5f5;
@@ -881,7 +958,7 @@ pre code {
     height: 100%;
     padding: 30px 15px 30px 15px;
     text-align: center;
-    background: #278CC9;
+    background: #2383c7;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
