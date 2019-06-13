@@ -252,8 +252,6 @@ pre code {
   padding: 10px 0;
   margin: 0 auto;
 }
-.promo .social-media li {
-}
 .promo .social-media li.facebook-like {
   margin-top: 0;
   position: relative;
@@ -269,7 +267,7 @@ pre code {
 .promo .social-icons li {
   float: left;
 }
-.promo .social-icons li.last {
+.promo .social-icons li:last-of-type a{
   margin-right: 0;
 }
 .promo .social-icons a {
@@ -768,8 +766,8 @@ pre code {
 }
 .citation .btn{
   position: absolute;
-  right: 30px;
-  top: 16px;
+  right: 20px;
+  bottom: 20px;
   background: #0C2C3F;
 }
 .citation .btn:not(:disabled):not(.disabled){
