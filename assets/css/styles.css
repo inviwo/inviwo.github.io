@@ -532,7 +532,7 @@ pre code {
 .downloads .downloads-list {
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   margin-top: 30px;
 }
 .downloads a {
@@ -626,6 +626,124 @@ pre code {
 .downloads .list-horizontal .li-download {
     width: 30%;
 }
+/* ======= Documentation Section ======= */
+.documentation {
+  padding: 0 0 80px 0;
+  background: #268BD2;
+  color: #fff;
+}
+.documentation .documentation-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.documentation .title {
+  color: #103A54;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.documenation .intro{
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.documentation .documentation-list {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+.documentation a {
+  color: #074f66;
+}
+.documentation a:hover {
+  color: #042a36;
+}
+.documenation li {
+  color: #074f66;
+}
+
+.documentation li i {
+  text-align: center;
+  width: 20px;
+  margin-right: 10px;
+  color: #fff;
+}
+
+.documentation .btns a {
+  color: #fff;
+  margin-right: 15px;
+}
+
+.documentation input {
+    display: none;
+}
+.documentation .btn-secondary{
+    background: #2073A5;
+    border: 1px solid #2073A5;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.documentation .btn-secondary:hover{
+    background: #074f66;
+    border: 1px solid #074f66;
+    color: #fff;
+}
+.documentation .btn-secondary:not(:disabled):not(.disabled).active{
+    background: #eebf3f;
+    border: 1px solid #eebf3f;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.documentation .fab {
+    font-size: 20px;
+}
+.documentation .list-horizontal {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+    display: inline-flex;
+    border-radius: 10px;
+    border: 1px solid #2B9BE0;
+    list-style: none;
+    justify-content: space-around;
+}
+.documentation .list-horizontal li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.75em 1.5em;
+}
+.documentation .list-horizontal li+li {
+    border-left: 1px solid #2B9BE0;
+}
+.documentation .list-horizontal li .btn{
+    color: #fff;
+}
+.documentation .list-horizontal .version {
+    font-size: 1.5rem;
+    color: #074f66;
+}
+.documentation .list-horizontal .os {
+    font-size: 1.2rem;
+}
+.documentation .list-horizontal .li-version {
+    width: 25%;
+}
+.documentation .list-horizontal .li-os {
+    width: 30%;
+    text-align: left;
+}
+.documentation .list-horizontal .li-icon {
+    width: 15%;
+    align-items: center;
+}
+.documentation .list-horizontal .li-download {
+    width: 30%;
+}
+
 
 /* ======= Docs Section ======= */
 .docs {
@@ -666,6 +784,9 @@ pre code {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+}
+.docs .btns .btn{
+  margin-right: 15px;
 }
 /* ======= License Section ======= */
 .license {
@@ -766,8 +887,8 @@ pre code {
 }
 .citation .btn{
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 25px;
+  bottom: 35px;
   background: #0C2C3F;
 }
 .citation .btn:not(:disabled):not(.disabled){
@@ -1033,7 +1154,8 @@ pre code {
 /* ======= Footer ======= */
 .footer {
   padding: 15px 0;
-  background: #042a36;
+  background: #2073A5;
+  /*background: #042a36;*/
   color: #fff;
 }
 .footer .copyright {
