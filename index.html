@@ -237,25 +237,18 @@
         <!--//container-->
     </section>
 
-    <!-- ******GALLERY****** -->
-    <section id="gallery" class="gallery section">
+    <section id="feature" class="feature section">
         <div class="container">
-            <div class="gallery-inner">
-                <h2 class="title text-center">Gallery</h2>
-                <div class="embed-responsive embed-responsive-16by9 video">
-                    <iframe src="https://www.youtube-nocookie.com/embed/9yZWjxlV6OQ" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>
-                </div>
-                <h3>More Features and Information</h3>
-                <p>Check out our <a href="assets/media/inviwo-vcbm2019.pdf">tutorial slides</a> from the 9th EG Workshop on Visual Computing for Biology and Medicine (VCBM2019). We give a brief overview on how to use Inviwo for rapid prototyping medical applications.</p>
-                <p>Inviwo provides many visualization methods for a range of data types such as triangular meshes, images, volumes, vector fields and multidimensional arrays.</p>
-                <div class="block-left">
-                    <div class="row">
-                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <img src="assets/images/gallery/geometry-visualization.png" alt="heightfield" onclick="openModal(this)" />
-                        </div>
-                        <!--//item-->
-                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <h4>Geometry</h4>
+            <h2 class="title text-center">
+                What can you do with Inviwo?
+            </h2>
+            <p class="intro text-center">Inviwo provides many visualization methods for a range of data types such as triangular meshes, images, volumes, vector fields and multidimensional arrays.</p>
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="assets/images/gallery/geometry-visualization-no-bg.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Geometry</h5>
+                    <p class="card-text">
                             <ul>
                                 <li>Mesh rendering</li>
                                 <li>Point cloud rendering</li>
@@ -263,65 +256,50 @@
                                 <li>Transparent geometry rendering<br>(using an A-Buffer)</li>
                                 <li>Height fields (foto)</li>
                             </ul>
-                        </div>
-                        <!--//item-->
+                    </p>
                     </div>
-                    <!--//row-->
                 </div>
-                <!--//block-left-->
-                <div class="block-right">
-                    <div class="row">
-                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <h4>Scalar field visualization (Image,&nbsp;Volume)</h4>
-                            <ul>
-                                <li>GPU-based volume ray-casting with global illumination</li>
-                                <li>2D image slice inspection (foto)</li>
-                                <li>Contour extraction and visualization<br>(ISO surface )</li>
-                            </ul>
-                        </div>
-                        <!--//item-->
-                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <img src="assets/images/gallery/skalar-field-visualization.png" alt="leftimage" onclick="openModal(this)" />
-                        </div>
-                        <!--//item-->
+                <div class="card">
+                    <img class="card-img-top" src="assets/images/gallery/skalar-field-visualization-no-bg.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Scalar field visualizations( Image,&nbsp;Volume)</h5>
+                    <p class="card-text">
+                        <ul>
+                            <li>GPU-based volume ray-casting with global illumination</li>
+                            <li>2D image slice inspection (foto)</li>
+                            <li>Contour extraction and visualization<br>(ISO surface )</li>
+                        </ul>
+                    </p>
                     </div>
-                    <!--//row-->
                 </div>
-                <!--//block-right-->
-                <div class="block-left">
-                    <div class="row">
-                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <img src="assets/images/gallery/vector-field-visualization.png" alt="leftimage" onclick="openModal(this)" />
-                        </div>
-                        <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <h4>Vector field visualization</h4>
-                            <ul>
-                                <li>Line integral convolution (LIC)</li>
-                                <li>Hedgehog</li>
-                                <li>Path lines</li>
-                                <li>Stream ribbons</li>
-                                <li>Stream lines</li>
-                            </ul>
-                        </div>
-                        <!--//item-->
+                <div class="card">
+                    <img class="card-img-top" src="assets/images/gallery/vector-field-visualization.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Vector field visualization</h5>
+                    <p class="card-text">
+                        <ul>
+                            <li>Line integral convolution (LIC)</li>
+                            <li>Hedgehog</li>
+                            <li>Path lines</li>
+                            <li>Stream ribbons</li>
+                            <li>Stream lines</li>
+                        </ul>
+                    </p>
                     </div>
-                    <!--//row-->
-                </div>
-                <!--//block-left-->
-
-                
-
-                <div id="galleryModal" class="imageModal" onclick="this.style.display='none'; enableScroll();">
-                    <!-- Modal Content (The Image) -->
-                    <img class="modal-content" id="horizontalImage">
                 </div>
             </div>
-            <!--//gallery-inner-->
+
+            <div class="card">
+                <div class="embed-responsive embed-responsive-16by9 video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/9yZWjxlV6OQ" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">VCBM2019</h5>
+                    <p class="card-text">Check out our <a href="assets/media/inviwo-vcbm2019.pdf">tutorial slides</a> from the 9th EG Workshop on Visual Computing for Biology and Medicine (VCBM2019). We give a brief overview on how to use Inviwo for rapid prototyping medical applications.</p>
+                </div>
+            </div>
         </div>
-        <!--//container-->
-        <!-- The Modal -->
     </section>
-    <!--//gallery-->
 
     <!-- ******DOWNLOADS****** -->
     <section id="downloads" class="downloads section">
@@ -367,31 +345,6 @@
                         </li>
                         <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.11/Inviwo-v0.9.11-win.exe">Download</a></li>
                     </ul>
-                    <!--
-                    <ul class="list-horizontal">
-                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
-                        <li class="li-version">
-                            <span class="version">0.9.9</span>
-                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
-                        </li>
-                        <li class="li-os">
-                            <span class="os"><i class="fab fa-windows"></i>Windows</span>
-                            <span>Portable</span>
-                        </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/releases/download/v0.9.9/Inviwo-v0.9.9-win-64bit.zip">Download</a></li>
-                    </ul>
-                    -->
-                    <ul class="list-horizontal">
-                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
-                        <li class="li-version">
-                            <span class="version">0.9.11</span>
-                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
-                        </li>
-                        <li class="li-os">
-                            <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
-                        </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/archive/v0.9.11.zip">Download</a></li>
-                    </ul>
                 </div>
 
                 <div class="downloads-list macosdownload">
@@ -407,17 +360,6 @@
                         </li>
                         <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo" target="_blank" >Clone</a></li>
                     </ul>
-                    <ul class="list-horizontal">
-                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
-                        <li class="li-version">
-                            <span class="version">0.9.11</span>
-                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
-                        </li>
-                        <li class="li-os">
-                            <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
-                        </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/archive/v0.9.11.zip">Download</a></li>
-                    </ul>
                 </div>
 
                 <div class="downloads-list linuxdownload">
@@ -432,17 +374,6 @@
                             <span></span>
                         </li>
                         <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo" target="_blank" >Clone</a></li>
-                    </ul>
-                    <ul class="list-horizontal">
-                        <li class="li-icon"><img src="assets/images/inviwo-logo.svg" class="downloads-image" height="50px" width="50px"></li>
-                        <li class="li-version">
-                            <span class="version">0.9.11</span>
-                            <a href="https://github.com/inviwo/inviwo/releases">Release notes</a>
-                        </li>
-                        <li class="li-os">
-                            <span class="os"><i class="fas fa-file-code"></i>Source Code</span>
-                        </li>
-                        <li class="li-download"><a class="btn btn-cta-secondary" href="https://github.com/inviwo/inviwo/archive/v0.9.11.zip">Download</a></li>
                     </ul>
                 </div>
 
