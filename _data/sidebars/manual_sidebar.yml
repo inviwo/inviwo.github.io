@@ -1,0 +1,67 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Inviwo Documentation
+  accordion: false
+  folders:
+
+  - title: Getting Started
+    output: web, pdf
+    folderitems:
+    - title: The Graphical User Interface
+      output: web, pdf
+      url: /manual-gettingstarted-ui.html
+      has_video: true
+
+    - title: Building Inviwo
+      output: web, pdf
+      url: /manual-gettingstarted-build.html
+
+    - title: Network Concepts
+      output: web, pdf
+      url: /manual-gettingstarted-network.html
+      has_video: true
+
+  - title: Developer Guides
+    output: web, pdf
+    folderitems:
+    - title: Data Structures & Memory Representations
+      output: web, pdf
+      url: /manual-devguide-data-memory.html
+      has_video: true
+
+    - title: Generate new modules/processors
+      output: web, pdf
+      url: /manual-devguide-meta.html
+
+    - title: Create a processor
+      output: web, pdf
+      url: /manual-devguide-build-processor.html
+
+    - title: Create a property
+      output: web, pdf
+      url: /manual-devguide-build-property.html
+
+    - title: Python Processors
+      output: web, pdf
+      url: /manual-devguide-python-processors.html
+
+    - title: InviwoPy
+      output: web, pdf
+      url: /manual-devguide-inviwopy.html
+
+  - title: Video Guides
+    output: web
+    folderitems:
+      - title: Getting Started
+        output: web
+        external_url: https://www.youtube.com/watch?v=eF26VhXo4Gs
+
+      - title: Network Evaluation & Event Propagation
+        output: web
+        external_url: https://www.youtube.com/watch?v=KK92UQqk800
+
+      - title: Data Structures & Memory Representations
+        output: web
+        external_url: https://www.youtube.com/watch?v=wrYq5anGmsA

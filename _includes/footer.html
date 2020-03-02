@@ -1,0 +1,16 @@
+<footer>
+    <div class="row">
+        <div class="col-lg-12 footer">
+            <div style="vertical-align:middle">
+                <img style="float: left; padding-right: 8px; padding-left: 8px" height="64px" src="{{ "images/company_logo.png" }}" alt="Company logo"/>
+                <div style="padding: 13px">
+                &copy;{{ site.time | date: "%Y"  }} {{site.company_name}}. All rights reserved. <br/>
+{% if page.last_updated %}
+                    <span>Page last updated:</span> {{page.last_updated}} <br/>
+{% endif %}
+                    Site last generated: {{ site.time | date: "%b %-d, %Y"  }}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
