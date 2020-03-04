@@ -47,3 +47,4 @@ Similarly you can link to all internal pages by referencing the `permalink` that
 
 ## Adding new templates
 You can make arbitrarily complex HTML templates inside `_includes/` and embed them into Markdown using Liquid's include tags: `{% include template.html param="..." %}`. You can access the given parameters in the template using `{{include.param}}`.
+Those parameters can contain Markdown, however they will have to be put inside a `<div markdown="1"> {{include.markdown_content}} </div>` for the Markdown to be evaluated. 
