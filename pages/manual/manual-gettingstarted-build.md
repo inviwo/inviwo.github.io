@@ -30,8 +30,8 @@ The `--recurse-submodules` is necessary to pull dependencies.
 4. Hit Generate and open the project in your IDE.
 
 {% include note.html content="
-When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
-If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake, which defaults to `Release`
+When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually ([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it probably defaults to `Debug` at first, which has a large impact on the performance.
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
 
  Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 " %}
@@ -82,7 +82,7 @@ If CMake cannot find Qt, make sure you adjust your `CMAKE_PREFIX_PATH` as descri
  External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
 4. Hit Generate and open the project in your IDE.
 {% include note.html content="
-If you are using a single-configuration generator (like Make or Ninja) to build Inviwo, you can control the build mode with the `CMAKE_BUILD_TYPE` attribute in your CMake config. The default here is `Release`. This will give you great performance, but also inaccurate stack traces in case of an error.
+If you are using a single-configuration generator (like Make or Ninja) to build Inviwo, you can control the build mode with the `CMAKE_BUILD_TYPE` attribute in your CMake config.
 
 When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
 
@@ -95,7 +95,7 @@ TODO: do
 {% include note.html content="
 When using a multi-configuration generator (like Xcode) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
 
-If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake, which defaults to `Release`
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
 
  Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 " %}
@@ -103,7 +103,7 @@ If you use a single-configuration generator, you can control the build mode usin
 
 ## Recommended Visual studio setup (Optional)
 
-1. Visual Studio: Set the build mode to `RelWithDebInfo`
+1. Visual Studio: Set the build mode to `RelWithDebInfo` ([See this guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019))
 
 2. Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds` We recommend 2-4 on an 8-core machine
 
