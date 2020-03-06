@@ -29,6 +29,13 @@ The `--recurse-submodules` is necessary to pull dependencies.
  Use front slashes and no space between modules. Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
 4. Hit Generate and open the project in your IDE.
 
+{% include note.html content="
+When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake, which defaults to `Release`
+
+ Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
+" %}
+
 ### Common Errors
 #### Everything compiles but at runtime you get "failed to load QT symbols dll load errors"
 Make sure that the same Qt version used for building is found when running the application. A common source of this error is that Anaconda is installed, which includes another Qt version and has added itself to the PATH environment variable. Make sure that the Qt version used for building is **before** the Anaconda path in the PATH. We have observed a similar problem with certain LaTeX distributions, so if the issue remains, try to move the LaTeX entry in your PATH behind your Qt version as well.
@@ -74,22 +81,30 @@ If CMake cannot find Qt, make sure you adjust your `CMAKE_PREFIX_PATH` as descri
  Use front slashes and no space between modules. Configure again.
  External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
 4. Hit Generate and open the project in your IDE.
+{% include note.html content="
+If you are using a single-configuration generator (like Make or Ninja) to build Inviwo, you can control the build mode with the `CMAKE_BUILD_TYPE` attribute in your CMake config. The default here is `Release`. This will give you great performance, but also inaccurate stack traces in case of an error.
+
+When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
+
+Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
+" %}
 
 
 ## Mac
 TODO: do
+{% include note.html content="
+When using a multi-configuration generator (like Xcode) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
 
-## Build Options
-TODO: do
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake, which defaults to `Release`
 
+ Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
+" %}
 
 
 ## Recommended Visual studio setup (Optional)
 
-* Keep computer responsive during compiling.
+1. Visual Studio: Set the build mode to `RelWithDebInfo`
 
-Make sure that multiplying the two following options does not exceed the number of cores your computer has. Recommended on an 8-core machine: 1) 2-4,  2) 4.
+2. Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds` We recommend 2-4 on an 8-core machine
 
-**1)** Visual Studio: Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds
-
-**2)** CMake: Set IVW_MULTIPROCESSOR_COUNT
+3. CMake: Set `IVW_MULTIPROCESSOR_COUNT` to 4
