@@ -8,7 +8,11 @@ permalink: manual-devguide-build-processor.html
 folder: manual
 ---
 # Create your own Processor
-This guide will walk you through the creation of a new processor.
+This guide will walk you through the creation of a new processor in C++.
+
+{% include tip.html content="
+
+You can also [write processors in Python](manual-devguide-python-processors.html). " %}
 
 ## Creating the processor
 There are three ways to create a new processor in Inviwo:
