@@ -80,7 +80,7 @@ class NumpySource(ivw.Processor):
 This `__init__` defines a volume outport to pass the loaded array to the network and a file property to locate the serialized Numpy array. Note that this `FileProperty` has its `invalidationLevel=InvalidationLevel(2)`, which lets the `FileProperty` invalidate the processors resources upon changing the property. This will automatically call the `initializeResources()` method which will take care of actually loading the Numpy file (see below).
 
 ## NumPy Compatibility
-In order to transfer data between Python and C++, the Inviwo data structures  `Volume` (example below), `Layer` (for `Image`, [example](https://inviwo.org/assets/media/inviwo-vcbm2019.pdf) slide 34-35) and `Buffer` (for `Mesh`, [example](https://github.com/inviwo/modules/blob/2f07a0fffe916c413a520644b9fe2e45a3ee60a9/misc/vasp/python/vasputil.py#L109-L123)) can take Numpy arrays (`numpy.ndarray`) for initialization.
+In order to transfer data between Python and C++, the Inviwo data structures  `Volume` (example below), `Layer` (for `Image`, [example](https://inviwo.org/media/inviwo-vcbm2019.pdf) slide 34-35) and `Buffer` (for `Mesh`, [example](https://github.com/inviwo/modules/blob/2f07a0fffe916c413a520644b9fe2e45a3ee60a9/misc/vasp/python/vasputil.py#L109-L123)) can take Numpy arrays (`numpy.ndarray`) for initialization.
 
 Loading a Numpy array from disk, wrapping it in a `Volume` and outputting it to the network can be realized as follows:
 ```python
