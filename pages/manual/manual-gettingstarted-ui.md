@@ -7,14 +7,14 @@ sidebar: manual_sidebar
 permalink: manual-gettingstarted-ui.html
 folder: manual
 ---
-# The Inviwo Graphical Interface
+## The Inviwo Graphical Interface
 This part of the Getting Started Guide explains Inviwo's graphical user interface and the rough concepts
 of its building blocks. The goal of this guide is to give an intuitive feeling for the GUI and enable
 users to build workspaces from existing processors.
 We also have an accompanying video tutorial:
 {% include youtube.html id="eF26VhXo4Gs" caption="Getting Started with the Inviwo Graphical User Interface" %}
 
-## GUI Overview
+### GUI Overview
 The following image shows Inviwos GUI:
 
 ![The Inviwo GUI](images/manual/UI.png)
@@ -54,7 +54,7 @@ The whole network, namely all the processors, their connections and properties c
 
 
 
-## Processors
+### Processors
 Processors are the basic building blocks for an Inviwo network. The actual graphical processor elemenet encodes a lot of information, as the following figure shows:
 
 ![A processor](images/manual/Processor.png)
@@ -65,7 +65,7 @@ Lastly, you can connect a processors properties to (the same type of) properties
 
 To create your own custom processors, check out [this guide](manual-devguide-build-processor)
 
-## Ports
+### Ports
 As explained above, a processor's ports determine the inputs and outputs of the operation that is executed in a processor. A dot inside the port marks that the port is optional and the processor should work without connecting it. A port's color shows of which type the data is that flows through it, for example red for volumes, yellow for meshes and blue for images. To directly inspect the data that flows through a port, you can look at the *Port Inspector* by hovering over a port:
 
 ![Port Inspectors](images/manual/PortInspector.png)
@@ -73,7 +73,7 @@ As explained above, a processor's ports determine the inputs and outputs of the 
 This will show you the exact type, metadata like spatial dimensions and an actual preview of the data. When debugging a network, checking all inputs and outputs with the port inspector is often a good first step.
 Note that some inports are *multi inports*, meaning you can connect multiple outports to it. All the data from the connected outports is then available to the processor as a list.
 
-## Properties
+### Properties
 Properties let you define the configuration of a processor. That means they contain all parameters of a processor in an organized way, allowing for easy manipulation using boxes, sliders and widgets like a color picker.
 
 In addition to simple manipulation of parameters, properties can be *linked* together with properties from other processors in order to synchronize. Upon dragging a link from the *Property Link Connector* (see figure in the [Processors](#processors) section) onto another processor, the following window opens:

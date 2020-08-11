@@ -10,10 +10,10 @@ folder: manual
 This tutorial has an accompanying video tutorial:
 {% include youtube.html id="wrYq5anGmsA" caption="Data Structures and Memory Representations" %}
 
-# Data Structures
+## Data Structures
 In Inviwo the main core data structures (`Volume`, `Layer`, `Buffer`) use a pattern of handles and representations. Note that there also exists the `Image` and `Mesh` data structure which are containers of `Layer`s and `Buffer`s respectively. The volume data structure for example has a handle class called `Volume`. The handle class by itself does not have any data, it only stores metadata, and a list of representations. The representations is where the actual data is stored. Therefore, an `Image` or `Mesh` representation is a container for `Layer` and `Buffer` representations of the same representation type. The following first explains the basic data structures and how they relate, then shows what different representations exist and how to use them.
 
-## The different structures
+### The different structures
 In Inviwo, the `Volume` class wraps volumetric data, more specifically data in a 3D structured grid, also with possibly multiple channels.
 
 The `Image` class consists of a set of `Layer`s, usually a color layer (what we would regularly think of as an image), a depth layer and a picking layer.
@@ -27,7 +27,24 @@ The picking layer basically encodes object instance IDs in color, so that a look
 
 The third big data structure in Inviwo is the `Mesh` which consists of a set of `Buffer`s. A `Buffer` is basically a wrapper for some linearly stored data and the `Mesh` holds a list of index buffers and data buffers, such as vertex positions, normals, colors etc.
 
-# Memory Representations
+
+### Spaces and Transforms
+
+We name transformations according to: `fromSpace` To `destinationSpace`, i.e `modelToWorld`.
+
+Space | Description              | Range
+------|--------------------------|--------------------------------------------
+Data  | raw data numbers         | generally `(-inf, inf)`, (`[0,1]` for textures)
+Model | model space coordinates  | `(data min, data max)`
+World | world space coordinates  | `(-inf, inf)`
+View  | view space coordinates   | `(-inf, inf)`
+Clip  | clip space coordinates   | `[-1,1]`
+Index | voxel index coordinates  | `[0, number of voxels)`
+
+![Coordinate Spaces](images/manual/coordinate_spaces.png)
+
+
+## Memory Representations
 
 Any data structure can have a set of different representations, for example a `Volume` has a `VolumeRAM` representation and a `VolumeGL` representation. The representation basically determines where the data actually is. In general there are representations for `Disk`, `RAM`, `GL` and if needed also `CL`, where the latter refer to *OpenGL* and *OpenCL* representations respectively.
 
@@ -37,12 +54,12 @@ At any time at least one of the representations should be in a valid state. When
 
 When asking a data handle for a representation, you can either ask for a read-only representation using `getRepresentation<>()` or for an editable representation using `getEditableRepresentation<>()`. Note that editing a  representation invalidates all other representations in the handle, since they have not received the updates and are thus out of sync.
 
-## Conversion between Representations
+### Conversion between Representations
 
 Instead of specifying all representations directly for all objects, you can define a `RepresentationConverter`, which can then automatically convert between two representations.
 For example a typical use case can be that we start with a `Volume` handle with a `VolumeDisk` representation and we want to do raycasting using OpenGL. In our processor we will then ask the `Volume` for a `VolumeGL` representation. The volume will see that there are currently no such representations. It will then try and find a chain of `RepresentationConverters` to create that representation. In this case that might be a `VolumeDisk2RAMConverter` that will read in the file from `Disk` into `RAM`, and a `VolumeRAM2GLConverter` that will upload the data to the graphics card. The data handle will always try and find the shortest chain of converters. I.e. if there was a `VolumeDisk2GLConverter` that one would have been used instead.
 
-## Example: Accessing the data in C++
+### Example: Accessing the data in C++
 Now that we know how to get the desired representations, let's see how to safely access the data within using the dispatch concept. We will look at rendering a mesh with its bounding box as an example.
 
 ![A workspace to render a mesh with bounding box](images/manual/mesh_bb_render_workspace.png)

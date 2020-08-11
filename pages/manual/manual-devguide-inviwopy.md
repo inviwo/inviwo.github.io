@@ -7,10 +7,10 @@ sidebar: manual_sidebar
 permalink: manual-devguide-inviwopy.html
 folder: manual
 ---
-# Using Inviwo from within Python
+## Using Inviwo from within Python
 While [Python Processors](manual-devguide-python-processors.html) allow you to embed Python code inside Inviwo processors, you can also use Inviwopy to use your Inviwo networks from within a Python application. This guide shows you first how to build Inviwopy, then how to load existing Inviwo workspaces for use in your Python scripts and lastly some ways to modify a loaded Inviwo network from within Python.
 
-## Building InviwoPy
+### Building InviwoPy
 To use Inviwopy, you have to build the appropriate `.dll`/`.so` yourself, since it is currently not available through Pypi. To do so, enable the `IVW_MODULE_PYTHON3` and `IVW_MODULE_PYTHON3QT` CMake flags. Next you need to specify the Python executable to which the produced library shall be compatible in the `PYTHON_EXECUTABLE` flag.
 
 {% include note.html content="
@@ -34,7 +34,7 @@ sys.path.append('<path to inviwo build>/bin')
 ```
 
 
-## Loading an Inviwo workspace
+### Loading an Inviwo workspace
 Once your Python interpreter finds the Inviwo libraries, you can just import Inviwopy in Python:
 ```python
 import inviwopy as ivw

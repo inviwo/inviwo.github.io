@@ -7,11 +7,11 @@ sidebar: manual_sidebar
 permalink: manual-gettingstarted-build.html
 folder: manual
 ---
-# How to build Inviwo
+## How to build Inviwo
 
-## Windows
+### Windows
 
-### Dependencies
+#### Dependencies
 You will need at least
 - [CMake](https://cmake.org/download/) >= 3.12.0
     Also add the cmake binary to your PATH.
@@ -19,7 +19,7 @@ You will need at least
 - [Qt binaries](https://qt.io/download-open-source/) >= 5.12
     Make sure you get the build for the 64 bit version for you Visual Studio version. Also add the Qt binary directory (something like `Qt/5.12.1/msvc2017_64/bin`) to your PATH.
 
-### Building
+#### Building
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
 The `--recurse-submodules` is necessary to pull dependencies.
 
@@ -36,20 +36,20 @@ If you use a single-configuration generator, you can control the build mode usin
  Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 " %}
 
-### Common Errors
-#### Everything compiles but at runtime you get "failed to load QT symbols dll load errors"
+#### Common Errors
+##### Everything compiles but at runtime you get "failed to load QT symbols dll load errors"
 Make sure that the same Qt version used for building is found when running the application. A common source of this error is that Anaconda is installed, which includes another Qt version and has added itself to the PATH environment variable. Make sure that the Qt version used for building is **before** the Anaconda path in the PATH. We have observed a similar problem with certain LaTeX distributions, so if the issue remains, try to move the LaTeX entry in your PATH behind your Qt version as well.
 
-#### Everything compiles but at runtime you get "failed to load python.dll"
+##### Everything compiles but at runtime you get "failed to load python.dll"
 Add the path to the Python bin folder to your PATH environment variable.
 You can find the path to the Python binary in Visual Studio by right clicking on the inviwo-module-python3 project and go to "Properties->Linker->Input->Additional dependencies".
 
-#### Everything compiles but at runtime you get runtime error / Unhandled Exception in pybind11/embed.h
+##### Everything compiles but at runtime you get runtime error / Unhandled Exception in pybind11/embed.h
 This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check your system settings to see if it is correctly pointing to your python installation found by CMake. If you do not have the `PYTHONHOME` variable you should set it. It should point to the root folder of your python installation, e.g `C:/python37 or C:\Program Files (x86)\Microsoft Visual Studio\Shared\Anaconda3_64` (if you installed Anaconda with Visual Studio). To know which python installation inviwo uses you can check the output from the configuration pass in CMake, in the very beginning of the log it prints which python interpreter it found and will use.
 
-## Linux
+### Linux
 
-### Dependencies
+#### Dependencies
 You will need at least
 - [CMake](https://cmake.org/download/) >= 3.12.0
     **Ubuntu**: Make sure to add the [Kitware APT Repository](https://apt.kitware.com/) when you want to install cmake via `apt-get`, since the official Ubuntu repo offers an outdated CMake version.
@@ -71,7 +71,7 @@ sudo apt-get install build-essential cmake cmake-qt-gui git freeglut3-dev xorg-d
 ```
 The first two commands add the Kitware APT Repo and the appropriate signing key, the third and fourth update your package manager and download the dependencies.
 
-### Building
+#### Building
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
 The `--recurse-submodules` is necessary to pull dependencies.
 2. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again.
@@ -90,7 +90,7 @@ Unless you specifically need to debug the application, we recommend setting the 
 " %}
 
 
-## Mac
+### Mac
 TODO: do
 {% include note.html content="
 When using a multi-configuration generator (like Xcode) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
@@ -101,7 +101,7 @@ If you use a single-configuration generator, you can control the build mode usin
 " %}
 
 
-## Recommended Visual studio setup (Optional)
+### Recommended Visual studio setup (Optional)
 
 1. Visual Studio: Set the build mode to `RelWithDebInfo` ([See this guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019))
 
