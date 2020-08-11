@@ -150,10 +150,10 @@ private:
 
 The docpage will be display inline inside of inviwo.
 
-[[images/processorinfo.png]]
+![Generated Processor Docs](images/manual/processorinfo.png)
 
 The format of the docpage is very simple, the name has to match the class identifier for the processor,
-one can make an optional second argument with a title if needed. The description text can use [standard Markdown syntax](https://www.stack.nl/~dimitri/doxygen/manual/markdown.html). Images can be added to the data/help/images folder and then referred to in the description
+one can make an optional second argument with a title if needed. The description text can use [standard Markdown syntax](https://www.doxygen.nl/manual/markdown.html). Images can be added to the data/help/images folder and then referred to in the description
 or the a images folder inside a module
 
 ```
