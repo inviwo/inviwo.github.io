@@ -51,6 +51,14 @@ entries:
       output: web, pdf
       url: /manual-devguide-inviwopy.html
 
+    - title: Doxygen Guide
+      output: web, pdf
+      url: /manual-devguide-doxygen.html
+
+    - title: FAQ
+      output: web, pdf
+      url: /manual-devguide-faq.html
+
   - title: Video Guides
     output: web
     folderitems:
