@@ -7,14 +7,14 @@ sidebar: manual_sidebar
 permalink: manual-devguide-build-processor.html
 folder: manual
 ---
-# Create your own Processor
+## Create your own Processor
 This guide will walk you through the creation of a new processor in C++.
 
 {% include tip.html content="
-You can also [write processors in Python](manual-devguide-python-processors.html). 
+You can also [write processors in Python](manual-devguide-python-processors.html).
 " %}
 
-## Creating the processor
+### Creating the processor
 There are three ways to create a new processor in Inviwo:
 1. **Using the GUI**: Just click the `Tools -> Create Sources -> Add Processor` button, navigate to `<module-dir>/src/processors` and specify your processor name in PascalCase (e.g. `MyNewProcessor`).
 2. **Using the Inviwo-meta-cli**: Check out the [Inviwo-meta docs](manual-devguide-meta.html)
@@ -132,7 +132,7 @@ MyProcessor::MyProcessor()
 ```
 Note that the automatically generated processor template also has a `FloatVec3Property`. This is omitted here. Properties will be discussed below.
 
-## process() - Implement functionality
+### process() - Implement functionality
 The `process()` method is where the functionality of your processor is defined. Every time the processor is invalidated (either by changing inputs, events or property changes), the `process()` method is executed.
 Inside `process()` you can access your inports' data by using `inport_.getData()` and similarly you can write data to the outports using `outport_.setData(...)`. What happens with your data in between is fully up to you.
 You can also use all your defined properties here. This let's you access all your algorithm's parameters directly from the GUI with automatic updates upon change.
@@ -178,7 +178,7 @@ void MyProcessor::process() {
 ~~~
 For this image filtering processor we make use of the `ImageConvolution` class. In a nutshell it uploads the image as texture to an OpenGL fragment shader `img_convolution.frag`, where the convolution operation is performed. You can find this helper in `modules/basegl/algorithm/imageconvolution.h/cpp`. It's also a great example on how to define shader uniforms and using OpenGL textures.
 
-## Properties - Make GUI-accessible parameters
+### Properties - Make GUI-accessible parameters
 Having the rough outline of the processor set up, you can then add properties to expose parameters directly to the GUI. Once again, make sure that you initialize property in the constructor.
 In the constructor body itself you have to call `addProperty()` or `addProperties()` to add the properties to your processor. This will make sure the properties are displayed in the specified order.
 
@@ -311,7 +311,7 @@ glBindTexture(GL_TEXTURE_3D, textureID);
 ```
 
 
-## Event Handling and Invalidation
+### Event Handling and Invalidation
 In Inviwo, events are propagated upwards in the network until they are consumed by a processor. In practice this usually means the canvas processor starts sending mouse/keyboard input upwards in the network, until a trackball property consumes the event, adjusts the camera properties and thus, invalidates the processors with the camera properties (usually renderers). Of course you can also define other kinds of events which are not related to I/O. You can trigger them anywhere and you can listen to all kinds of events within your processor. In order to subscribe to events, you can use the `EventProperty`. Usually you will want to define a `function(Event*)` in your processor that defines the callback to execute, then you can just pass a lambda to the `EventProperty`'s constructor that calls your callback.
 
 Whenever you initialize a `Property`, you can set an `InvalidationLevel`. The invalidation level is one of `Valid`, `InvalidOutput` or `InvalidResources`. Whenever the property is changed, this sets the invalidation level of its processor to one of:

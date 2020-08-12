@@ -7,7 +7,7 @@ sidebar: manual_sidebar
 permalink: manual-gettingstarted-network.html
 folder: manual
 ---
-# The Inviwo Network
+## The Inviwo Network
 Inviwo networks are built around a few concepts in order to keep the resulting graphs clean and deterministic.
 This guide explains those concepts and clarifies the chronological order of processor execution. We also have an accompanying video tutorial:
 {% include youtube.html id="KK92UQqk800" caption="Network Evaluation and Event Propagation" %}

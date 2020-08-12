@@ -7,7 +7,7 @@ sidebar: manual_sidebar
 permalink: manual-devguide-meta.html
 folder: manual
 ---
-# Generating files for Processors, Properties and Modules
+## Generating files for Processors, Properties and Modules
 
 To create a new module for Inviwo there is a helper program which creates the folder structure,
 the CMake files, basic module files and if needed example processors and shaders. To use the
