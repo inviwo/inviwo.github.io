@@ -1,7 +1,7 @@
 ---
 title: Contributing
 tags: [dev_guide]
-keywords: devguide, c++
+keywords: devguide
 summary: "How to contribute to Inviwo"
 sidebar: manual_sidebar
 permalink: contributing.html
