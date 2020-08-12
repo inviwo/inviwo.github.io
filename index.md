@@ -64,8 +64,10 @@ insert_promo: true
                     <i class="fa fa-book"></i>
                 </div>
                 <div class="content">
+                    <a href="manual_index.html">
                     <h3 class="sub-title">Documentation</h3>
-                    <p>To get started with Inviwo, we provide guides on how to install, develop new processors, and create new modules. We are currently working on video tutorials.</p>
+                    </a>
+                    <p>To get started with Inviwo, we provide guides on how to install, develop new processors, and create new modules. We also made video tutorials on the most important concepts.</p>
                 </div>
                 <!--//content-->
             </div>
