@@ -204,7 +204,7 @@ no_edit: true
     <div class="container">
         <div class="funding-inner">
             <h2 class="title text-center">Funding support</h2>
-            <p>This work is supported by Linköping University, Ulm University and KTH Royal Institute of Technology, as well as grants from the Swedish e-Science Research Centre (SeRC), the DFG (German Research Foundation) and the BMBF.</p>
+            <p>This work is supported by Linköping University, Ulm University and KTH Royal Institute of Technology, as well as grants from the Swedish e-Science Research Centre (SeRC), the Excellence Center at Linköping - Lund in Information Technology (ELLIIT), DFG (German Research Foundation) and the BMBF.</p>
             <div class="row flexfunding">
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://liu.se/en">
@@ -224,6 +224,11 @@ no_edit: true
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://e-science.se/">
                         <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/serc-600x400.png" alt="serc">
+                    </a>
+                </div>
+                <div class="item col">
+                    <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://old.liu.se/elliit?l=en">
+                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/elliit_logo.jpg" alt="elliit">
                     </a>
                 </div>
                 <div class="item col">
