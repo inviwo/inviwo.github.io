@@ -23,20 +23,25 @@ You will need at least
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
 The `--recurse-submodules` is necessary to pull dependencies.
 
-2. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
-3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
+2. *Only if you are using Anaconda for your Python environment:*
+   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` - This will ensure that CMake finds *your* Qt instead of its own.
+   - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
+
+3. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
+4. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
 `C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
  Use front slashes and no space between modules. Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
-4. Hit Generate and open the project in your IDE.
+5. Hit Generate and open the project in your IDE.
 
 {% include note.html content="
-When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually ([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it probably defaults to `Debug` at first, which has a large impact on the performance.
+When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually to `RelWithDeb`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
 If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
 
  Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 " %}
 
 #### Common Errors
+
 ##### Everything compiles but at runtime you get "failed to load QT symbols dll load errors"
 Make sure that the same Qt version used for building is found when running the application. A common source of this error is that Anaconda is installed, which includes another Qt version and has added itself to the PATH environment variable. Make sure that the Qt version used for building is **before** the Anaconda path in the PATH. We have observed a similar problem with certain LaTeX distributions, so if the issue remains, try to move the LaTeX entry in your PATH behind your Qt version as well.
 
