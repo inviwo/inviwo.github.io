@@ -24,7 +24,7 @@ You will need at least
 The `--recurse-submodules` is necessary to pull dependencies.
 
 2. *Only if you are using Anaconda for your Python environment:*
-   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` - This will ensure that CMake finds *your* Qt instead of its own.
+   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` - This will ensure that CMake finds *your* Qt instead of Anaconda's.
    - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
 
 3. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
