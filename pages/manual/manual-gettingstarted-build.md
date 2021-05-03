@@ -76,6 +76,11 @@ sudo apt-get install build-essential cmake cmake-qt-gui git freeglut3-dev xorg-d
 ```
 The first two commands add the Kitware APT Repo and the appropriate signing key, the third and fourth update your package manager and download the dependencies.
 
+#### Python (optional)
+On Linux the easiest way is to use the system python, which will usually be detected by CMake by default.
+If you wish to use a different Python environment, e.g. from an Anaconda environment, you'll need to specify the `Python3_ROOT_DIR` in CMake (before first configure!) and set it to your conda environment.
+Note that it may in some cases be necessary to run the compile or the binary from a command line with the conda environment activated.
+
 #### Building
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
 The `--recurse-submodules` is necessary to pull dependencies.
