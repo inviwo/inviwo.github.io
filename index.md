@@ -90,7 +90,7 @@ insert_promo: true
 </section>
 <section id="showcase" class="carousel section">
     <div class="container">
-        <h2 class="title text-center">Gallery</h2>
+        <h2 class="title text-center">Powered By Inviwo</h2>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#showcase" data-slide-to="0" class="active"></li>
@@ -98,22 +98,49 @@ insert_promo: true
                 <li data-target="#showcase" data-slide-to="2"></li>
                 <li data-target="#showcase" data-slide-to="3"></li>
                 <li data-target="#showcase" data-slide-to="4"></li>
+                <li data-target="#showcase" data-slide-to="5"></li>
             </ol>
           <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <img class="img-fluid" src="images/gallery/carousel1.png" alt="1">
+            <img class="img-fluid" src="images/gallery/carousel1.png" alt="1">
+            <div class="carousel-caption">
+                <p> The Inviwo Graphical User Interface </p>
+              </div>
             </div>
             <div class="item">
-              <img class="img-fluid" src="images/gallery/carousel2-nobackground.png" alt="2">
+              <img class="img-fluid" src="images/carousel/VisualNeuro.jpg" alt="2">
+              <div class="carousel-caption">
+                <p> Daniel Jönsson et al.: <i>&quot;VisualNeuro: A Hypothesis Formation and Reasoning Application for Multi-Variate Brain Cohort Study Data&quot;</i></p>
+                <a href="http://visualneuro.com"> visualneuro.com </a> &nbsp;
+                <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14045"> CGF 2020 Paper </a>
+              </div>
             </div>
             <div class="item">
-              <img class="img-fluid" src="images/gallery/carousel3.png" alt="3">
+              <img class="img-fluid" src="images/carousel/eddies-red-sea.png" alt="3">
+              <div class="carousel-caption">
+              <p>Anke Friederici et al.: <i>&quot;Eddies in the Red Sea&quot;</i>, SciVis Contest 2020</p>
+              <a href="https://diglib.eg.org/handle/10.2312/envirvis20211079"> EnvirVis 2021 Paper </a>
+              </div>
             </div>
             <div class="item">
-              <img class="img-fluid" src="images/gallery/carousel4.png" alt="4">
+              <img class="img-fluid" src="images/gallery/carousel2.png" alt="4">
+              <div class="carousel-caption">
+                <p>Martin Falk et al.: <i>&quot;Largescale 3D histopathology in Inviwo&quot;</i></p>
+                <a href="https://ieeexplore.ieee.org/document/8440070"> TVCG 2019 Paper </a>
+              </div>
             </div>
             <div class="item">
-              <img class="img-fluid" src="images/gallery/carousel5.png" alt="5">
+              <img class="img-fluid" src="images/carousel/exploration-chord-tooltip.png" alt="5">
+              <div class="carousel-caption">
+                <p>Sathish Kottravel et al.: <i>&quot;Visual Analysis of Charge Flow Networks for Complex Morphologies&quot;</i></p>
+                <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.13704"> CGF 2019 Paper </a>
+              </div>
+            </div>
+            <div class="item">
+              <img class="img-fluid" src="images/carousel/molvis-cryoem.png" alt="6">
+              <div class="carousel-caption">
+                <p> Molecular Visualization of CryoEM data </p>
+              </div>
             </div>
           </div>
           <a class="carousel-control-prev left carousel-control" href="#carouselExampleControls" role="button" data-slide="prev" style="background-image: unset;">
@@ -144,7 +171,7 @@ insert_promo: true
                             <li>Point cloud rendering</li>
                             <li>Line rendering</li>
                             <li>Transparent geometry rendering<br>(using an A-Buffer)</li>
-                            <li>Height fields (foto)</li>
+                            <li>Height fields</li>
                         </ul>
                     </div>
                     <!--//item-->
@@ -158,7 +185,7 @@ insert_promo: true
                         <h4>Scalar field visualization (Image,&nbsp;Volume)</h4>
                         <ul>
                             <li>GPU-based volume ray-casting with global illumination</li>
-                            <li>2D image slice inspection (foto)</li>
+                            <li>2D image slice inspection</li>
                             <li>Contour extraction and visualization<br>(ISO surface )</li>
                         </ul>
                     </div>
@@ -201,6 +228,30 @@ insert_promo: true
         <!--//container-->
         <!-- The Modal -->
 </section>
+<section id="external" class="gallery section">
+    <div class="container">
+        <div class="gallery-inner">
+            <h3>External Modules and Applications</h3>
+<p>On top of the functionality built into Inviwo, we have a large collection of addition external modules that are separately available, due to their large dependencies:</p>
+<ul>
+<li><a href="https://github.com/inviwo/modules/tree/master/medvis/dicom">Dicom Reader</a> Adds support for reading DICOM image/volume files (.dcm file ending)</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/molvis">Molecular visualization</a> Adds support for molecular data structures along with reading PDB and mmCIF files. Molecules are rendered in van-der-Waals, Licorice, and Ball and Stick representations.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/tensorvis">Tensor visualization</a> Adds support for reading/writing tensor fields. Includes algorithms such as HyperLIC and Anisotropy raycasting.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/topovis">Topology visualization</a> Integrates the <a href="https://topology-tool-kit.github.io/">Topology Toolkit</a> into Inviwo. Includes algorithms for critical points, integral lines, persistence diagrams, persistence curves, merge trees, contour trees, Reeb graphs, Morse-Smale complexes, topological simplification, topology-aware compression, harmonic design, fiber surfaces, continuous scatterplots, Jacobi sets, Reeb spaces, bottleneck and Wasserstein distances between persistence diagrams etc.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/dataframeclustering">Clustering</a> Cluster rows of a DataFrame. Supported clustering methods are k-means, DBSCAN, agglomerative, and spectral clustering</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/nanovgutils">Vector Graphics</a> Integrates <a href="https://github.com/memononen/nanovg">NanoVG</a>, which is a small antialiased vector graphics rendering library for OpenGL.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/netcdf">NetCDF</a> Adds support for reading NetCDF files</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/openmesh">OpenMesh</a> Integrates the <a href="https://www.graphics.rwth-aachen.de/software/openmesh/">OpenMesh</a> library, which is a data structure for polygonal meshes. Includes for example mesh decimation and vertex normal generation.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/springsystem">Spring-mass system</a> Simulation of spring-mass system.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/vtk">Visualization Toolkit</a> Integrates support for <a href="https://gitlab.kitware.com/vtk/vtk">VTK</a>, which has algorithms for surface reconstruction, implicit modeling, decimation and much more.</li>
+<li><a href="https://github.com/ResearchDaniel/Correlated-Photon-Mapping-for-Interactive-Global-Illumination-of-Time-Varying-Volumetric-Data">Photon mapping</a> Volume illumination algorithm for time-varying heterogenous media.</li>
+<li><a href="https://github.com/Wiebke/TemporalTreeMaps">Temporal Tree Maps</a> Temporal treemaps for visualizing trees whose topology and data change over time.</li>
+<li><a href="https://github.com/inviwo/modules/tree/master/misc/devtools">Developer tools</a> Log inviwo events, useful for debugging interaction.</li>
+        </ul>
+        </div>
+    </div>
+</section>
+
 {% capture bibtex %}
 @Article{inviwo2019,
     author   = {J{\"o}nsson, Daniel and Steneteg, Peter and Sund{\'e}n, Erik and Englund, Rickard and Kottravel, Sathish and Falk, Martin and Ynnerman, Anders and Hotz, Ingrid and Ropinski, Timo},

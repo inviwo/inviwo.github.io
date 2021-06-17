@@ -1520,7 +1520,7 @@ pre code {
 /* ======= About Section ======= */
 .about {
   padding: 80px 0;
-  background: #f5f5f5;
+  background: #ffffff;
 }
 .about .title {
   color: #103A54;
@@ -1584,7 +1584,7 @@ pre code {
 /* ======= Carousel Section ======= */
 .carousel {
   padding: 20px 0;
-  background: #f5f5f5;
+  background: #ffffff;
 }
 .carousel-inner {
   margin-bottom: 50px;
@@ -1598,7 +1598,7 @@ pre code {
   line-height: 1;
 }
 .carousel-indicators {
-  bottom: 20px;
+  bottom: 10px;
 }
 .carousel-indicators li{
   background-color: rgba(16, 58, 84, 0.5);
@@ -1626,7 +1626,7 @@ pre code {
 /* ======= Gallery Section ======= */
 .gallery {
   padding: 80px 0;
-  background: #f5f5f5;
+  background: #ffffff;
   text-align: justify;
 }
 .gallery .title {
@@ -2076,7 +2076,7 @@ pre code {
 /* ======= Citation Section ======= */
 .citation {
   padding: 10px 0;
-  background: #f5f5f5;
+  background: #ffffff;
 }
 .citation-codeblock{
   position: relative;
@@ -2546,6 +2546,23 @@ i .fas .fa-film {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+.carousel-caption {
+  position: static;
+  min-height: 6em;
+  background-color: #ffffff;
+  border-color: #afafaf66;
+  border-width: 0.5px;
+  border-style: none;
+  padding: 5px;
+  color: #444;
+  text-shadow: 0 1px 1px rgba(0,0,0,0);
+}
+
+.gallery .col-xs-12 li {
+  text-align: left;
+}
+
 
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */

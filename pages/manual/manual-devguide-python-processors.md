@@ -17,7 +17,9 @@ To use Inviwopy, you have to build the appropriate `.dll`/`.so` yourself, since 
 {% include expandible.html title="Using Inviwopy with Anaconda environments" content="
 1. Set the `PYTHON_EXECUTABLE` flag to your environment's executable (e.g. `~/.conda/envs/inviwo/bin/python3`)
 
-2. If not set automatically, also adapt the `PYTHON_LIBRARY` flag to `<conda env>/lib/libpython3.6m.so` (according to your Python version).
+2. If you Python libraries are not found correctly, also adapt the `PYTHON_LIBRARY` flag to `<conda env>/lib/libpython3.6m.so` (according to your Python version).
+
+Note: If CMake warns you that `<conda env>/lib` overrides libraries from your system path, this may lead to linking errors. They can usually be resolved by unsetting `PYTHON_LIBRARY` (it is not necessary most of the time).
 " %}
 
 ### Processor Creation
