@@ -204,7 +204,7 @@ no_edit: true
     <div class="container">
         <div class="funding-inner">
             <h2 class="title text-center">Funding support</h2>
-            <p>This work is supported by Linköping University, Ulm University and KTH Royal Institute of Technology, as well as grants from the Swedish e-Science Research Centre (SeRC), the DFG (German Research Foundation) and the BMBF.</p>
+            <p>This work is supported by Linköping University, Ulm University and KTH Royal Institute of Technology, as well as grants from the Swedish e-Science Research Centre (SeRC), the Excellence Center at Linköping - Lund in Information Technology (ELLIIT), the Swedish Research Council (Vetenskapsrådet), DFG (German Research Foundation), and the BMBF.</p>
             <div class="row flexfunding">
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://liu.se/en">
@@ -218,22 +218,32 @@ no_edit: true
                 </div>
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/">
-                            <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/uulm-600x400.png" alt="uulm">
+                            <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/uulm-600x400.png" alt="University of Ulm">
                         </a>
                 </div>
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://e-science.se/">
-                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/serc-600x400.png" alt="serc">
+                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/serc-600x400.png" alt="SeRC">
+                    </a>
+                </div>
+                <div class="item col">
+                    <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://old.liu.se/elliit?l=en">
+                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/elliit-600x400.png" alt="ELLIIT">
+                    </a>
+                </div>
+                <div class="item col">
+                    <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.vr.se/english.html">
+                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/vr-600x400.png" alt="Vetenskapsrådet">
                     </a>
                 </div>
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.dfg.de/en/index.jsp">
-                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/dfg-600x400.png" alt="serc">
+                        <img class="media-object" style="padding-left: 30px; padding-right: 30px;" src="images/sponsors/dfg-600x400.png" alt="DFG">
                     </a>
                 </div>
                 <div class="item col">
                     <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.bmbf.de/">
-                        <img class="media-object" src="images/sponsors/bmbf.png" alt="bmbf">
+                        <img class="media-object" src="images/sponsors/bmbf.png" alt="BMBF">
                     </a>
                 </div>
 
