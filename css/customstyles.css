@@ -2341,7 +2341,7 @@ pre code {
 }
 /* Change the percentage to state how many team members should be in one row. 20% = 5, 25% = 4 etc. */
 .flexme > .item {
-    flex: 0 1 20%;
+    flex: 0 1 25%;
 }
 
 .flexfunding {

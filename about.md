@@ -13,7 +13,7 @@ no_edit: true
             <div class="row flexme">
                 <div id="dev1" class="item  col">
                     <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/in/mi/institute/mi-mitarbeiter/timo-ropinski/">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/in/mi/institute/staff/timo-ropinski/">
                             <div class="image-container">
                                 <div class="image-overlay"></div>
                                 <img class="img-responsive" src="images/people/timo_ropinski.png" alt="Timo Ropinski" />
@@ -28,7 +28,7 @@ no_edit: true
                 <!--//item-->
                 <div id="dev2" class="item col">
                     <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/peter-steneteg">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://liu.se/en/employee/petst55">
                             <div class="image-container">
                                 <div class="image-overlay"></div>
                                 <img class="img-responsive" src="images/people/peter_steneteg.png" alt="Peter Steneteg" />
@@ -43,22 +43,7 @@ no_edit: true
                 <!--//item-->
                 <div id="dev3" class="item col">
                     <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/rickard-englund">
-                            <div class="image-container">
-                                <div class="image-overlay"></div>
-                                <img class="img-responsive" src="images/people/rickard_englund.png" alt="Rickard Englund" />
-                            </div>
-                            <!--//image-container-->
-                            <h3 class="title">Rickard Englund</h3>
-                        </a>
-                        <p>Core Developer</p>
-                    </div>
-                    <!--//profile-->
-                </div>
-                <!--//item-->
-                <div id="dev4" class="item col">
-                    <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/daniel-jonsson">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://liu.se/en/employee/danjo37">
                             <div class="image-container">
                                 <div class="image-overlay"></div>
                                 <img class="img-responsive" src="images/people/daniel_jonsson.png" alt="Daniel Jönsson" />
@@ -71,9 +56,9 @@ no_edit: true
                     <!--//profile-->
                 </div>
                 <!--//item-->
-                <div id="dev5" class="item col">
+                <div id="dev4" class="item col">
                     <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/martin-falk">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://liu.se/en/employee/marfa45">
                             <div class="image-container">
                                 <div class="image-overlay"></div>
                                 <img class="img-responsive" src="images/people/martin_falk.png" alt="Martin Falk" />
@@ -86,9 +71,9 @@ no_edit: true
                     <!--//profile-->
                 </div>
                 <!--//item-->
-                <div id="dev6" class="item col">
+                <div id="dev5" class="item col">
                     <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/jochen-jankowai">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://liu.se/en/employee/jocja84">
                             <div class="image-container">
                                 <div class="image-overlay"></div>
                                 <img class="img-responsive" src="images/people/jochen_jankowai.png" alt="Jochen Jankowai" />
@@ -101,39 +86,9 @@ no_edit: true
                     <!--//profile-->
                 </div>
                 <!--//item-->
-                <div id="dev7" class="item col">
+                <div id="dev6" class="item col">
                     <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="http://scivis.itn.liu.se/members/robin-sklnberg">
-                            <div class="image-container">
-                                <div class="image-overlay"></div>
-                                <img class="img-responsive" src="images/people/robin_skanberg.png" alt="Robin Skånberg" />
-                            </div>
-                            <!--//image-container-->
-                            <h3 class="title">Robin Skånberg</h3>
-                        </a>
-                        <p>Core Developer</p>
-                    </div>
-                    <!--//profile-->
-                </div>
-                <!--//item-->
-                <div id="dev8" class="item col">
-                    <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/in/mi/institut/mi-mitarbeiter/julian-kreiser/">
-                            <div class="image-container">
-                                <div class="image-overlay"></div>
-                                <img class="img-responsive" src="images/people/julian_kreiser.png" alt="Julian Kreiser" />
-                            </div>
-                            <!--//image-container-->
-                            <h3 class="title">Julian Kreiser</h3>
-                        </a>
-                        <p>Developer</p>
-                    </div>
-                    <!--//profile-->
-                </div>
-                <!--//item-->
-                <div id="dev9" class="item col">
-                    <div class="profile">
-                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/in/mi/institut/mi-mitarbeiter/dominik-engel/">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://dominikengel.com">
                             <div class="image-container">
                                 <div class="image-overlay"></div>
                                 <img class="img-responsive" src="images/people/dominik_engel.png" alt="Dominik Engel" />
@@ -146,7 +101,22 @@ no_edit: true
                     <!--//profile-->
                 </div>
                 <!--//item-->
-                <div id="dev10" class="item col">
+                <div id="dev7" class="item col">
+                    <div class="profile">
+                        <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.uni-ulm.de/en/in/mi/institute/staff/julian-kreiser/">
+                            <div class="image-container">
+                                <div class="image-overlay"></div>
+                                <img class="img-responsive" src="images/people/julian_kreiser.png" alt="Julian Kreiser" />
+                            </div>
+                            <!--//image-container-->
+                            <h3 class="title">Julian Kreiser</h3>
+                        </a>
+                        <p>Developer</p>
+                    </div>
+                    <!--//profile-->
+                </div>
+                <!--//item-->
+                <div id="dev8" class="item col">
                     <div class="profile">
                         <a class="no_icon" target="_blank" rel="noopener noreferrer" href="https://www.kth.se/profile/ankef/">
                             <div class="image-container">
@@ -169,10 +139,8 @@ no_edit: true
         <div class="contact-inner">
             <div class="clearfix"></div>
             <div class="info text-center">
-                <h4 class="sub-title">Student Developers</h4>
-                <p>Marius&nbsp;Kircher, Kaith&nbsp;Menken</p>
                 <h4 class="sub-title">Former Developers</h4>
-                <p>Viktor&nbsp;Axelsson, Hans-Christian&nbsp;Helltegen, Alexander&nbsp;Johansson, Mathias&nbsp;Jörg, David&nbsp;Neuscheler, Johan&nbsp;Norén, Andreas&nbsp;Valter, Emanuel&nbsp;Winblad, Erik&nbsp;Sundén, Sathish&nbsp;Kottravel, Tobias&nbsp;Badura,</p>
+                <p>Viktor&nbsp;Axelsson, Hans-Christian&nbsp;Helltegen, Alexander&nbsp;Johansson, Mathias&nbsp;Jörg, David&nbsp;Neuscheler, Johan&nbsp;Norén, Andreas&nbsp;Valter, Emanuel&nbsp;Winblad, Erik&nbsp;Sundén, Sathish&nbsp;Kottravel, Tobias&nbsp;Badura, Kaith&nbsp;Menken, Marius&nbsp;Kircher, Robin&nbsp;Skånberg, Rickard&nbsp;Englund</p>
                 <h4 class="sub-title">Acknowledgements</h4>
                 <p>We would like to acknowledge Nadine Richard for transferring the inviwo.org domain and the graphic designer Sophie Gudmann Knutsson for improving the Inviwo logo.</p>
             </div>
