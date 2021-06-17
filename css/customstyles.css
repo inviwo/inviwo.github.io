@@ -1519,7 +1519,6 @@ pre code {
 
 /* ======= About Section ======= */
 .about {
-  padding: 80px 0;
   background: #ffffff;
 }
 .about .title {
@@ -1583,7 +1582,6 @@ pre code {
 
 /* ======= Carousel Section ======= */
 .carousel {
-  padding: 20px 0;
   background: #ffffff;
 }
 .carousel-inner {
@@ -1625,7 +1623,6 @@ pre code {
 }
 /* ======= Gallery Section ======= */
 .gallery {
-  padding: 80px 0;
   background: #ffffff;
   text-align: justify;
 }
@@ -1643,7 +1640,7 @@ pre code {
 .gallery .gallery-inner {
   max-width: 800px;
   background: #fff;
-  padding: 30px;
+  /* padding: 30px; */
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -2075,7 +2072,6 @@ pre code {
 }
 /* ======= Citation Section ======= */
 .citation {
-  padding: 10px 0;
   background: #ffffff;
 }
 .citation-codeblock{
@@ -2111,13 +2107,13 @@ pre code {
 }
 .citation .title {
   margin-top: 0;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   color: #103A54;
 }
 .citation .citation-inner {
   max-width: 800px;
   background: #fff;
-  padding: 30px;
+  /* padding: 30px; */
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -2549,7 +2545,7 @@ i .fas .fa-film {
 
 .carousel-caption {
   position: static;
-  min-height: 6em;
+  min-height: 8em;
   background-color: #ffffff;
   border-color: #afafaf66;
   border-width: 0.5px;

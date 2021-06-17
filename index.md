@@ -155,7 +155,7 @@ insert_promo: true
 <section id="gallery" class="gallery section">
     <div class="container">
         <div class="gallery-inner">
-            <h3>More Features and Information</h3>
+            <h2 class="title text-center">More Features and Information</h2>
             <p>Check out our <a href="media/inviwo-vcbm2019.pdf">tutorial slides</a> from the 9th EWorkshop on Visual Computing for Biology and Medicine (VCBM2019). We give a brief overview on hoto use Inviwo for rapid prototyping medical applications.</p>
             <p>Inviwo provides many visualization methods for a range of data types such as triangular meshe images, volumes, vector fields and multidimensional arrays.</p>
             <div class="block-left">
@@ -231,7 +231,7 @@ insert_promo: true
 <section id="external" class="gallery section">
     <div class="container">
         <div class="gallery-inner">
-            <h3>External Modules and Applications</h3>
+            <h2 class="title text-center">External Modules and Applications</h2>
 <p>On top of the functionality built into Inviwo, we have a large collection of addition external modules that are separately available, due to their large dependencies:</p>
 <ul>
 <li><a href="https://github.com/inviwo/modules/tree/master/medvis/dicom">Dicom Reader</a> Adds support for reading DICOM image/volume files (.dcm file ending)</li>
@@ -257,7 +257,7 @@ insert_promo: true
     author   = {J{\"o}nsson, Daniel and Steneteg, Peter and Sund{\'e}n, Erik and Englund, Rickard and Kottravel, Sathish and Falk, Martin and Ynnerman, Anders and Hotz, Ingrid and Ropinski, Timo},
     title    = {Inviwo - A Visualization System with Usage Abstraction Levels},
     journal  = {IEEE Transactions on Visualization and Computer Graphics},
-    year     = {2019},    
+    year     = {2019},
     volume   = {26},
     number   = {11},
     pages    = {3241-3254},
