@@ -73,7 +73,7 @@ wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | 
 
 sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
 
-vsudo apt-get update
+sudo apt-get update
 
 sudo apt-get install build-essential cmake cmake-qt-gui git freeglut3-dev xorg-dev
 ```
