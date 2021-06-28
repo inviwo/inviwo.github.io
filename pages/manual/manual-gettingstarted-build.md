@@ -28,8 +28,8 @@ The `--recurse-submodules` is necessary to pull dependencies.
    - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
 
     *For non-conda installs of python*
-    - pybind11 is required to build the project. The standard PyPi install will leave CMake unable to find the pybind11 cmake config files. Installation via "pip install pybind11[global]" will solve this. [Problem](https://github.com/pybind/pybind11/issues/1379) and [Installation Documentation](https://pybind11.readthedocs.io/en/stable/installing.html).
-    - NumPy is required, "pip install numpy" is sufficient.
+    - pybind11 is required to build the project. The standard PyPi install will leave CMake unable to find the pybind11 cmake config files. Installation via `pip install pybind11[global]` will solve this. [Problem](https://github.com/pybind/pybind11/issues/1379) and [Installation Documentation](https://pybind11.readthedocs.io/en/stable/installing.html).
+    - NumPy is required, `pip install numpy` is sufficient.
 
 3. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
 4. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
