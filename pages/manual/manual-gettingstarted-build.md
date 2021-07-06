@@ -117,5 +117,3 @@ If you use a single-configuration generator, you can control the build mode usin
     - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
 
 3. Use multiple threads in Inviwo: In CMake set `IVW_MULTIPROCESSOR_COUNT` to the number of cores in your system.
-
-I
