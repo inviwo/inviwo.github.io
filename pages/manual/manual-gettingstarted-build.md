@@ -31,7 +31,7 @@ The `--recurse-submodules` is necessary to pull dependencies.
    - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
     - NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
 
-3. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
+3. Generate build pipeline (e.g. Visual Studio project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
 4. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
 `C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
  Use front slashes and no space between modules. Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
@@ -61,8 +61,6 @@ This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check
 #### Dependencies
 You will need at least
 - [CMake](https://cmake.org/download/) >= 3.12.0
-    **Ubuntu**: Make sure to add the [Kitware APT Repository](https://apt.kitware.com/) when you want to install cmake via `apt-get`, since the official Ubuntu repo offers an outdated CMake version.
-    **Other distors**: You can try your package manager, just make sure you get version 3.12.0 or higher from it.
 - [Qt binaries](https://qt.io/download-open-source/) >= 5.12
     Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
     **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/5.13.0/gcc_x64/`
@@ -70,12 +68,7 @@ You will need at least
 
 For **Ubuntu** you can use the following commands:
 ```
-wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
-
-sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
-
 sudo apt-get update
-
 sudo apt-get install build-essential cmake cmake-qt-gui git freeglut3-dev xorg-dev
 ```
 The first two commands add the Kitware APT Repo and the appropriate signing key, the third and fourth update your package manager and download the dependencies.
@@ -88,7 +81,7 @@ Note that it may in some cases be necessary to run the compile or the binary fro
 #### Building
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
 The `--recurse-submodules` is necessary to pull dependencies.
-2. Open CMake (we recommend using the GUI here), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again.
+2. Generate Build pipeline (e.g. Makefile, Ninja): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again.
 If CMake cannot find Qt, make sure you adjust your `CMAKE_PREFIX_PATH` as described above.
 3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
 `C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
@@ -115,10 +108,14 @@ If you use a single-configuration generator, you can control the build mode usin
 " %}
 
 
-### Recommended Visual studio setup (Optional)
+### Recommended setup (Optional)
 
-1. Visual Studio: Set the build mode to `RelWithDebInfo` ([See this guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019))
+1. Build Type: Set the build mode to `RelWithDebInfo` ([See this guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019))
 
-2. Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds` We recommend 2-4 on an 8-core machine
+2. Build with multiple cores:
+    - Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds` We recommend 2-4 on an 8-core machine
+    - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
 
-3. CMake: Set `IVW_MULTIPROCESSOR_COUNT` to 4
+3. Use multiple threads in Inviwo: In CMake set `IVW_MULTIPROCESSOR_COUNT` to the number of cores in your system.
+
+I
