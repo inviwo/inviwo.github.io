@@ -21,21 +21,25 @@ You will need at least
 {% include note.html content="
 Qt 6.1 is not supported at the moment.
 " %}
+- [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
+{% include note.html content="
+NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
+
+**We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
+*Only if you are using Anaconda for your Python environment:*
+   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
+   - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
+" %}
 
 #### Building
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
 The `--recurse-submodules` is necessary to pull dependencies.
 
-2. *Only if you are using Anaconda for your Python environment:*
-   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` - This will ensure that CMake finds *your* Qt instead of Anaconda's.
-   - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
-    - NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
-
-3. Generate build pipeline (e.g. Visual Studio project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
-4. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
+2. Generate build pipeline (e.g. Visual Studio project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
+3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
 `C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
  Use front slashes and no space between modules. Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
-5. Hit Generate and open the project in your IDE.
+4. Hit Generate and open the project in your IDE.
 
 {% include note.html content="
 When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually to `RelWithDeb`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
