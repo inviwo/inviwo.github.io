@@ -8,33 +8,67 @@ permalink: manual-gettingstarted-build.html
 folder: manual
 ---
 ## How to build Inviwo
+To build inviwo you will need:
+- A Git client:
+    - [Git](https://git-scm.com)
+    - [Fork](https://git-fork.com)
+    - [Sourcetree](https://www.sourcetreeapp.com)
+    - Or some other equivalent client
+- [CMake](cmake.org)
+- A C++17 compiler:
+    - [Clang](https://clang.llvm.org)
+    - [GCC](https://gcc.gnu.org)
+    - [Visual Studio](https://visualstudio.microsoft.com)
+- [Qt binaries (Qt5 or Qt6)](qt.io)
+- [Python](python.org) Optional. Required for python modules and python integration. Also needed for vcpkg.
+    - [numpy](https://numpy.org) (required for python integration)
+- [Vcpkg](vcpkg.io) Optional. If you want to use vcpkg to handle dependencies, instead of submodules.
+
+In general we always try to use the latest versions of all libaries and tools. If nothing else is stated always download the latest version. Inviwo also relies on a set of external c++ libraries. We have traditianlly consumed most of them using git submodules, or by embedding them in the source tree. We are now slowly moving over to using [vcpkg](vcpkg.io), it scales much better when the number of dependencies increases. As of now the default is still not to use vcpkg, but it can be enabled on [demand](#vcpkg).
 
 ### Windows
-
 #### Dependencies
-You will need at least
-- [CMake](https://cmake.org/download/) >= 3.12.0
-    Also add the cmake binary to your PATH.
+You will need:
+- [Visual Studio](https://visualstudio.microsoft.com)
 
-- [Qt5 binaries](https://qt.io/download-open-source/) >= 5.12
-    Make sure you get the build for the 64 bit version for you Visual Studio version. Also add the Qt binary directory (something like `Qt/5.12.1/msvc2017_64/bin`) to your PATH.
-{% include note.html content="
-Qt 6.1 is not supported at the moment.
-" %}
+- A Git client:
+    - [Git](https://git-scm.com)
+    - [Fork](https://git-fork.com)
+    - [Sourcetree](https://www.sourcetreeapp.com)
+    - Or some other equivalent client
+
+- [CMake](https://cmake.org/download/) >= 3.13
+    - Some optional steps might reqiuire a newer version
+    - Also add the cmake binary to your environment `PATH` variable.
+
+- [Qt binaries (5 or 6)](https://qt.io/download-open-source/) >= 5.15
+    - Make sure you get the build for the 64 bit version for you Visual Studio version.
+    - Also add the Qt binary directory (something like `C:/Qt/5.15.1/msvc2019_64/bin`) to your environment `PATH` variable.
+    
+- [Python](python.org) Optional. Required for python modules and python integration. Also needed for vcpkg.
+    - [numpy](https://numpy.org) (required for python integration)
 
 #### Building
 1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
-The `--recurse-submodules` is necessary to pull dependencies.
+    - The `--recurse-submodules` is necessary to pull dependencies.
 
 2. *Only if you are using Anaconda for your Python environment:*
    - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` - This will ensure that CMake finds *your* Qt instead of Anaconda's.
    - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
-    - NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
+   - NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
 
-3. Generate build pipeline (e.g. Visual Studio project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
-4. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
-`C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
- Use front slashes and no space between modules. Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
+3. Generate build pipeline (e.g. Visual Studio project): 
+    - Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage).
+    - Set the **source directory** (the path to the inviwo repo you cloned above) 
+    - Set the **build directory** (outside the source directory!) and hit configure.
+    When selecting the compiler, make sure to select the correct Visual Studio version that you use on **64-bit**. 32-bit is not supported.
+
+4. Configure inviwo modules
+    - You can select the desired set of Inviwo modules (`IVW_MODULE_*`) and configure again. 
+    - (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
+    `C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
+    Use forward slashes and no space between modules. Configure again. External modules are for example developed in the [inviwo modules repository](https://github.com/inviwo/modules).
+
 5. Hit Generate and open the project in your IDE.
 
 {% include note.html content="
@@ -117,3 +151,10 @@ If you use a single-configuration generator, you can control the build mode usin
     - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
 
 3. Use multiple threads in Inviwo: In CMake set `IVW_MULTIPROCESSOR_COUNT` to the number of cores in your system.
+
+
+### vcpkg
+
+
+### python
+Don't install debug versions of the python libs. It will not end well
