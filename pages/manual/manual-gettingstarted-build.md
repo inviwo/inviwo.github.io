@@ -18,9 +18,7 @@ You will need at least
 
 - [Qt5 binaries](https://qt.io/download-open-source/) >= 5.12
     Make sure you get the build for the 64 bit version for you Visual Studio version. Also add the Qt binary directory (something like `Qt/5.12.1/msvc2017_64/bin`) to your PATH.
-{% include note.html content="
-Qt 6.1 is not supported at the moment.
-" %}
+
 - [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
 {% include note.html content="
 NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
