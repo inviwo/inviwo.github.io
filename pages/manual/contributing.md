@@ -32,3 +32,13 @@ It is recommended to use [ClangFormat](http://clang.llvm.org/docs/ClangFormat.ht
 
 ### Contributing whole modules
 If you are working on a large Inviwo Module and possibly have dependencies on big external libraries, we have an extra [modules repository](https://github.com/inviwo/modules).
+
+#### Inviwo Marketplace
+Additionally, there is the inviwo marketplace (see Screenshot) that allows developers to share their processors or shaders.
+So after you have generated the code template for a processor by following the [guide for generating processors](https://inviwo.org/manual-devguide-meta.html), you should create a repository on [GitHub](https://github.com/) based on our [template](link-to-template).
+
+##### Template
+The template contains a workflow file for [GitHub Actions](https://github.com/features/actions). Using this workflow file, GitHub Actions can build your project automatically whenever you make a commit or manually invoke the build process. We provide an external action that retrieves all files that are necessary to build Inviwo. The workflow file in our template already invokes this action. Furthermore, the workflow file automatically creates a GitHub release after each commit and bundles the created artifacts with it.
+
+##### Citing your contribution
+[Zenodo](https://zenodo.org/) provides means to generate a DOI for GitHub Releases. GitHub provides an [easy-to-follow guide](https://guides.github.com/activities/citable-code/). After turning on the switch, Zenodo automatically generates a DOI for every new release. The last step of the guide also describes how to create a badge that always shows the latest DOI and links to it.
