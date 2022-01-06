@@ -46,6 +46,16 @@ If you use a single-configuration generator, you can control the build mode usin
  Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 " %}
 
+### Recommended setup (Optional)
+
+1. Build Type: Set the build mode to `RelWithDebInfo` ([See this guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019))
+
+2. Build with multiple cores:
+    - Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds` We recommend 2-4 on an 8-core machine
+    - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
+
+3. Use multiple threads in Inviwo: In CMake set `IVW_MULTIPROCESSOR_COUNT` to the number of cores in your system.
+
 #### Common Errors
 
 ##### Everything compiles but at runtime you get "failed to load QT symbols dll load errors"
@@ -100,22 +110,56 @@ Unless you specifically need to debug the application, we recommend setting the 
 
 
 ### Mac
-TODO: do
-{% include note.html content="
-When using a multi-configuration generator (like Xcode) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
+#### Dependencies
+You will need at least
+- [XCode](https://developer.apple.com/xcode/) 
+- [CMake](https://cmake.org/download/) >= 3.12.0
+- [Qt binaries](https://qt.io/download-open-source/) >= 5.12 
+- [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. See further (important!) instructions about Python for Mac below.
 
-If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
+You can use the [brew](https://brew.sh) package manger to install the dependencies using the following commands:
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install --cask cmake
+brew install qt 
+brew install git
+```
+Paste the commands into the Terminal and run them. The first command installs brew (not necessary if already installed) and the following commands install cmake (--cask is needed to also install the cmake GUI), qt (used for the GUI), and git (to checkout the code).
+#### Python (optional)
+Ensuring that the correct Python is found can be a bit complicated (read more about [brew Python here](https://docs.brew.sh/Homebrew-and-Python)). If you do not care about using different Python versions it is probably easiest to simply install Python 3 via brew:
+```
+brew install python3
+pip3 install numpy
+```
 
- Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
-" %}
+If you wish to use a different Python environment, e.g. from an Miniconda environment, you'll need to activate the conda environment from the Terminal and run cmake/XCode from there:
+```
+brew install --cask miniconda
+conda init "$(basename "${SHELL}")"
+conda install numpy
+```
+These three lines install miniconda, sets up the Terminal to use conda, and installs numpy to the active conda environment. **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. 
+Note that CMake may not be able to find the appropriate Python environment unless it has been started from a command line with the conda environment activated:
+```
+conda activate
+cmake-gui
+```
 
+#### Building
+1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
+The `--recurse-submodules` is necessary to pull dependencies.
 
-### Recommended setup (Optional)
+2. Generate build pipeline (e.g. XCode project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. 
+3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
+`/Inviwo/otherrepo/modules;/mysite/myrepo/mymodules;`
+ Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
+4. Hit Generate and open the project in your IDE.
 
-1. Build Type: Set the build mode to `RelWithDebInfo` ([See this guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019))
+#### Mac Packaging/Installer
+To package Inviwo into an installer you will need to enable CMake option `IVW_PACKAGE_INSTALLER` and then click Configure/Generate. 
+From XCode, select the `package` target (you may need to create a new scheme via menu item Product->Scheme->New Scheme). 
 
-2. Build with multiple cores:
-    - Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds` We recommend 2-4 on an 8-core machine
-    - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
-
-3. Use multiple threads in Inviwo: In CMake set `IVW_MULTIPROCESSOR_COUNT` to the number of cores in your system.
+Packaging on Mac requires that you use a Qt version built from source instead of web installers or brew. Otherwise, you will get errors such as these you will need to use :
+```
+can't open file: @rpath/QtDBus.framework/Versions/A/QtDBus (No such file or directory)
+```
