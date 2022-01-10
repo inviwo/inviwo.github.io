@@ -13,7 +13,7 @@ folder: manual
 
 #### Dependencies
 You will need at least (we recommend using latest versions)
-- [CMake](https://cmake.org/download/) one of the latests versions.
+- [CMake](https://cmake.org/download/) one of the latest versions.
     Also add the cmake binary to your PATH.
 
 - [Qt5 binaries](https://qt.io/download-open-source/) >= 5.15 (6+ is recommended).
@@ -67,7 +67,7 @@ This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check
 
 #### Dependencies
 You will need at least (we recommend using latest versions)
-- [CMake](https://cmake.org/download/) one of the latests versions.
+- [CMake](https://cmake.org/download/) one of the latest versions.
 - [Qt binaries](https://qt.io/download-open-source/) >= 5.15 (6+ is recommended).
     Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
     **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/5.13.0/gcc_x64/`
@@ -108,7 +108,7 @@ Unless you specifically need to debug the application, we recommend setting the 
 #### Dependencies
 You will need at least (we recommend using latest versions)
 - [XCode](https://developer.apple.com/xcode/) 
-- [CMake](https://cmake.org/download/) one of the latests versions.
+- [CMake](https://cmake.org/download/) one of the latest versions.
 - [Qt binaries](https://qt.io/download-open-source/) >= 5.15 (6+ is recommended).
 - [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. See further (important!) instructions about Python for Mac below.
 
