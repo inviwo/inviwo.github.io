@@ -133,7 +133,7 @@ brew install --cask miniconda
 conda init "$(basename "${SHELL}")"
 conda install numpy
 ```
-These three lines install miniconda, sets up the Terminal to use conda, and installs numpy to the active conda environment. **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. 
+These three lines install miniconda, sets up the Terminal to use conda, and installs numpy to the active conda environment. **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. 
 Note that CMake may not be able to find the appropriate Python environment unless it has been started from a command line with the conda environment activated:
 ```
 conda activate
