@@ -927,7 +927,7 @@ span.soft {
 /* this part adds an icon after external links, using FontAwesome*/
 a[href^="http://"]:after, a[href^="https://"]:after {
     content: "\f08e";
-    font-family: "FontAwesomeOld";
+    font-family: "Font Awesome 5 Free";
     font-weight: normal;
     font-style: normal;
     display: inline-block;
