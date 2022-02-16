@@ -8,9 +8,8 @@ topnav:
     - title: Documentation
       url: /manual_index.html
     - title: C++ API
-      external_url: https://inviwo.org/inviwo/doc
-    #   url: /cppapi_index.html
-    # - title: Python API
-    #   url: /pyapi_index.html
+      external_url: https://inviwo.org/inviwo/cpp-api
+    - title: Python API
+      external_url: https://inviwo.org/inviwo/python-api
     - title: About
       url: /about.html
