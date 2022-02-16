@@ -32,6 +32,7 @@ exclude:
   - .idea/
   - .gitignore
   - vendor
+  - plugins
   - Gemfile
   - Gemfile.lock
   - README.md
