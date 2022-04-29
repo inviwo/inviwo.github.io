@@ -78,7 +78,7 @@ insert_promo: true
                 </div>
                 <div class="content">
                     <h3 class="sub-title">Community</h3>
-                    <p>Inviwo is used and maintained by researchers at many international universities, core development takes place at Linköping U, Ulm U, and Karolinska U. For help and general discussion join us on our <a href="https://join.slack.com/t/inviwo/shared_invite/enQtNTc2Nzc2NDQwNzIxLTRiMWM1ZWJiYjljZjkwNWE3OTk3MzYxODZlMDUyMzRmZjUzMzBiZjVhNTM3NWUyNzU1MjI4OWJjMzdkODViMzM" rel="nofollow">Slack</a> server.</p>
+                    <p>Inviwo is used and maintained by researchers at many international universities, core development takes place at Linköping U, Ulm U, and KTH. For help and general discussion join us on our <a href="https://join.slack.com/t/inviwo/shared_invite/enQtNTc2Nzc2NDQwNzIxLTRiMWM1ZWJiYjljZjkwNWE3OTk3MzYxODZlMDUyMzRmZjUzMzBiZjVhNTM3NWUyNzU1MjI4OWJjMzdkODViMzM" rel="nofollow">Slack</a> server.</p>
                 </div>
                 <!--//content-->
             </div>
