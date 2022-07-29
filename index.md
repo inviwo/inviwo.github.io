@@ -11,7 +11,7 @@ insert_promo: true
 <section id="about" class="about section">
     <div class="container">
         <h2 class="title text-center">What is Inviwo?</h2>
-        <p class="intro text-center">Inviwo is a software framework for the rapid prototyping   visualizations. It is written in C++, exploits modern graphics hardware, and is available under   BSD license, which permits free use in any setup - also commercially</p>
+        <p class="intro text-center">Inviwo is a software framework for the rapid prototyping   visualizations. It is written in C++, exploits modern graphics hardware and is available under   BSD license, which permits free use in any setup - also commercially</p>
         <div class="row">
             <div class="item col-md-4 col-sm-6 col-xs-12">
                 <div class="icon-holder">
