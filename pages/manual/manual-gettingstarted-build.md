@@ -16,7 +16,7 @@ You will need at least (we recommend using latest versions)
 - [CMake](https://cmake.org/download/) one of the latest versions.
     Also add the cmake binary to your PATH.
 
-- [Qt5 binaries](https://qt.io/download-open-source/) >= 5.15 (6+ is recommended).
+- [Qt5 binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version for you Visual Studio version. Also add the Qt binary directory (something like `Qt/5.12.1/msvc2017_64/bin`) to your PATH.
 
 - [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
@@ -25,7 +25,7 @@ NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
 
 **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
 *Only if you are using Anaconda for your Python environment:*
-   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/5.12.1/msvc2017_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
+   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
    - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
 " %}
 
@@ -68,9 +68,9 @@ This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check
 #### Dependencies
 You will need at least (we recommend using latest versions)
 - [CMake](https://cmake.org/download/) one of the latest versions.
-- [Qt binaries](https://qt.io/download-open-source/) >= 5.15 (6+ is recommended).
+- [Qt binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
-    **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/5.13.0/gcc_x64/`
+    **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/6.5.0/gcc_x64/`
     **Note**: We highly recommend installing Qt with the official Qt installer instead of your package manager for Inviwo. While you can certainly get the versions from package managers to work, we experienced issues in the past with missing components and compiler incompatibilities.
 
 For **Ubuntu** you can use the following commands:
@@ -109,7 +109,7 @@ Unless you specifically need to debug the application, we recommend setting the 
 You will need at least (we recommend using latest versions)
 - [XCode](https://developer.apple.com/xcode/) 
 - [CMake](https://cmake.org/download/) one of the latest versions.
-- [Qt binaries](https://qt.io/download-open-source/) >= 5.15 (6+ is recommended).
+- [Qt binaries](https://qt.io/download-open-source/) >= 6.
 - [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. See further (important!) instructions about Python for Mac below.
 
 You can use the [brew](https://brew.sh) package manger to install the dependencies using the following commands:
