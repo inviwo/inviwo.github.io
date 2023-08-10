@@ -11,8 +11,7 @@ folder: manual
 
 ### Windows
 
-**Note:** Currently, Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler regression, see [Issue #1429](https://github.com/inviwo/inviwo/issues/1429). A workaround is to use the preview version 17.7.x. In order to force CMake to use the compiler of the preview [`CMAKE_GENERATOR_INSTANCE`](https://cmake.org/cmake/help/latest/variable/CMAKE_GENERATOR_INSTANCE.html) has to be set to the correct compiler version, for example `version=17.7.33808.371`. You can find the version string with `vswhere.exe` (`"c:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -prerelease`).
-
+**Note:** Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later
 
 #### Dependencies
 You will need at least (we recommend using latest versions)
