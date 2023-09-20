@@ -18,12 +18,32 @@ You will need at least (we recommend using latest versions)
 - [CMake](https://cmake.org/download/) one of the latest versions.
     Also add the cmake binary to your PATH.
 
-- [Qt5 binaries](https://qt.io/download-open-source/) >= 6.
-    Make sure you get the build for the 64 bit version for you Visual Studio version. Also add the Qt binary directory (something like `Qt/5.12.1/msvc2017_64/bin`) to your PATH.
+- [Qt binaries](https://qt.io/download-open-source/) >= 6.
+    Make sure you get the build for the 64 bit version for you Visual Studio version.
+  
+    A very fast way to install Qt is using the aqtinstall python package. Install the python package:
+  
+      pip install aqtinstall
 
-- [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
-{% include note.html content="
-NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
+    Then install Qt:
+      
+      aqt.exe install-qt -O C:\Qt windows desktop 6.5.2 win64_msvc2019_64 --modules debug_info --archives qtbase qtsvg
+
+    One can optionaly also install the qt souces
+  
+      aqt.exe install-src -O C:\Qt windows desktop 6.6.0 --archives qtbase qtsvg
+
+
+- [Python](https://www.python.org/downloads/) is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
+{% include note.html content=
+"NumPy is required, `pip install numpy` or `conda install numpy` is sufficient."
+%}
+
+{% include note.html content=
+"Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add
+your user site-package folder to the environment variable `PYTHONPATH`
+for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`"
+%}
 
 **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
 *Only if you are using Anaconda for your Python environment:*
