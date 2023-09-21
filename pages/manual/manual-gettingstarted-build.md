@@ -35,13 +35,14 @@ You will need at least (we recommend using latest versions)
 
 
 - [Python](https://www.python.org/downloads/) is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
+
 {% include note.html content="NumPy is required, `pip install numpy` or `conda install numpy` is sufficient." %}
 
 {% include note.html content="Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add
 your user site-package folder to the environment variable `PYTHONPATH`
 for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`" %}
 
-**We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
+{% include note.html content="**We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
 *Only if you are using Anaconda for your Python environment:*
    - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
    - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
