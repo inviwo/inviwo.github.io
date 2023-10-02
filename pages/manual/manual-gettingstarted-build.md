@@ -9,19 +9,30 @@ folder: manual
 ---
 ## How to build Inviwo
 
+Inviwo uses CMake as build system and supports building on Windows with Visual Studio, MacOS with XCode, and Linux with Clang or GCC. We require the the compiler supports C++20. In most cases the latest version of AppleClang is the compiler with the least support so that dictates mostly what we require.
+The source code is hosted on [GitHub](https://github.com/inviwo/inviwo), and we recommend using [git](https://git-scm.com/) to clone the repository, since you can then easily update to the latest version, and you also get the needed git sub-modules.
+
+To acquire the dependencies, you can either use [vcpkg](https://github.com/microsoft/vcpkg), the bundled git sub-modules, or your system package manager. On Windows and MacOS we recommend vcpkg, on linux we recommend the system package manger primarily.  
+
 ### Windows
 
-**Note:** Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later
+#### Compiler
+We recommend that you compile Inviwo on windows using a recent version [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2022 or later).
+
+{% include note.html content="Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later" %}
+
+#### Git
+You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/). Although a command line client such as [git bash](https://gitforwindows.org/) will also work.
+
+#### CMake
+You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
 
 #### Dependencies
-You will need at least (we recommend using latest versions)
-- [CMake](https://cmake.org/download/) one of the latest versions.
-    Also add the cmake binary to your PATH.
 
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version for you Visual Studio version.
   
-    A very fast way to install Qt is using the aqtinstall python package. Install the python package:
+    An other very fast way to install Qt is using the aqtinstall python package. Install the python package:
   
       pip install aqtinstall
 
@@ -29,46 +40,71 @@ You will need at least (we recommend using latest versions)
       
       aqt.exe install-qt -O C:\Qt windows desktop 6.5.2 win64_msvc2019_64 --modules debug_info --archives qtbase qtsvg
 
-    One can optionaly also install the qt souces
+    One can optionally also install the qt sources
   
       aqt.exe install-src -O C:\Qt windows desktop 6.6.0 --archives qtbase qtsvg
 
 
-- [Python](https://www.python.org/downloads/) is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
+- [Python](https://www.python.org/downloads/) 
+    is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
+    One can disable python by turning off `IVW_ENABLE_PYTHON`
 
-{% include note.html content="
-NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
-" %}
+    {% include note.html content="NumPy is required, `pip install numpy` or `conda install numpy` is sufficient." %}
 
-{% include note.html content="
-Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add
-your user site-package folder to the environment variable `PYTHONPATH`
-for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`
-" %}
+    {% include note.html content="Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add your user site-package folder to the environment variable `PYTHONPATH` for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`" %}
 
-{% include note.html content="
-**We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which meanst that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
-*Only if you are using Anaconda for your Python environment:*
-   - Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
-   - Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
-" %}
+    {% include note.html content="**We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
+    *Only if you are using Anaconda for your Python environment:*
+       + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
+       + Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
+    " %}
+
+- [Vcpkg](https://github.com/vcpkg)
+    For all the other dependencies we recommend using vcpkg together with the manifest file in the Inviwo repository. This will ensure that you get the correct versions of the dependencies.
+    And make it very easy to update the dependencies, and add new libraries as needed.
 
 #### Building
-1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
+1. Create a base directory where you want to build Inviwo, e.g., `C:/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
+    ```
+    └── base
+        ├── builds
+        │   └── inviwo-vcpkg-dynamic
+        ├── inviwo
+        ├── modules
+        └── vcpkg
+    ```
+
+2. Clone the Inviwo repository. In the `base` directory run:
+    git clone --recurse-submodules https://github.com/inviwo/inviwo
 The `--recurse-submodules` is necessary to pull dependencies.
 
-2. Generate build pipeline (e.g. Visual Studio project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. When selecting the compiler, make sure to select the correct Visual Studio version that you use on 64-bit. 32-bit is not supported.
-3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
-`C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
- Use front slashes and no space between modules. Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
-4. Hit Generate and open the project in your IDE.
+3. Clone the vcpkg repository In the `base` directory run:
+    git clone https://github.com/microsoft/vcpkg
+
+4. Optional clone the Inviwo modules repository. In the `base` directory run:
+    git clone --recurse-submodules https://github.com/inviwo/modules
+
+5. Generate build system (e.g. Visual Studio project):
+    Using the CMake GUI
+    + Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage)
+    + Enter the path to the Inviwo directory (e.g., `C:/Inviwo/inviwo`) in `Where is the source code`
+    + Select a `Preset` either "MSVC User configuration" or "MSVC Developer configuration"
+    + Press `Configure`
+    + Optionally modify the configuration, You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of `C:/Inviwo/module/molvis;C:/mysite/myrepo/mymodules;`
+    + Press `Generate`
+    + Press `Open Project` to open the project in Visual Studio
+    
+    Or using the command line
+    + From the `base` directory run:
+        cmake -S inviwo --preset msvc-user
+    + Any extra options can be past to CMake using `-D` for example to add external modules:
+        cmake -S inviwo --preset msvc-user -DIVW_EXTERNAL_MODULES="C:/Inviwo/module/molvis;C:/mysite/myrepo/mymodules;"
+      or extra modules
+        cmake -S inviwo --preset msvc-user -DIVW_MODULE_SOMEMODULE=ON
+    + Finally open the solution in MSVC by running:
+        start builds/msvc-user/inviwo-projects.sln
 
 {% include note.html content="
-Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
-
-When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually to `RelWithDeb`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
-If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
-
 If you computer becomes unresponsive while building you can reduce the number of parallel build projects/cores:
     - Number of cores per project: In CMake set `IVW_MULTIPROCESSOR_COUNT` (the number of cl.exe processes per project).
     - Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds`
@@ -87,63 +123,31 @@ You can find the path to the Python binary in Visual Studio by right clicking on
 ##### Everything compiles but at runtime you get runtime error / Unhandled Exception in pybind11/embed.h. For example "Unhandled exception at 0x00007FFE786A284E (ucrtbase.dll) in Inviwo.exe: Fatal program exit requested"
 This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check your system settings to see if it is correctly pointing to your python installation found by CMake. If you do not have the `PYTHONHOME` variable you should set it. It should point to the root folder of your python installation, e.g `C:/python37 or C:\Program Files (x86)\Microsoft Visual Studio\Shared\Anaconda3_64` (if you installed Anaconda with Visual Studio). To know which python installation inviwo uses you can check the output from the configuration pass in CMake, in the very beginning of the log it prints which python interpreter it found and will use.
 
-### Linux
-
-#### Dependencies
-You will need at least (we recommend using latest versions)
-- [CMake](https://cmake.org/download/) one of the latest versions.
-- [Qt binaries](https://qt.io/download-open-source/) >= 6.
-    Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
-    **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/6.5.0/gcc_x64/`
-    **Note**: We highly recommend installing Qt with the official Qt installer instead of your package manager for Inviwo. While you can certainly get the versions from package managers to work, we experienced issues in the past with missing components and compiler incompatibilities.
-
-For **Ubuntu** you can use the following commands:
-```
-sudo apt-get update
-sudo apt-get install build-essential cmake cmake-qt-gui git freeglut3-dev xorg-dev
-```
-The first two commands add the Kitware APT Repo and the appropriate signing key, the third and fourth update your package manager and download the dependencies.
-
-#### Python (optional)
-On Linux the easiest way is to use the system python, which will usually be detected by CMake by default.
-If you wish to use a different Python environment, e.g. from an Anaconda environment, you'll need to specify the `Python3_ROOT_DIR` in CMake (before first configure!) and set it to your conda environment.
-Note that it may in some cases be necessary to run the compile or the binary from a command line with the conda environment activated.
-
-#### Building
-1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
-The `--recurse-submodules` is necessary to pull dependencies.
-2. Generate Build pipeline (e.g. Makefile, Ninja): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again.
-If CMake cannot find Qt, make sure you adjust your `CMAKE_PREFIX_PATH` as described above.
-3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
-`C:/Inviwo/otherrepo/modules;C:/mysite/myrepo/mymodules;`
- Use front slashes and no space between modules. Configure again.
- External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
-4. Hit Generate and open the project in your IDE.
-{% include note.html content="
-If you are using a single-configuration generator (like Make or Ninja) to build Inviwo, you can control the build mode with the `CMAKE_BUILD_TYPE` attribute in your CMake config.
-
-When using a multi-configuration generator (like Visual Studio and most IDEs) you may want to adjust your build mode manually, since it probably defaults to `Debug` at first, which has a large impact on the performance.
-
-Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
-" %}
-
 
 ### Mac
+
+#### Compiler
+We recommend that you compile Inviwo using the latest version of XCode.
+We require C++20 support from the compiler.
+
+#### Git
+You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/), although a command line client will also work.
+
+#### CMake
+You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
+
 #### Dependencies
 You will need at least (we recommend using latest versions)
-- [XCode](https://developer.apple.com/xcode/) 
-- [CMake](https://cmake.org/download/) one of the latest versions.
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
-- [Python](https://www.python.org/downloads/) (optional) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. See further (important!) instructions about Python for Mac below.
+    We recommend installing Qt using [brew](https://brew.sh) `brew install qt`
 
-You can use the [brew](https://brew.sh) package manger to install the dependencies using the following commands:
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install --cask cmake
-brew install qt 
-brew install git
-```
-Paste the commands into the Terminal and run them. The first command installs brew (not necessary if already installed) and the following commands install cmake (--cask is needed to also install the cmake GUI), qt (used for the GUI), and git (to checkout the code).
+- [Python](https://www.python.org/downloads/) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. See further (important!) instructions about Python for Mac below. Python can also easily be install using `brew install python` 
+{% include note.html content="NumPy is required, `pip install numpy` is sufficient." %}
+
+- [Vcpkg](https://github.com/vcpkg)
+    For all the other dependencies we recommend using vcpkg together with the manifest file in the Inviwo repository. This will ensure that you get the correct versions of the dependencies.
+    And make it very easy to update the dependencies, and add new libraries as needed.
+
 #### Python (optional)
 Ensuring that the correct Python is found can be a bit complicated (read more about [brew Python here](https://docs.brew.sh/Homebrew-and-Python)). If you do not care about using different Python versions it is probably easiest to simply install Python 3 via brew:
 ```
@@ -165,20 +169,131 @@ cmake-gui
 ```
 
 #### Building
-1. `git clone --recurse-submodules https://github.com/inviwo/inviwo`
+1. Create a base directory where you want to build Inviwo, e.g., `~/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
+    ```
+    └── base
+        ├── builds
+        │   └── inviwo-vcpkg-dynamic
+        ├── inviwo
+        ├── modules
+        └── vcpkg
+    ```
+
+2. Clone the Inviwo repository. In the `base` directory run:
+    git clone --recurse-submodules https://github.com/inviwo/inviwo
 The `--recurse-submodules` is necessary to pull dependencies.
 
-2. Generate build pipeline (e.g. XCode project): Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage), enter the source path and the preferred build directory (outside the inviwo directory!) and hit configure. You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. 
-3. (Optional) To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of
-`/Inviwo/otherrepo/modules;/mysite/myrepo/mymodules;`
- Configure again. External modules are developed in the [inviwo modules repository](https://github.com/inviwo/modules).
-4. Hit Generate and open the project in your IDE.
+3. Clone the vcpkg repository In the `base` directory run:
+    git clone https://github.com/microsoft/vcpkg
 
-#### Mac Packaging/Installer
-To package Inviwo into an installer you will need to enable CMake option `IVW_PACKAGE_INSTALLER` and then click Configure/Generate. 
-From XCode, select the `package` target (you may need to create a new scheme via menu item Product->Scheme->New Scheme). 
+4. Optional clone the Inviwo modules repository. In the `base` directory run:
+    git clone --recurse-submodules https://github.com/inviwo/modules
 
-Packaging on Mac requires that you use a Qt version built from source instead of web installers or brew. Otherwise, you will get errors such as these you will need to use :
+5. Generate build system (e.g. XCode project):
+    Using the CMake GUI
+    + Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage)
+    + Enter the path to the Inviwo directory (e.g., `~/Inviwo/inviwo`) in `Where is the source code`
+    + Select a `Preset` either "XCode User configuration" or "XCode Developer configuration"
+    + Press `Configure`
+    + Optionally modify the configuration, You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of `~/Inviwo/module/molvis;C:/mysite/myrepo/mymodules;`
+    + Press `Generate`
+    + Press `Open Project` to open the project in XCode
+    
+    Or using the command line
+    + From the `base` directory run:
+        cmake -S inviwo --preset xcode-user
+    + Any extra options can be past to CMake using `-D` for example to add external modules:
+        cmake -S inviwo --preset xcode-user -DIVW_EXTERNAL_MODULES="~/Inviwo/module/molvis;~/mysite/myrepo/mymodules;"
+      or extra modules
+        cmake -S inviwo --preset xcode-user -DIVW_MODULE_SOMEMODULE=ON
+    + Finally open the solution in MSVC by running:
+        open builds/xcode-user/inviwo-projects.xcodeproj
+
+
+### Linux
+
+#### Compiler
+We recommend that you compile Inviwo using a recent version of Clang or GCC
+We require C++20 support from the compiler.
+
+#### Git
+You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [GitKraken](https://www.gitkraken.com/), although a command line client will also work.
+
+#### CMake
+You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
+
+#### Dependencies
+- [Qt binaries](https://qt.io/download-open-source/) >= 6.
+    Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
+    **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/6.5.0/gcc_x64/`
+
+
+For **Ubuntu** you can use the following commands:
+
 ```
-can't open file: @rpath/QtDBus.framework/Versions/A/QtDBus (No such file or directory)
+sudo apt-get update
+sudo apt install \
+     build-essential git ninja-build gcc-12 g++-12 \
+     cmake extra-cmake-modules cmake-qt-gui \
+     python3 python3-pip python3-numpy python3-h5py python3-pybind11 python3-scipy python3-regex pybind11-json-dev \
+     qt6-base-dev qt6-tools-dev qt6-tools-dev libqt6svg6-dev \
+     libglew-dev freeglut3-dev xorg-dev \
+     openexr zlib1g zlib1g-dev libjpeg-dev libtiff-dev libtirpc-dev \
+     libhdf5-dev libpng-dev libglu1-mesa-dev libxrandr-dev libxinerama-dev libxcursor-dev \
+     googletest libgtest-dev libglm-dev nlohmann-json3-dev libfmt-dev libglew-dev \
+     libfreetype-dev libassimp-dev cimg-dev libnifti-dev libznz-dev libopenexr-dev libtclap-dev
 ```
+
+#### Python (optional)
+On Linux the easiest way is to use the system python, which will usually be detected by CMake by default.
+If you wish to use a different Python environment, e.g. from an Anaconda environment, you'll need to specify the `Python3_ROOT_DIR` in CMake (before first configure!) and set it to your conda environment.
+Note that it may in some cases be necessary to run the compile or the binary from a command line with the conda environment activated.
+
+#### Building
+1. Create a base directory where you want to build Inviwo, e.g., `~/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
+    ```
+    └── base
+        ├── builds
+        │   └── inviwo-vcpkg-dynamic
+        ├── inviwo
+        ├── modules
+        └── vcpkg
+    ```
+
+2. Clone the Inviwo repository. In the `base` directory run:
+    git clone --recurse-submodules https://github.com/inviwo/inviwo
+The `--recurse-submodules` is necessary to pull dependencies.
+
+3. Clone the vcpkg repository In the `base` directory run:
+    git clone https://github.com/microsoft/vcpkg
+
+4. Optional clone the Inviwo modules repository. In the `base` directory run:
+    git clone --recurse-submodules https://github.com/inviwo/modules
+
+5. Generate build system (e.g. Ninja project):
+    Using the CMake GUI
+    + Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage)
+    + Enter the path to the Inviwo directory (e.g., `~/Inviwo/inviwo`) in `Where is the source code`
+    + Select a `Preset` either "Ninja User configuration using apt" or "Ninja Developer configuration using apt"
+    + Press `Configure`
+    + Optionally modify the configuration, You can then select the desired Inviwo modules (`IVW_MODULE_*`) and configure again. To add external Inviwo modules, add those in `IVW_EXTERNAL_MODULES` in the format of `~/Inviwo/module/molvis;C:/mysite/myrepo/mymodules;`
+    + Press `Generate`
+    + Compile the project by running `ninja` in the build folder `~/Inviwo/builds/xcode-user`
+    
+    Or using the command line
+    + From the `base` directory run:
+        cmake -S inviwo --preset ninja-user-apt
+    + Any extra options can be past to CMake using `-D` for example to add external modules:
+        cmake -S inviwo --preset ninja-user-apt -DIVW_EXTERNAL_MODULES="~/Inviwo/module/molvis;~/mysite/myrepo/mymodules;"
+      or extra modules
+        cmake -S inviwo --preset ninja-user-apt -DIVW_MODULE_SOMEMODULE=ON
+    + Finally compile inviwo by running `ninja` in the build folder `~/Inviwo/builds/xcode-user`
+
+
+### Comments
+
+{% include note.html content="
+Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
+
+When using a multi-configuration generator (like Visual Studio, XCode, and most IDEs) you may want to adjust your build mode manually to `RelWithDebInfo`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake." %}
