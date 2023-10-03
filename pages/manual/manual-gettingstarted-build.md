@@ -19,7 +19,9 @@ To acquire the dependencies, you can either use [vcpkg](https://github.com/micro
 #### Compiler
 We recommend that you compile Inviwo on windows using a recent version [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2022 or later).
 
-{% include note.html content="Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later" %}
+{% include note.html content="
+Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later
+" %}
 
 #### Git
 You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/). Although a command line client such as [git bash](https://gitforwindows.org/) will also work.
