@@ -14,6 +14,12 @@ The source code is hosted on [GitHub](https://github.com/inviwo/inviwo), and we 
 
 To acquire the dependencies, you can either use [vcpkg](https://github.com/microsoft/vcpkg), the bundled git sub-modules, or your system package manager. On Windows and MacOS we recommend vcpkg, on linux we recommend the system package manger primarily.  
 
+#### Git
+You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/). Although a command line client such as [git bash](https://gitforwindows.org/) will also work.
+
+#### CMake
+You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
+
 ### Windows
 
 #### Compiler
@@ -22,12 +28,6 @@ We recommend that you compile Inviwo on windows using a recent version [Visual S
 {% include note.html content="
 Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later
 " %}
-
-#### Git
-You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/). Although a command line client such as [git bash](https://gitforwindows.org/) will also work.
-
-#### CMake
-You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
 
 #### Dependencies
 
@@ -132,12 +132,6 @@ This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check
 We recommend that you compile Inviwo using the latest version of XCode.
 We require C++20 support from the compiler.
 
-#### Git
-You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/), although a command line client will also work.
-
-#### CMake
-You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
-
 #### Dependencies
 You will need at least (we recommend using latest versions)
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
@@ -218,17 +212,10 @@ The `--recurse-submodules` is necessary to pull dependencies.
 We recommend that you compile Inviwo using a recent version of Clang or GCC
 We require C++20 support from the compiler.
 
-#### Git
-You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [GitKraken](https://www.gitkraken.com/), although a command line client will also work.
-
-#### CMake
-You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
-
 #### Dependencies
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
     **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/6.5.0/gcc_x64/`
-
 
 For **Ubuntu** you can use the following commands:
 
@@ -291,11 +278,11 @@ The `--recurse-submodules` is necessary to pull dependencies.
         cmake -S inviwo --preset ninja-user-apt -DIVW_MODULE_SOMEMODULE=ON
     + Finally compile inviwo by running `ninja` in the build folder `~/Inviwo/builds/xcode-user`
 
-
 ### Comments
 
-{% include note.html content="
+{% include tip.html content="
 Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 
 When using a multi-configuration generator (like Visual Studio, XCode, and most IDEs) you may want to adjust your build mode manually to `RelWithDebInfo`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
-If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake." %}
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
+" %}
