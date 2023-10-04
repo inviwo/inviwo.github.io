@@ -14,11 +14,16 @@ The source code is hosted on [GitHub](https://github.com/inviwo/inviwo), and we 
 
 To acquire the dependencies, you can either use [vcpkg](https://github.com/microsoft/vcpkg), the bundled git sub-modules, or your system package manager. On Windows and MacOS we recommend vcpkg, on linux we recommend the system package manger primarily.  
 
+### Tools
+
 #### Git
 You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/). Although a command line client such as [git bash](https://gitforwindows.org/) will also work.
 
 #### CMake
 You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
+
+#### Compiler
+You will need a recent compiler capable of compilig C++20. A recent version of Visual Stdio, XCode, Clang of GCC should work.
 
 ### Windows
 
@@ -51,11 +56,16 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
     is recommended in case you would like to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
     One can disable python by turning off `IVW_ENABLE_PYTHON`
 
-    {% include note.html content="NumPy is required, `pip install numpy` or `conda install numpy` is sufficient." %}
+    {% include note.html content="
+    NumPy is required, `pip install numpy` or `conda install numpy` is sufficient.
+    " %}
 
-    {% include note.html content="Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add your user site-package folder to the environment variable `PYTHONPATH` for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`" %}
+    {% include note.html content="
+    Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add your user site-package folder to the environment variable `PYTHONPATH` for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`
+    " %}
 
-    {% include note.html content="**We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
+    {% include note.html content="
+    **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
     *Only if you are using Anaconda for your Python environment:*
        + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
        + Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
@@ -108,21 +118,21 @@ The `--recurse-submodules` is necessary to pull dependencies.
 
 {% include note.html content="
 If you computer becomes unresponsive while building you can reduce the number of parallel build projects/cores:
-    - Number of cores per project: In CMake set `IVW_MULTIPROCESSOR_COUNT` (the number of cl.exe processes per project).
-    - Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds`
-    - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
+- Number of cores per project: In CMake set `IVW_MULTIPROCESSOR_COUNT` (the number of cl.exe processes per project).
+- Visual Studio: `Tools->Options->Projects and Solutions->Build and Run->maximum number of parallel project builds`
+- Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
 " %}
 
 #### Common Errors
 
-##### Everything compiles but at runtime you get "failed to load QT symbols dll load errors"
+- __Everything compiles but at runtime you get ```failed to load QT symbols dll load errors```__
 Make sure that the same Qt version used for building is found when running the application. A common source of this error is that Anaconda is installed, which includes another Qt version and has added itself to the PATH environment variable. Make sure that the Qt version used for building is **before** the Anaconda path in the PATH. We have observed a similar problem with certain LaTeX distributions, so if the issue remains, try to move the LaTeX entry in your PATH behind your Qt version as well.
 
-##### Everything compiles but at runtime you get "failed to load python.dll"
+- __Everything compiles but at runtime you get ```failed to load python.dll```__
 Add the path to the Python bin folder to your PATH environment variable.
 You can find the path to the Python binary in Visual Studio by right clicking on the inviwo-module-python3 project and go to "Properties->Linker->Input->Additional dependencies".
 
-##### Everything compiles but at runtime you get runtime error / Unhandled Exception in pybind11/embed.h. For example "Unhandled exception at 0x00007FFE786A284E (ucrtbase.dll) in Inviwo.exe: Fatal program exit requested"
+- __Everything compiles but at runtime you get runtime error  ```Unhandled Exception in pybind11/embed.h```. For example ```Unhandled exception at 0x00007FFE786A284E (ucrtbase.dll) in Inviwo.exe: Fatal program exit requested```__
 This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check your system settings to see if it is correctly pointing to your python installation found by CMake. If you do not have the `PYTHONHOME` variable you should set it. It should point to the root folder of your python installation, e.g `C:/python37 or C:\Program Files (x86)\Microsoft Visual Studio\Shared\Anaconda3_64` (if you installed Anaconda with Visual Studio). To know which python installation inviwo uses you can check the output from the configuration pass in CMake, in the very beginning of the log it prints which python interpreter it found and will use.
 
 
@@ -138,7 +148,9 @@ You will need at least (we recommend using latest versions)
     We recommend installing Qt using [brew](https://brew.sh) `brew install qt`
 
 - [Python](https://www.python.org/downloads/) is recommended in case you would like to do use Inviwo from Python, write Processors in Python, or perform batch operations. See further (important!) instructions about Python for Mac below. Python can also easily be install using `brew install python` 
-{% include note.html content="NumPy is required, `pip install numpy` is sufficient." %}
+{% include note.html content="
+NumPy is required, `pip install numpy` is sufficient.
+" %}
 
 - [Vcpkg](https://github.com/vcpkg)
     For all the other dependencies we recommend using vcpkg together with the manifest file in the Inviwo repository. This will ensure that you get the correct versions of the dependencies.
