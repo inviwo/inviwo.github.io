@@ -214,7 +214,7 @@ The `--recurse-submodules` is necessary to pull dependencies.
         cmake -S inviwo --preset xcode-user -DIVW_EXTERNAL_MODULES="~/Inviwo/module/molvis;~/mysite/myrepo/mymodules;"
       or extra modules
         cmake -S inviwo --preset xcode-user -DIVW_MODULE_SOMEMODULE=ON
-    + Finally open the solution in MSVC by running:
+    + Finally open the solution in XCode by running:
         open builds/xcode-user/inviwo-projects.xcodeproj
 
 
