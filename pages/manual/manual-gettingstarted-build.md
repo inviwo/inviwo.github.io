@@ -87,8 +87,7 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
     ```
 
 2. Clone the Inviwo repository. In the `base` directory run:
-    git clone --recurse-submodules https://github.com/inviwo/inviwo
-The `--recurse-submodules` is necessary to pull dependencies.
+    git clone https://github.com/inviwo/inviwo
 
 3. Clone the vcpkg repository In the `base` directory run:
     git clone https://github.com/microsoft/vcpkg
@@ -188,15 +187,14 @@ cmake-gui
     ```
 
 2. Clone the Inviwo repository. In the `base` directory run:
-    git clone --recurse-submodules https://github.com/inviwo/inviwo
-The `--recurse-submodules` is necessary to pull dependencies.
+    git clone https://github.com/inviwo/inviwo
 
 3. Clone the vcpkg repository In the `base` directory run:
     git clone https://github.com/microsoft/vcpkg
 
 4. Optional clone the Inviwo modules repository. In the `base` directory run:
     git clone --recurse-submodules https://github.com/inviwo/modules
-
+    
 5. Generate build system (e.g. XCode project):
     Using the CMake GUI
     + Open CMake (see [the CMake GUI tutorial](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#guide:User%20Interaction%20Guide) for more instructions on its usage)
@@ -262,8 +260,7 @@ Note that it may in some cases be necessary to run the compile or the binary fro
     ```
 
 2. Clone the Inviwo repository. In the `base` directory run:
-    git clone --recurse-submodules https://github.com/inviwo/inviwo
-The `--recurse-submodules` is necessary to pull dependencies.
+    git clone https://github.com/inviwo/inviwo
 
 3. Clone the vcpkg repository In the `base` directory run:
     git clone https://github.com/microsoft/vcpkg
