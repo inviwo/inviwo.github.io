@@ -11,7 +11,7 @@ insert_promo: true
 <section id="about" class="about section">
     <div class="container">
         <h2 class="title text-center">What is Inviwo?</h2>
-        <p class="intro text-center">Inviwo is a software framework for the rapid prototyping   visualizations. It is written in C++, exploits modern graphics hardware and is available under   BSD license, which permits free use in any setup - also commercially</p>
+        <p class="intro text-center">Inviwo is a rapid prototyping framework that allows you to easily build data processing pipelines with integrated interaction and visualization. It is available under a BSD license, which permits free use in any setup - also commercially</p>
         <div class="row">
             <div class="item col-md-4 col-sm-6 col-xs-12">
                 <div class="icon-holder">
@@ -19,7 +19,7 @@ insert_promo: true
                 </div>
                 <div class="content">
                     <h3 class="sub-title">Rapid prototyping</h3>
-                    <p>Inviwo provides a rich visual interface for the easy creation of custom visualizations. These visualizations can be saved, modified, and reused on other data.</p>
+                    <p>Inviwo provides a rich visual interface for creating data processing and visualization pipelines. These pipelines can be saved, modified, and reused on other data.</p>
                 </div>
                 <!--//content-->
             </div>
@@ -30,7 +30,7 @@ insert_promo: true
                 </div>
                 <div class="content">
                     <h3 class="sub-title">Python integration</h3>
-                    <p>Besides being realized in C++, Inviwo exposes a Python 3.7 API, supports Python development, and has Python scripting integrated for batch processing.</p>
+                    <p>Inviwo exposes a Python API and has Python scripting integrated for batch processing.</p>
                 </div>
                 <!--//content-->
             </div>
@@ -42,7 +42,7 @@ insert_promo: true
                 </div>
                 <div class="content">
                     <h3 class="sub-title">Full extendability</h3>
-                    <p>Inviwo can be extended by implementing own Processors, which can be organized in modules. See our tutorials on creating processors and modules.</p>
+                    <p>Inviwo can easily be extended by implementing your own data processing and visualization algorithms. See our <a href="manual-devguide-meta.html">tutorials on creating processors (data processing building blocks)</a> using our plugin-in module system.</p>
                 </div>
                 <!--//content-->
             </div>
@@ -53,8 +53,8 @@ insert_promo: true
                     <i class="fa fa-cubes"></i>
                 </div>
                 <div class="content">
-                    <h3 class="sub-title">Data types</h3>
-                    <p>Inviwo can read and visualize many data types, such as HD5, DICOM, RAW and TIFF stacks. So you can visualize data from many simulations and imaging modalities.</p>
+                    <h3 class="sub-title">Data formats</h3>
+                    <p>Inviwo can read many data formats, such as HD5, DICOM, NIfTI, CSV, PNG, JPEG, RAW, and TIFF. You can also easily import image files into a single stack.</p>
                 </div>
                 <!--//content-->
             </div>
@@ -67,7 +67,7 @@ insert_promo: true
                     <a href="manual_index.html">
                     <h3 class="sub-title">Documentation</h3>
                     </a>
-                    <p>To get started with Inviwo, we provide guides on how to install, develop new processors, and create new modules. We also made video tutorials on the most important concepts.</p>
+                    <p>Checkout the <a href="manual_index.html">getting started pages</a> for guides on how to install, develop new processors, and create new modules. You can also find video tutorials on the most important concepts.</p>
                 </div>
                 <!--//content-->
             </div>
