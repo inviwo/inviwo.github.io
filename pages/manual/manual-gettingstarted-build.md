@@ -87,13 +87,28 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
     ```
 
 2. Clone the Inviwo repository. In the `base` directory run:
-    git clone https://github.com/inviwo/inviwo
+   ```batch
+   git clone https://github.com/inviwo/inviwo
+   ```
 
-3. Clone the vcpkg repository In the `base` directory run:
+3. Clone the vcpkg repository. In the `base` directory run:
+    ```batch
     git clone https://github.com/microsoft/vcpkg
+    ```
+    followed by bootstrapping vcpkg. Optionally, check out the commit listed as "baseline" in inviwo/vcpkg.json to utilize our vcpkg cache.
+    ```batch
+    cd vcpkg
 
-4. Optional clone the Inviwo modules repository. In the `base` directory run:
+    REM adjust commit hash to match "baseline" in inviwo/vcpkg.json, for example f0f8117
+    git checkout <commithash>
+    
+    bootstrap-vcpkg.bat
+    ```
+
+4. Optionally clone the Inviwo modules repository. In the `base` directory run:
+    ```batch
     git clone --recurse-submodules https://github.com/inviwo/modules
+    ```
 
 5. Generate build system (e.g. Visual Studio project):
     Using the CMake GUI
@@ -187,13 +202,28 @@ cmake-gui
     ```
 
 2. Clone the Inviwo repository. In the `base` directory run:
-    git clone https://github.com/inviwo/inviwo
+   ```bash
+   git clone https://github.com/inviwo/inviwo
+   ```
 
-3. Clone the vcpkg repository In the `base` directory run:
+3. Clone the vcpkg repository. In the `base` directory run:
+    ```bash
     git clone https://github.com/microsoft/vcpkg
+    ```
+    followed by bootstrapping vcpkg. Optionally, check out the commit listed as "baseline" in inviwo/vcpkg.json to utilize our vcpkg cache.
+    ```bash
+    cd vcpkg
 
-4. Optional clone the Inviwo modules repository. In the `base` directory run:
+    # adjust commit hash to match "baseline" in inviwo/vcpkg.json, for example f0f8117
+    git checkout <commithash>
+    
+    ./bootstrap-vcpkg.sh
+    ```
+
+4. Optionally clone the Inviwo modules repository. In the `base` directory run:
+    ```bash
     git clone --recurse-submodules https://github.com/inviwo/modules
+    ```
     
 5. Generate build system (e.g. XCode project):
     Using the CMake GUI
@@ -260,13 +290,28 @@ Note that it may in some cases be necessary to run the compile or the binary fro
     ```
 
 2. Clone the Inviwo repository. In the `base` directory run:
-    git clone https://github.com/inviwo/inviwo
+   ```bash
+   git clone https://github.com/inviwo/inviwo
+   ```
 
-3. Clone the vcpkg repository In the `base` directory run:
+3. Clone the vcpkg repository. In the `base` directory run:
+    ```bash
     git clone https://github.com/microsoft/vcpkg
+    ```
+    followed by bootstrapping vcpkg. Optionally, check out the commit listed as "baseline" in inviwo/vcpkg.json to utilize our vcpkg cache.
+    ```bash
+    cd vcpkg
 
-4. Optional clone the Inviwo modules repository. In the `base` directory run:
+    # adjust commit hash to match "baseline" in inviwo/vcpkg.json, for example f0f8117
+    git checkout <commithash>
+    
+    ./bootstrap-vcpkg.sh
+    ```
+
+4. Optionally clone the Inviwo modules repository. In the `base` directory run:
+    ```bash
     git clone --recurse-submodules https://github.com/inviwo/modules
+    ```
 
 5. Generate build system (e.g. Ninja project):
     Using the CMake GUI
