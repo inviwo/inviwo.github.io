@@ -7,34 +7,39 @@ sidebar: manual_sidebar
 permalink: manual-gettingstarted-build.html
 folder: manual
 ---
-## How to build Inviwo
-
 Inviwo uses CMake as build system and supports building on Windows with Visual Studio, MacOS with XCode, and Linux with Clang or GCC. We require the the compiler supports C++20. In most cases the latest version of AppleClang is the compiler with the least support so that dictates mostly what we require.
 The source code is hosted on [GitHub](https://github.com/inviwo/inviwo), and we recommend using [git](https://git-scm.com/) to clone the repository, since you can then easily update to the latest version, and you also get the needed git sub-modules.
 
-To acquire the dependencies, you can either use [vcpkg](https://github.com/microsoft/vcpkg), the bundled git sub-modules, or your system package manager. On Windows and MacOS we recommend vcpkg, on linux we recommend the system package manger primarily.  
+To acquire the dependencies, we highly recommend using [vcpkg](https://github.com/microsoft/vcpkg) on Windows and MacOS and the system's package manager on Linux. To reduce the compile time we provide pre-compiled binaries of most dependencies when using vcpkg, see [Binary caching with vcpkg](#binary-caching-with-vcpkg) below for details.
 
-### Tools
+{% include tip.html content="
+Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
 
-#### Git
+When using a multi-configuration generator (like Visual Studio, XCode, and most IDEs) you may want to adjust your build mode manually to `RelWithDebInfo`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
+If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
+" %}
+
+## Tools
+
+### Git
 You will need a git client to acquire the source code. We strongly recommend using a graphical client such as [Fork](https://fork.dev) or [GitKraken](https://www.gitkraken.com/). Although a command line client such as [git bash](https://gitforwindows.org/) will also work.
 
-#### CMake
+### CMake
 You will need a recent version [CMake](https://cmake.org/download/), we recommend using the latest version.
 
-#### Compiler
+### Compiler
 You will need a recent compiler capable of compilig C++20. A recent version of Visual Stdio, XCode, Clang of GCC should work.
 
-### Windows
+## Windows
 
-#### Compiler
+### Compiler
 We recommend that you compile Inviwo on windows using a recent version [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2022 or later).
 
 {% include note.html content="
 Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regression](https://developercommunity.visualstudio.com/t/Regression-176:-parameter-pack-expansio/10372131). Please upgrade to version 17.7.0 or later
 " %}
 
-#### Dependencies
+### Dependencies
 
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version for you Visual Studio version.
@@ -48,7 +53,7 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
       aqt.exe install-qt -O C:\Qt windows desktop 6.5.2 win64_msvc2019_64 --modules debug_info --archives qtbase qtsvg
 
     One can optionally also install the qt sources
-  
+    
       aqt.exe install-src -O C:\Qt windows desktop 6.6.0 --archives qtbase qtsvg
 
 
@@ -67,15 +72,15 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
     {% include note.html content="
     **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
     *Only if you are using Anaconda for your Python environment:*
-       + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
-       + Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
+    + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.5.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
+    + Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
     " %}
 
 - [Vcpkg](https://github.com/vcpkg)
     For all the other dependencies we recommend using vcpkg together with the manifest file in the Inviwo repository. This will ensure that you get the correct versions of the dependencies.
     And make it very easy to update the dependencies, and add new libraries as needed.
 
-#### Building
+### Building
 1. Create a base directory where you want to build Inviwo, e.g., `C:/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -91,18 +96,10 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
    git clone https://github.com/inviwo/inviwo
    ```
 
-3. Clone the vcpkg repository. In the `base` directory run:
+3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run:
     ```batch
     git clone https://github.com/microsoft/vcpkg
-    ```
-    followed by bootstrapping vcpkg. Optionally, check out the commit listed as "baseline" in inviwo/vcpkg.json to utilize our vcpkg cache.
-    ```batch
-    cd vcpkg
-
-    REM adjust commit hash to match "baseline" in inviwo/vcpkg.json, for example f0f8117
-    git checkout <commithash>
-    
-    bootstrap-vcpkg.bat
+    vcpkg\bootstrap-vcpkg.bat
     ```
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
@@ -137,7 +134,7 @@ If you computer becomes unresponsive while building you can reduce the number of
 - Qt Creator: In `Projects->Build & Run->Build->Build Steps->Details->CMake arguments` add `-j <number of cores>`, e.g. `-j4`
 " %}
 
-#### Common Errors
+### Common Errors
 
 - __Everything compiles but at runtime you get ```failed to load QT symbols dll load errors```__
 Make sure that the same Qt version used for building is found when running the application. A common source of this error is that Anaconda is installed, which includes another Qt version and has added itself to the PATH environment variable. Make sure that the Qt version used for building is **before** the Anaconda path in the PATH. We have observed a similar problem with certain LaTeX distributions, so if the issue remains, try to move the LaTeX entry in your PATH behind your Qt version as well.
@@ -150,13 +147,13 @@ You can find the path to the Python binary in Visual Studio by right clicking on
 This may happen when the `PYTHONHOME` variable is not set or is incorrect. Check your system settings to see if it is correctly pointing to your python installation found by CMake. If you do not have the `PYTHONHOME` variable you should set it. It should point to the root folder of your python installation, e.g `C:/python37 or C:\Program Files (x86)\Microsoft Visual Studio\Shared\Anaconda3_64` (if you installed Anaconda with Visual Studio). To know which python installation inviwo uses you can check the output from the configuration pass in CMake, in the very beginning of the log it prints which python interpreter it found and will use.
 
 
-### Mac
+## Mac
 
-#### Compiler
+### Compiler
 We recommend that you compile Inviwo using the latest version of XCode.
 We require C++20 support from the compiler.
 
-#### Dependencies
+### Dependencies
 You will need at least (we recommend using latest versions)
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
     We recommend installing Qt using [brew](https://brew.sh) `brew install qt`
@@ -170,7 +167,7 @@ NumPy is required, `pip install numpy` is sufficient.
     For all the other dependencies we recommend using vcpkg together with the manifest file in the Inviwo repository. This will ensure that you get the correct versions of the dependencies.
     And make it very easy to update the dependencies, and add new libraries as needed.
 
-#### Python (optional)
+### Python (optional)
 Ensuring that the correct Python is found can be a bit complicated (read more about [brew Python here](https://docs.brew.sh/Homebrew-and-Python)). If you do not care about using different Python versions it is probably easiest to simply install Python 3 via brew:
 ```
 brew install python3
@@ -190,7 +187,7 @@ conda activate
 cmake-gui
 ```
 
-#### Building
+### Building
 1. Create a base directory where you want to build Inviwo, e.g., `~/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -206,18 +203,10 @@ cmake-gui
    git clone https://github.com/inviwo/inviwo
    ```
 
-3. Clone the vcpkg repository. In the `base` directory run:
+3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run:
     ```bash
     git clone https://github.com/microsoft/vcpkg
-    ```
-    followed by bootstrapping vcpkg. Optionally, check out the commit listed as "baseline" in inviwo/vcpkg.json to utilize our vcpkg cache.
-    ```bash
-    cd vcpkg
-
-    # adjust commit hash to match "baseline" in inviwo/vcpkg.json, for example f0f8117
-    git checkout <commithash>
-    
-    ./bootstrap-vcpkg.sh
+    ./vcpkg/bootstrap-vcpkg.sh
     ```
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
@@ -246,13 +235,13 @@ cmake-gui
         open builds/xcode-user/inviwo-projects.xcodeproj
 
 
-### Linux
+## Linux
 
-#### Compiler
+### Compiler
 We recommend that you compile Inviwo using a recent version of Clang or GCC
 We require C++20 support from the compiler.
 
-#### Dependencies
+### Dependencies
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
     **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/6.5.0/gcc_x64/`
@@ -273,12 +262,12 @@ sudo apt install \
      libfreetype-dev libassimp-dev cimg-dev libnifti-dev libznz-dev libopenexr-dev libtclap-dev
 ```
 
-#### Python (optional)
+### Python (optional)
 On Linux the easiest way is to use the system python, which will usually be detected by CMake by default.
 If you wish to use a different Python environment, e.g. from an Anaconda environment, you'll need to specify the `Python3_ROOT_DIR` in CMake (before first configure!) and set it to your conda environment.
 Note that it may in some cases be necessary to run the compile or the binary from a command line with the conda environment activated.
 
-#### Building
+### Building
 1. Create a base directory where you want to build Inviwo, e.g., `~/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -294,18 +283,10 @@ Note that it may in some cases be necessary to run the compile or the binary fro
    git clone https://github.com/inviwo/inviwo
    ```
 
-3. Clone the vcpkg repository. In the `base` directory run:
+3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run:
     ```bash
     git clone https://github.com/microsoft/vcpkg
-    ```
-    followed by bootstrapping vcpkg. Optionally, check out the commit listed as "baseline" in inviwo/vcpkg.json to utilize our vcpkg cache.
-    ```bash
-    cd vcpkg
-
-    # adjust commit hash to match "baseline" in inviwo/vcpkg.json, for example f0f8117
-    git checkout <commithash>
-    
-    ./bootstrap-vcpkg.sh
+    ./vcpkg/bootstrap-vcpkg.sh
     ```
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
@@ -332,11 +313,25 @@ Note that it may in some cases be necessary to run the compile or the binary fro
         cmake -S inviwo --preset ninja-user-apt -DIVW_MODULE_SOMEMODULE=ON
     + Finally compile inviwo by running `ninja` in the build folder `~/Inviwo/builds/xcode-user`
 
-### Comments
 
-{% include tip.html content="
-Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
+## Updating Master
+To update Inviwo to the latest version, use your graphical git client to pull the latest master of the Inviwo repository and, optionally, the Inviwo modules repository. Alternatively, run the following commands in the `base` directory:
+```bash
+cd inviwo
+git pull
+cd ../modules
+git pull
+```
+In case you are using vcpkg, make sure to update vcpkg as well and set it to the correct baseline, see [Binary caching with vcpkg](#binary-caching-with-vcpkg).
 
-When using a multi-configuration generator (like Visual Studio, XCode, and most IDEs) you may want to adjust your build mode manually to `RelWithDebInfo`([Guide for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2019)), since it defaults to `Debug` at first, which has a large impact on the performance.
-If you use a single-configuration generator, you can control the build mode using `CMAKE_BUILD_TYPE` in CMake.
-" %}
+## Binary caching with vcpkg
+Compiling all dependencies can be quite time consuming. Therefore, we provide pre-compiled binary packages for most of the Inviwo dependencies.
+When using CMake presets, inheriting from the `"vcpkg-cache-read"` preset will enable the use of the binary cache. 
+
+Note that in order to benefit from the binary cache, your current vcpkg commit must match the `baseline` commit hash listed in `inviwo/vcpkg.json`. It is good practice to update vcpkg as well after updating Inviwo. In the `base` directory run:
+```bash
+cd vcpkg
+git pull
+git checkout <commithash>
+```
+where `<commithash>` corresponds to the `"baseline"` commit hash in `inviwo/vcpkg.json`, for example f0f8117.
