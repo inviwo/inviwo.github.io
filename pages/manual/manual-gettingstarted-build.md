@@ -10,7 +10,7 @@ folder: manual
 Inviwo uses CMake as build system and supports building on Windows with Visual Studio, MacOS with XCode, and Linux with Clang or GCC. We require the the compiler supports C++20. In most cases the latest version of AppleClang is the compiler with the least support so that dictates mostly what we require.
 The source code is hosted on [GitHub](https://github.com/inviwo/inviwo), and we recommend using [git](https://git-scm.com/) to clone the repository, since you can then easily update to the latest version, and you also get the needed git sub-modules.
 
-To acquire the dependencies, we highly recommend using [vcpkg](https://github.com/microsoft/vcpkg) on Windows and MacOS and the system's package manager on Linux. To reduce the compile time we provide pre-compiled binaries of most dependencies when using vcpkg, see [Binary caching with vcpkg](#binary-caching-with-vcpkg) below for details.
+To acquire the dependencies, we highly recommend using [vcpkg](https://github.com/microsoft/vcpkg). To reduce the compile time we provide pre-compiled binaries of most dependencies when using vcpkg, see [Binary caching with vcpkg](#binary-caching-with-vcpkg) below for details.
 
 {% include tip.html content="
 Unless you specifically need to debug the application, we recommend setting the build mode to `RelWithDebInfo` for good performance, while still getting reasonable stacktraces for debugging and error reporting.
@@ -96,10 +96,19 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
    git clone https://github.com/inviwo/inviwo
    ```
 
-3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run:
+3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run
     ```batch
     git clone https://github.com/microsoft/vcpkg
-    vcpkg\bootstrap-vcpkg.bat
+    cd vcpkg
+    git reset --hard <commithash>
+    bootstrap-vcpkg.bat
+    cd ..
+    ```
+    where `<commithash>` corresponds to the `"baseline"` commit hash in `inviwo/vcpkg.json`, for example f0f8117.
+
+    When using a PowerShell, the following command can be used instead of `git reset --hard <commithash>` and looking up the hash:
+    ```psh
+    git reset --hard ((get-content ..\inviwo\vcpkg.json | ConvertFrom-Json).'vcpkg-configuration'.'default-registry'.'baseline')
     ```
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
@@ -206,8 +215,12 @@ cmake-gui
 3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run:
     ```bash
     git clone https://github.com/microsoft/vcpkg
-    ./vcpkg/bootstrap-vcpkg.sh
+    cd vcpkg
+    git reset --hard `grep -Po '"baseline" *: *"\K\w+(?=")' ../inviwo/vcpkg.json`
+    ./bootstrap-vcpkg.sh
+    cd ..
     ```
+    where `<commithash>` corresponds to the `"baseline"` commit hash in `inviwo/vcpkg.json`, for example f0f8117.
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
     ```bash
@@ -286,7 +299,10 @@ Note that it may in some cases be necessary to run the compile or the binary fro
 3. Clone the vcpkg repository followed by bootstrapping vcpkg. In the `base` directory run:
     ```bash
     git clone https://github.com/microsoft/vcpkg
-    ./vcpkg/bootstrap-vcpkg.sh
+    cd vcpkg
+    git reset --hard `grep -Po '"baseline" *: *"\K\w+(?=")' ../inviwo/vcpkg.json`
+    ./bootstrap-vcpkg.sh
+    cd ..
     ```
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
@@ -322,16 +338,26 @@ git pull
 cd ../modules
 git pull
 ```
-In case you are using vcpkg, make sure to update vcpkg as well and set it to the correct baseline, see [Binary caching with vcpkg](#binary-caching-with-vcpkg).
+Make sure to update vcpkg as well and set it to the correct baseline, see [Binary caching with vcpkg](#binary-caching-with-vcpkg).
 
 ## Binary caching with vcpkg
 Compiling all dependencies can be quite time consuming. Therefore, we provide pre-compiled binary packages for most of the Inviwo dependencies.
 When using CMake presets, inheriting from the `"vcpkg-cache-read"` preset will enable the use of the binary cache. 
 
-Note that in order to benefit from the binary cache, your current vcpkg commit must match the `baseline` commit hash listed in `inviwo/vcpkg.json`. It is good practice to update vcpkg as well after updating Inviwo. In the `base` directory run:
+Note that in order to benefit from the binary cache, your current vcpkg commit must match the `baseline` commit hash listed in `inviwo/vcpkg.json`. It is good practice to update vcpkg as well after updating Inviwo. In the `base` directory run the following 
 ```bash
 cd vcpkg
 git pull
-git checkout <commithash>
+git reset --hard <commithash>
+./bootstrap-vcpkg.sh         or   bootstrap-vcpkg.bat
 ```
 where `<commithash>` corresponds to the `"baseline"` commit hash in `inviwo/vcpkg.json`, for example f0f8117.
+
+The commit hash can also be extracted using grep in a Unix shell
+```bash
+grep -Po '"baseline" *: *"\K\w+(?=")' ../inviwo/vcpkg.json
+```
+or a PowerShell
+```psh
+(get-content ..\inviwo\vcpkg.json | ConvertFrom-Json).'vcpkg-configuration'.'default-registry'.'baseline'
+```
