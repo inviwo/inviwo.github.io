@@ -50,11 +50,11 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
 
     Then install Qt:
       
-      aqt.exe install-qt -O C:\Qt windows desktop 6.5.2 win64_msvc2019_64 --modules debug_info --archives qtbase qtsvg
+      aqt.exe install-qt -O C:\Qt windows desktop 6.7.0 win64_msvc2022_64 --modules debug_info --archives qtbase qtsvg
 
     One can optionally also install the qt sources
     
-      aqt.exe install-src -O C:\Qt windows desktop 6.6.0 --archives qtbase qtsvg
+      aqt.exe install-src -O C:\Qt windows desktop 6.7.0 --archives qtbase qtsvg
 
 
 - [Python](https://www.python.org/downloads/) 
