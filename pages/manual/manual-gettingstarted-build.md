@@ -113,7 +113,7 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
     ```batch
-    git clone --recurse-submodules https://github.com/inviwo/modules
+    git clone https://github.com/inviwo/modules
     ```
 
 5. Generate build system (e.g. Visual Studio project):
@@ -224,7 +224,7 @@ cmake-gui
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
     ```bash
-    git clone --recurse-submodules https://github.com/inviwo/modules
+    git clone https://github.com/inviwo/modules
     ```
     
 5. Generate build system (e.g. XCode project):
@@ -307,7 +307,7 @@ Note that it may in some cases be necessary to run the compile or the binary fro
 
 4. Optionally clone the Inviwo modules repository. In the `base` directory run:
     ```bash
-    git clone --recurse-submodules https://github.com/inviwo/modules
+    git clone https://github.com/inviwo/modules
     ```
 
 5. Generate build system (e.g. Ninja project):
