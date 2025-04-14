@@ -2,7 +2,7 @@
 title: Building Inviwo
 tags: [getting_started, c++]
 keywords: gettingstarted, c++
-summary: "Learn to build Inviwo from source on your system"
+summary: "Build Inviwo from source on your system"
 sidebar: manual_sidebar
 permalink: wip-building.html
 folder: manual
@@ -12,7 +12,9 @@ state:
     gcc: 14
 ---
 
-{: :}
+{:note:     .alert .alert-info    title="note"}
+{:tip:      .alert .alert-success title="tip"}
+{:warning:  .alert .alert-danger  title="warning"}
 
 
 ### Git
@@ -41,5 +43,10 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
 > **Note:** You can style this block using custom CSS.
 {:.note}
 
-{: .note }
+
 > This is a note using Just the Docs styling.
+{: note }
+
+
+> <i class="fa fa-info-circle"></i> <b>Note:</b> This is a note using Just the Docs styling.
+{: tip }
