@@ -54,11 +54,11 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
 
     Then install Qt:
       
-      aqt.exe install-qt -O C:\Qt windows desktop {{state.qt}} win64_msvc2022_64 --modules debug_info --archives qtbase qtsvg
+      aqt.exe install-qt -O C:\Qt windows desktop {{page.state.qt}} win64_msvc2022_64 --modules debug_info --archives qtbase qtsvg
 
     One can optionally also install the qt sources
     
-      aqt.exe install-src -O C:\Qt windows desktop {{state.qt}} --archives qtbase qtsvg
+      aqt.exe install-src -O C:\Qt windows desktop {{page.state.qt}} --archives qtbase qtsvg
 
 
 - [Python](https://www.python.org/downloads/) 
@@ -76,7 +76,7 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
     {% include note.html content="
     **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
     *Only if you are using Anaconda for your Python environment:*
-    + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/{{state.qt}}/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
+    + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/{{page.state.qt}}/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
     + Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
     " %}
 
@@ -227,7 +227,7 @@ cmake-gui
     ```bash
     git clone https://github.com/microsoft/vcpkg
     cd vcpkg
-    git reset --hard `grep -Po '"baseline" *: *"\K\w+(?=")' ../inviwo/vcpkg.json`
+    git reset --hard `jq -r ‘.[“vcpkg-configuration”].[“default-registry”].baseline’ ../inviwo/vcpkg.json`
     ./bootstrap-vcpkg.sh
     cd ..
     ```
@@ -275,14 +275,14 @@ We require C++23 support from the compiler.
 ### Dependencies
 - [Qt binaries](https://qt.io/download-open-source/) >= 6.
     Make sure you get the build for the 64 bit version of gcc or clang. Make sure to add the Qt folder to the `CMAKE_PREFIX_PATH` environment variable.
-    **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/{{state.qt}}/gcc_x64/`
+    **Example**: `export CMAKE_PREFIX_PATH=/home/user/Qt/{{page.state.qt}}/gcc_x64/`
 
 For **Ubuntu** you can use the following commands:
 
 ```
 sudo apt-get update
 sudo apt install \
-     build-essential git ninja-build gcc-{{state.gcc}} g++-{{state.gcc}} \
+     build-essential git ninja-build gcc-{{page.state.gcc}} g++-{{page.state.gcc}} \
      cmake extra-cmake-modules cmake-qt-gui \
      python3 python3-pip python3-numpy python3-h5py python3-pybind11 python3-scipy python3-regex pybind11-json-dev \
      qt6-base-dev qt6-tools-dev qt6-tools-dev libqt6svg6-dev \
