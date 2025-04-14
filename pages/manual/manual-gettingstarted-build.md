@@ -76,7 +76,7 @@ Inviwo cannot be compiled with Visual Studio 2022 17.6.x due to a compiler [regr
     {% include note.html content="
     **We strongly advice against using Anaconda** as Anaconda adds itself first to the PATH variable, which means that its Qt will be used instead of *your* Qt installed above. In case you would like to use conda, we instead recommend Miniconda as it does not include Qt. If you are forced to use Anaconda the following workarounds may make it work.
     *Only if you are using Anaconda for your Python environment:*
-    + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/{{page.state.qt}}/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
+    + Add an environment variable `CMAKE_PREFIX_PATH` and set it to your Qt dir, e.g., `Qt/6.9.0/msvc2019_64` (will ensure that CMake finds *your* Qt instead of Anaconda's).
     + Ensure that your Python environment is active before running CMake/Visual Studio. This can be done by starting the Anaconda Prompt, running `conda activate` and starting CMake/Visual Studio from the prompt.
     " %}
 
