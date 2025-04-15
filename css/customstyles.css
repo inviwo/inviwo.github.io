@@ -2566,8 +2566,7 @@ i .fas .fa-film {
   z-index: 1;
   padding: 0.3em 0.6em;
   font-size: 0.75em;
-  background: #007acc;
-  color: white;
+  color: #007acc;
   border: none;
   border-radius: 3px;
   cursor: pointer;

@@ -57,31 +57,30 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
         └── vcpkg
     ```
 2. Clone the Inviwo repository. In the `base` directory run:
-   ```psh
+   ```bash
    git clone https://github.com/inviwo/inviwo
    ```
 3. Clone the vcpkg repository. In the `base` directory run
-    ```psh
+    ```bash
     git clone https://github.com/microsoft/vcpkg
     ```
 4. Configure CMake. From the `base` directory run:
-   ```psh
+   ```bash
    cmake -S inviwo --preset msvc-user
    ```
 5. Compile Inviwo. From the `base` directory run:
-   ```psh
+   ```bash
    cmake --build builds/msvc-user --config RelWithDebInfo
    ```
 6. Start Inviwo
-   ```psh
+   ```bash
    ./builds/msvc-user/bin/RelWithDebInfo/inviwo.exe
    ```
-
 
 ## Macos
 
 ### Compiler
-We recommend that you compile Inviwo using the latest version of XCode.
+We recommend that you compile Inviwo using the latest version of XCode from the Apple AppStore.
 
 ### Dependencies
 - [Qt6 binaries](https://qt.io/download-open-source/)
@@ -175,12 +174,94 @@ sudo apt install \
 
 ## Notes
 
-### External Modules
+### CMake Presets
 
-#### The Modules Repo
+Inviwo uses [**CMake Presets**](https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html) to make setup and configuration easier. 
+Out out the box inviwo provided the following presets:
+* **msvc-user**: MSVC User configuration
+* **msvc-developer**: MSVC Developer configuration
+* **msvc-developer-modules**: MSVC Developer configuration with Modules
+* **xcode-user**: Xcode User configuration
+* **xcode-developer**: Xcode Developer configuration
+* **xcode-developer-modules**: Xcode Developer configuration with Modules
+* **ninja-user**: Ninja User configuration
+* **ninja-developer**: Ninja Developer configuration
+* **ninja-developer-modules**: Ninja Developer configuration with Modules
+
+These are composed of a set of building blocks:
+* **user**: This is the base configuration for using the Inviwo editor
+* **developer**: This is the base configuration for developing new inviwo modules
+
+* **vcpkg**: This sets the cmake toolchain file to the one provided by vcpkg. This assumes that the vcpkg repo is next to the inviwo repo. 
+* **vcpkg-cache-read**: This enables reading of cached vcpkg binary artifacts to speed up building dependencies. See binary caching below for more detail. 
+* **vcpkg-cache-write**: This also enables writing to the vcpkg cache. This requires setting the environment variable `VCPKG_CACHE_TOKEN` to a valid value.
+
+* **modules**: This adds the [inviwo modules repo](https://github.com/inviwo/modules) to `IVW_EXTERNAL_MODULES` variable
+* **modules-vcpkg**: This add extra vcpkg overlay ports needed for module dependencies.
+
+* **build**: This sets the build directory to `builds/<preset name>`.
+
+* **msvc**: This sets the cmake generator to Visual Studio, and defines the default vcpkg triplet.
+* **xcode**: This sets the cmake generator to Xcode, and defines the default vcpkg triplet.
+* **ninja**: This sets the cmake generator to Ninja, and defines the default vcpkg triplet.
+
+You can easily compose your own preset in your `CMakeUserPresets.json` file, for example:
+```json
+{
+  "version": 9,
+  "cmakeMinimumRequired": { "major": 3, "minor": 30, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "custom-msvc-dev",
+      "displayName": "MSVC Custom configuration",
+      "inherits" : ["msvc", "developer", "vcpkg", "vcpkg-cache-read", "build", "modules", "modules-vcpkg"],
+      "environment": {
+        "VCPKG_CACHE_TOKEN": "<my token>",
+      },
+      "cacheVariables": {
+        "VCPKG_MANIFEST_NO_DEFAULT_FEATURES": { "type": "BOOL", "value": "ON" },
+        "VCPKG_MANIFEST_FEATURES" :    "hdf5;ffmpeg;graphviz;sgct;ttk;vtk",
+        "IVW_ENABLE_TRACY":            { "type": "BOOL", "value": "OFF" },
+        "IVW_ENABLE_OPENMP":           { "type": "BOOL", "value": "ON" },
+        "IVW_MODULE_TTK":              { "type": "BOOL", "value": "ON" },
+        "IVW_MODULE_VTK":              { "type": "BOOL", "value": "ON" },
+      }
+    }
+  ]
+}
+```
+
+### External Modules
+Inviwo supports adding additional `Inviwo Module`s. This is achieved by adding directories of modules to the cmake variable `IVW_EXTERNAL_MODULES`. 
+Each subfolder in the given directory will then be added as an `Inviwo Module` to CMake which can be enabled by setting `IVW_MODULE_MYMODULE` to `ON`.
+For example given a directory `C:/my_inviwo_modules` with a subfolder `mymodule` we can register it like this
+```bash
+cmake -S inviwo --preset msvc-user -DIVW_EXTERNAL_MODULES=C:/my_inviwo_modules -DIVW_MODULE_MYMODULE=ON
+```
+
+Additional paths can be added to `IVW_EXTERNAL_MODULES` by separating them using a semicolon `;`.
+
+### The Modules Repo
+The [inviwo modules repo](https://github.com/inviwo/modules) provides a large set of additional module the are groped it the following categories:
+* vectorvis: Vector Visualization
+* infovis: Information Visualization
+* medvis: Medical Visualization
+* misc: Miscellaneous
+* molvis: Molecular Visualizations
+* tensorvis: Tensor Field Visualization. 
+* topovis: Modules for topological methods and topology visualization.
+
+The can be enabled by cloning the repo in the `base` directory
+```bash
+git clone https://github.com/inviwo/modules
+``` 
+And then using one of the `*-modules` presets. Or by adding the them to the `IVW_EXTERNAL_MODULES` cmake variable.
 
 
 ### Python
+Python enables you to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
+If you are sure you don't want python it can be disabled in cmake by turning off `IVW_ENABLE_PYTHON`
+
 Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add your user site-package folder to the environment variable `PYTHONPATH` for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`
 
 
@@ -197,18 +278,5 @@ One can optionally also install the qt sources
 ```bash
 aqt.exe install-src -O C:\Qt windows desktop {{page.state.qt}} --archives qtbase qtsvg
 ```
-
-> **Note:** This is a note callout in Jekyll.
-
-> **Note:** You can style this block using custom CSS.
-{:.note}
-
-
-> This is a note using Just the Docs styling.
-{: note }
-
-
-> <i class="fa fa-info-circle"></i> <b>Note:</b> This is a note using Just the Docs styling.
-{: tip }
 
 
