@@ -47,7 +47,7 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
   pip install numpy
   ```
 
-### Building
+## Building
 1. Create a base directory where you want to build Inviwo, e.g., `C:/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -78,10 +78,100 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
    ```
 
 
-# Mac
+# Macos
+
+## Compiler
+We recommend that you compile Inviwo using the latest version of XCode.
+
+## Dependencies
+- [Qt6 binaries](https://qt.io/download-open-source/)
+- [Python](https://www.python.org/downloads/)
+- [Numpy](https://numpy.org/)
+
+ We recommend installing the dependencies using [brew](https://brew.sh)
+```sh
+brew install cmake qt python3 numpy
+```
+
+## Building
+1. Create a base directory where you want to build Inviwo, e.g., `~/inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
+    ```
+    └── base
+        ├── builds
+        │   └── xcode-user
+        ├── inviwo
+        └── vcpkg
+    ```
+2. Clone the Inviwo repository. In the `base` directory run:
+   ```sh
+   git clone https://github.com/inviwo/inviwo
+   ```
+3. Clone the vcpkg repository. In the `base` directory run
+    ```sh
+    git clone https://github.com/microsoft/vcpkg
+    ```
+4. Configure CMake. From the `base` directory run:
+   ```sh
+   cmake -S inviwo --preset xcode-user
+   ```
+5. Compile Inviwo. From the `base` directory run:
+   ```sh
+   cmake --build builds/xcode-user --config RelWithDebInfo
+   ```
+6. Start Inviwo
+   ```sh
+   open ./builds/xcode-user/bin/RelWithDebInfo/inviwo.app
+   ```
 
 # Linux
 
+## Compiler
+We recommend that you compile Inviwo using a recent version of Clang or GCC
+We require C++23 support from the compiler.
+
+## Dependencies
+- [Qt6 binaries](https://qt.io/download-open-source/)
+- [Python](https://www.python.org/downloads/)
+- [Numpy](https://numpy.org/)
+
+ We recommend installing the dependencies using you systems package manager
+```sh
+sudo apt-get update
+sudo apt install \
+     build-essential git ninja-build gcc-{{page.state.gcc}} g++-{{page.state.gcc}} \
+     cmake python3 python3-pip python3-numpy \
+     qt6-base-dev qt6-tools-dev qt6-tools-dev libqt6svg6-dev 
+```
+
+## Building
+1. Create a base directory where you want to build Inviwo, e.g., `~/inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
+    ```
+    └── base
+        ├── builds
+        │   └── xcode-user
+        ├── inviwo
+        └── vcpkg
+    ```
+2. Clone the Inviwo repository. In the `base` directory run:
+   ```sh
+   git clone https://github.com/inviwo/inviwo
+   ```
+3. Clone the vcpkg repository. In the `base` directory run
+    ```sh
+    git clone https://github.com/microsoft/vcpkg
+    ```
+4. Configure CMake. From the `base` directory run:
+   ```sh
+   cmake -S inviwo --preset ninja-user
+   ```
+5. Compile Inviwo. From the `base` directory run:
+   ```sh
+   cmake --build builds/ninja-user --config RelWithDebInfo
+   ```
+6. Start Inviwo
+   ```sh
+   ./builds/ninja-user/bin/RelWithDebInfo/inviwo
+   ```
 
 # Notes
 
