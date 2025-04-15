@@ -21,7 +21,7 @@ state:
 ## Tools
 
 ### Git
-You will need a git client to acquire the source code. We strongly recommend using a graphical client, Although a command line client  will also work.
+You will need a git client to acquire the source code. We strongly recommend using a graphical client. Although a command line client  will also work.
 * [Fork](https://fork.dev)
 * [GitKraken](https://www.gitkraken.com/) 
 * [git bash](https://gitforwindows.org/)
@@ -33,7 +33,7 @@ You will need a recent version, we recommend using the latest version.
 ## Windows
 
 ### Compiler
-We recommend that you compile Inviwo on windows using the latest version of [Visual Studio](https://visualstudio.microsoft.com/downloads/).
+We recommend that you compile Inviwo on Windows using the latest version of [Visual Studio](https://visualstudio.microsoft.com/downloads/).
 
 ### Dependencies
 - [Qt6 binaries](https://qt.io/download-open-source/)
@@ -87,7 +87,7 @@ We recommend that you compile Inviwo using the latest version of XCode from the 
 - [Python](https://www.python.org/downloads/)
 - [Numpy](https://numpy.org/)
 
- We recommend installing the dependencies using [brew](https://brew.sh)
+ We recommend installing the dependencies using [brew](https://brew.sh).
 ```shell
 brew install cmake qt python3 numpy
 ```
@@ -125,7 +125,7 @@ brew install cmake qt python3 numpy
 ## Linux
 
 ### Compiler
-We recommend that you compile Inviwo using a recent version of Clang or GCC
+We recommend that you compile Inviwo using a recent version of Clang or GCC.
 We require C++23 support from the compiler.
 
 ### Dependencies
@@ -133,7 +133,7 @@ We require C++23 support from the compiler.
 - [Python](https://www.python.org/downloads/)
 - [Numpy](https://numpy.org/)
 
- We recommend installing the dependencies using you systems package manager
+ We recommend installing the dependencies using you systems package manager.
 ```shell
 sudo apt-get update
 sudo apt install \
@@ -177,7 +177,7 @@ sudo apt install \
 ### CMake Presets
 
 Inviwo uses [**CMake Presets**](https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html) to make setup and configuration easier. 
-Out out the box inviwo provided the following presets:
+Out out the box, Inviwo provides the following presets:
 * **msvc-user**: MSVC User configuration
 * **msvc-developer**: MSVC Developer configuration
 * **msvc-developer-modules**: MSVC Developer configuration with Modules
@@ -197,7 +197,7 @@ These are composed of a set of building blocks:
 * **vcpkg-cache-write**: This also enables writing to the vcpkg cache. This requires setting the environment variable `VCPKG_CACHE_TOKEN` to a valid value.
 
 * **modules**: This adds the [inviwo modules repo](https://github.com/inviwo/modules) to `IVW_EXTERNAL_MODULES` variable
-* **modules-vcpkg**: This add extra vcpkg overlay ports needed for module dependencies.
+* **modules-vcpkg**: This adds additional vcpkg overlay ports needed for module dependencies.
 
 * **build**: This sets the build directory to `builds/<preset name>`.
 
@@ -232,7 +232,7 @@ You can easily compose your own preset in your `CMakeUserPresets.json` file, for
 ```
 
 ### External Modules
-Inviwo supports adding additional `Inviwo Module`s. This is achieved by adding directories of modules to the cmake variable `IVW_EXTERNAL_MODULES`. 
+Inviwo supports adding additional `Inviwo Modules`. This is achieved by adding directories of modules to the cmake variable `IVW_EXTERNAL_MODULES`. 
 Each subfolder in the given directory will then be added as an `Inviwo Module` to CMake which can be enabled by setting `IVW_MODULE_MYMODULE` to `ON`.
 For example given a directory `C:/my_inviwo_modules` with a subfolder `mymodule` we can register it like this
 ```shell
@@ -242,7 +242,7 @@ cmake -S inviwo --preset msvc-user -DIVW_EXTERNAL_MODULES=C:/my_inviwo_modules -
 Additional paths can be added to `IVW_EXTERNAL_MODULES` by separating them using a semicolon `;`.
 
 ### The Modules Repo
-The [inviwo modules repo](https://github.com/inviwo/modules) provides a large set of additional module the are groped it the following categories:
+The [inviwo modules repo](https://github.com/inviwo/modules) provides a large set of additional module the are grouped into the following categories:
 * vectorvis: Vector Visualization
 * infovis: Information Visualization
 * medvis: Medical Visualization
@@ -251,7 +251,7 @@ The [inviwo modules repo](https://github.com/inviwo/modules) provides a large se
 * tensorvis: Tensor Field Visualization. 
 * topovis: Modules for topological methods and topology visualization.
 
-The can be enabled by cloning the repo in the `base` directory
+The modules can be enabled by first cloning the modules repo in the `base` directory
 ```shell
 git clone https://github.com/inviwo/modules
 ``` 
@@ -259,14 +259,14 @@ And then using one of the `*-modules` presets. Or by adding the them to the `IVW
 
 
 ### Python
-Python enables you to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest is to use the regular [Python distribution](https://www.python.org/downloads/).
-If you are sure you don't want python it can be disabled in cmake by turning off `IVW_ENABLE_PYTHON`
+Python enables you to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest way is to use the regular [Python distribution](https://www.python.org/downloads/).
+If you are sure you don't want Python it can be disabled in cmake by turning off `IVW_ENABLE_PYTHON`
 
 Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add your user site-package folder to the environment variable `PYTHONPATH` for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`
 
 
 ### Another Qt Installer (aqt)
-An other very fast way to install Qt is using the aqtinstall python package. Install the python package:
+Another very fast way to install Qt is using the aqtinstall python package. Install the python package:
 ```shell
 pip install aqtinstall
 ```
@@ -274,7 +274,7 @@ Then install Qt:
 ```shell      
 aqt.exe install-qt -O C:\Qt windows desktop {{page.state.qt}} win64_msvc2022_64 --modules debug_info --archives qtbase qtsvg
 ```
-One can optionally also install the qt sources
+One can optionally also install the qt sources.
 ```shell
 aqt.exe install-src -O C:\Qt windows desktop {{page.state.qt}} --archives qtbase qtsvg
 ```
