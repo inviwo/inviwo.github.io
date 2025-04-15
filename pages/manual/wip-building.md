@@ -43,7 +43,7 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
   Make sure you get a recent 64 bit version
 
 - [Numpy](https://numpy.org/)
-  ```bash
+  ```shell
   pip install numpy
   ```
 
@@ -57,23 +57,23 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
         └── vcpkg
     ```
 2. Clone the Inviwo repository. In the `base` directory run:
-   ```bash
+   ```powershell
    git clone https://github.com/inviwo/inviwo
    ```
 3. Clone the vcpkg repository. In the `base` directory run
-    ```bash
+    ```powershell
     git clone https://github.com/microsoft/vcpkg
     ```
 4. Configure CMake. From the `base` directory run:
-   ```bash
+   ```powershell
    cmake -S inviwo --preset msvc-user
    ```
 5. Compile Inviwo. From the `base` directory run:
-   ```bash
+   ```powershell
    cmake --build builds/msvc-user --config RelWithDebInfo
    ```
 6. Start Inviwo
-   ```bash
+   ```powershell
    ./builds/msvc-user/bin/RelWithDebInfo/inviwo.exe
    ```
 
@@ -88,7 +88,7 @@ We recommend that you compile Inviwo using the latest version of XCode from the 
 - [Numpy](https://numpy.org/)
 
  We recommend installing the dependencies using [brew](https://brew.sh)
-```bash
+```shell
 brew install cmake qt python3 numpy
 ```
 
@@ -102,23 +102,23 @@ brew install cmake qt python3 numpy
         └── vcpkg
     ```
 2. Clone the Inviwo repository. In the `base` directory run:
-   ```bash
+   ```shell
    git clone https://github.com/inviwo/inviwo
    ```
 3. Clone the vcpkg repository. In the `base` directory run
-    ```bash
+    ```shell
     git clone https://github.com/microsoft/vcpkg
     ```
 4. Configure CMake. From the `base` directory run:
-   ```bash
+   ```shell
    cmake -S inviwo --preset xcode-user
    ```
 5. Compile Inviwo. From the `base` directory run:
-   ```bash
+   ```shell
    cmake --build builds/xcode-user --config RelWithDebInfo
    ```
 6. Start Inviwo
-   ```bash
+   ```shell
    open ./builds/xcode-user/bin/RelWithDebInfo/inviwo.app
    ```
 
@@ -134,7 +134,7 @@ We require C++23 support from the compiler.
 - [Numpy](https://numpy.org/)
 
  We recommend installing the dependencies using you systems package manager
-```bash
+```shell
 sudo apt-get update
 sudo apt install \
      build-essential git ninja-build gcc-{{page.state.gcc}} g++-{{page.state.gcc}} \
@@ -152,23 +152,23 @@ sudo apt install \
         └── vcpkg
     ```
 2. Clone the Inviwo repository. In the `base` directory run:
-   ```bash
+   ```shell
    git clone https://github.com/inviwo/inviwo
    ```
 3. Clone the vcpkg repository. In the `base` directory run
-    ```bash
+    ```shell
     git clone https://github.com/microsoft/vcpkg
     ```
 4. Configure CMake. From the `base` directory run:
-   ```bash
+   ```shell
    cmake -S inviwo --preset ninja-user
    ```
 5. Compile Inviwo. From the `base` directory run:
-   ```bash
+   ```shell
    cmake --build builds/ninja-user --config RelWithDebInfo
    ```
 6. Start Inviwo
-   ```bash
+   ```shell
    ./builds/ninja-user/bin/RelWithDebInfo/inviwo
    ```
 
@@ -235,7 +235,7 @@ You can easily compose your own preset in your `CMakeUserPresets.json` file, for
 Inviwo supports adding additional `Inviwo Module`s. This is achieved by adding directories of modules to the cmake variable `IVW_EXTERNAL_MODULES`. 
 Each subfolder in the given directory will then be added as an `Inviwo Module` to CMake which can be enabled by setting `IVW_MODULE_MYMODULE` to `ON`.
 For example given a directory `C:/my_inviwo_modules` with a subfolder `mymodule` we can register it like this
-```bash
+```shell
 cmake -S inviwo --preset msvc-user -DIVW_EXTERNAL_MODULES=C:/my_inviwo_modules -DIVW_MODULE_MYMODULE=ON
 ```
 
@@ -252,7 +252,7 @@ The [inviwo modules repo](https://github.com/inviwo/modules) provides a large se
 * topovis: Modules for topological methods and topology visualization.
 
 The can be enabled by cloning the repo in the `base` directory
-```bash
+```shell
 git clone https://github.com/inviwo/modules
 ``` 
 And then using one of the `*-modules` presets. Or by adding the them to the `IVW_EXTERNAL_MODULES` cmake variable.
@@ -267,15 +267,15 @@ Inviwo will not access user site-package folders. Make sure to install the packa
 
 ### Another Qt Installer (aqt)
 An other very fast way to install Qt is using the aqtinstall python package. Install the python package:
-```bash
+```shell
 pip install aqtinstall
 ```
 Then install Qt:
-```bash      
+```shell      
 aqt.exe install-qt -O C:\Qt windows desktop {{page.state.qt}} win64_msvc2022_64 --modules debug_info --archives qtbase qtsvg
 ```
 One can optionally also install the qt sources
-```bash
+```shell
 aqt.exe install-src -O C:\Qt windows desktop {{page.state.qt}} --archives qtbase qtsvg
 ```
 

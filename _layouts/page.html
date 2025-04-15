@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.onclick = () => {
       navigator.clipboard.writeText(el.innerText).then(() => {
         button.textContent = "Copied!";
-        setTimeout(() => (button.textContent = "<i class="fas fa-copy"></i>"), 2000);
+        setTimeout(() => (button.textContent = '<i class="fas fa-copy"></i>'), 2000);
       });
     };
 
