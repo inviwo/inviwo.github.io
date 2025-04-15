@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el.tagName === "CODE" && el.closest("pre")) return;
 
     const button = document.createElement("button");
-    button.textContent = "Copy";
+    button.innerHTML = '<i class="fas fa-copy"></i>';
     button.className = "copy-btn";
 
     button.onclick = () => {
