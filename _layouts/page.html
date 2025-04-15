@@ -67,7 +67,7 @@ layout: default
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const targets = document.querySelectorAll("pre, code");
+  const targets = document.querySelectorAll("pre");
 
   targets.forEach(el => {
     // Avoid nesting buttons on inline code (like <p><code>inline</code></p>)
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.onclick = () => {
       navigator.clipboard.writeText(el.innerText).then(() => {
         button.textContent = "Copied!";
-        setTimeout(() => (button.textContent = '<i class="fas fa-copy"></i>'), 2000);
+        setTimeout(() => (button.innerHTML = '<i class="fas fa-copy"></i>'), 2000);
       });
     };
 
