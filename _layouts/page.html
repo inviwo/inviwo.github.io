@@ -64,3 +64,35 @@ layout: default
 {{site.data.alerts.hr_shaded}}
 
 {% include footer.html %}
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const targets = document.querySelectorAll("pre, code");
+
+  targets.forEach(el => {
+    // Avoid nesting buttons on inline code (like <p><code>inline</code></p>)
+    if (el.textContent.length < 10 || el.closest("p")) return;
+
+    // Prevent double buttons if <code> is inside <pre>
+    if (el.tagName === "CODE" && el.closest("pre")) return;
+
+    const button = document.createElement("button");
+    button.textContent = "Copy";
+    button.className = "copy-btn";
+
+    button.onclick = () => {
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        button.textContent = "Copied!";
+        setTimeout(() => (button.textContent = "Copy"), 2000);
+      });
+    };
+
+    // Set container to relative for button positioning
+    el.style.position = "relative";
+    el.parentElement.style.position = "relative";
+
+    // Insert button (outside code if it's inline)
+    el.parentElement.appendChild(button);
+  });
+});
+</script>

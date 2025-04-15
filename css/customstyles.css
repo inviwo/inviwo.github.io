@@ -2559,6 +2559,19 @@ i .fas .fa-film {
   text-align: left;
 }
 
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  padding: 0.3em 0.6em;
+  font-size: 0.75em;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */

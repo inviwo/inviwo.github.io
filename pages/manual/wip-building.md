@@ -18,24 +18,24 @@ state:
 
 
 
-# Tools
+## Tools
 
-## Git
+### Git
 You will need a git client to acquire the source code. We strongly recommend using a graphical client, Although a command line client  will also work.
 * [Fork](https://fork.dev)
 * [GitKraken](https://www.gitkraken.com/) 
 * [git bash](https://gitforwindows.org/)
 
-## CMake
+### CMake
 You will need a recent version, we recommend using the latest version.
 * [CMake](https://cmake.org/download/)
 
-# Windows
+## Windows
 
-## Compiler
+### Compiler
 We recommend that you compile Inviwo on windows using the latest version of [Visual Studio](https://visualstudio.microsoft.com/downloads/).
 
-## Dependencies
+### Dependencies
 - [Qt6 binaries](https://qt.io/download-open-source/)
   Make sure you get the build for the 64 bit version for you Visual Studio version.
 
@@ -43,11 +43,11 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
   Make sure you get a recent 64 bit version
 
 - [Numpy](https://numpy.org/)
-  ```sh
+  ```bash
   pip install numpy
   ```
 
-## Building
+### Building
 1. Create a base directory where you want to build Inviwo, e.g., `C:/Inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -78,22 +78,22 @@ We recommend that you compile Inviwo on windows using the latest version of [Vis
    ```
 
 
-# Macos
+## Macos
 
-## Compiler
+### Compiler
 We recommend that you compile Inviwo using the latest version of XCode.
 
-## Dependencies
+### Dependencies
 - [Qt6 binaries](https://qt.io/download-open-source/)
 - [Python](https://www.python.org/downloads/)
 - [Numpy](https://numpy.org/)
 
  We recommend installing the dependencies using [brew](https://brew.sh)
-```sh
+```bash
 brew install cmake qt python3 numpy
 ```
 
-## Building
+### Building
 1. Create a base directory where you want to build Inviwo, e.g., `~/inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -103,39 +103,39 @@ brew install cmake qt python3 numpy
         └── vcpkg
     ```
 2. Clone the Inviwo repository. In the `base` directory run:
-   ```sh
+   ```bash
    git clone https://github.com/inviwo/inviwo
    ```
 3. Clone the vcpkg repository. In the `base` directory run
-    ```sh
+    ```bash
     git clone https://github.com/microsoft/vcpkg
     ```
 4. Configure CMake. From the `base` directory run:
-   ```sh
+   ```bash
    cmake -S inviwo --preset xcode-user
    ```
 5. Compile Inviwo. From the `base` directory run:
-   ```sh
+   ```bash
    cmake --build builds/xcode-user --config RelWithDebInfo
    ```
 6. Start Inviwo
-   ```sh
+   ```bash
    open ./builds/xcode-user/bin/RelWithDebInfo/inviwo.app
    ```
 
-# Linux
+## Linux
 
-## Compiler
+### Compiler
 We recommend that you compile Inviwo using a recent version of Clang or GCC
 We require C++23 support from the compiler.
 
-## Dependencies
+### Dependencies
 - [Qt6 binaries](https://qt.io/download-open-source/)
 - [Python](https://www.python.org/downloads/)
 - [Numpy](https://numpy.org/)
 
  We recommend installing the dependencies using you systems package manager
-```sh
+```bash
 sudo apt-get update
 sudo apt install \
      build-essential git ninja-build gcc-{{page.state.gcc}} g++-{{page.state.gcc}} \
@@ -143,7 +143,7 @@ sudo apt install \
      qt6-base-dev qt6-tools-dev qt6-tools-dev libqt6svg6-dev 
 ```
 
-## Building
+### Building
 1. Create a base directory where you want to build Inviwo, e.g., `~/inviwo/`. We will call this directory `base`. At the end we will end up with a directory structure like this:
     ```
     └── base
@@ -153,48 +153,48 @@ sudo apt install \
         └── vcpkg
     ```
 2. Clone the Inviwo repository. In the `base` directory run:
-   ```sh
+   ```bash
    git clone https://github.com/inviwo/inviwo
    ```
 3. Clone the vcpkg repository. In the `base` directory run
-    ```sh
+    ```bash
     git clone https://github.com/microsoft/vcpkg
     ```
 4. Configure CMake. From the `base` directory run:
-   ```sh
+   ```bash
    cmake -S inviwo --preset ninja-user
    ```
 5. Compile Inviwo. From the `base` directory run:
-   ```sh
+   ```bash
    cmake --build builds/ninja-user --config RelWithDebInfo
    ```
 6. Start Inviwo
-   ```sh
+   ```bash
    ./builds/ninja-user/bin/RelWithDebInfo/inviwo
    ```
 
-# Notes
+## Notes
 
-## External Modules
+### External Modules
 
-### The Modules Repo
+#### The Modules Repo
 
 
-## Python
+### Python
 Inviwo will not access user site-package folders. Make sure to install the packages site-wide or add your user site-package folder to the environment variable `PYTHONPATH` for example `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`
 
 
-## Another Qt Installer (aqt)
+### Another Qt Installer (aqt)
 An other very fast way to install Qt is using the aqtinstall python package. Install the python package:
-```sh
+```bash
 pip install aqtinstall
 ```
 Then install Qt:
-```sh      
+```bash      
 aqt.exe install-qt -O C:\Qt windows desktop {{page.state.qt}} win64_msvc2022_64 --modules debug_info --archives qtbase qtsvg
 ```
 One can optionally also install the qt sources
-```sh
+```bash
 aqt.exe install-src -O C:\Qt windows desktop {{page.state.qt}} --archives qtbase qtsvg
 ```
 
