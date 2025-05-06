@@ -240,15 +240,28 @@ Vcpkg will automatically hash the abi version of the dependencies to avoid any i
 It is also important to have the same version of the vcpkg tool itself. To ensure that, one should make sure that the `vcpkg` repo is checked out to the same commit as is defined as the baseline in the `vcpkg.json` file. Then bootstrap vcpkg to acquire the corresponding vcpkg executable. This can be done as follows, From the `inviwo-project/vcpkg` directory run:
 
 - On Windows:
-   ```powershell
-    git reset --hard ((get-content ..\inviwo\vcpkg.json | ConvertFrom-Json).'vcpkg-configuration'.'default-registry'.'baseline')
-    ./bootstrap.bat
-   ```
+  ```powershell
+  git reset --hard ((get-content ..\inviwo\vcpkg.json | ConvertFrom-Json).'vcpkg-configuration'.'default-registry'.'baseline')
+  ./bootstrap.bat
+  ```
 - On macOS/Linux (requires that you have jq installed):
-   ```bash
-   git reset --hard `jq -r ".[\"vcpkg-configuration\"].[\"default-registry\"].baseline" ../inviwo/vcpkg.json`
-   ./bootstrap-vcpkg.sh
-   ```
+  ```bash
+  git reset --hard `jq -r ".[\"vcpkg-configuration\"].[\"default-registry\"].baseline" ../inviwo/vcpkg.json`
+  ./bootstrap-vcpkg.sh
+  ```
+
+## Updating Master
+To update Inviwo to the latest version, use your graphical git client to pull the latest master of the Inviwo repository and, optionally, the Inviwo modules repository. Alternatively, run the following commands in the `inviwo-project` directory:
+```bash
+cd inviwo
+git pull
+cd ../modules
+git pull
+cd ../vcpkg
+git pull
+```
+Make sure to set vcpkg to the correct baseline, see [Vcpkg Binary Caching](#vcpkg-binary-caching). Then rerun CMake and build.
+
 
 ### External Modules
 Inviwo supports adding additional `Inviwo Modules`. An `Inviwo Module` is a self-contained package of functionality, such as processors, data formats, or utilities, that extends the capabilities of the Inviwo framework. For more details, see the [Inviwo Modules Documentation](https://inviwo.org/documentation/modules/). 
