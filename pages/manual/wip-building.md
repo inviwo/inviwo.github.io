@@ -234,10 +234,10 @@ The cmake variable `VCPKG_MANIFEST_FEATURES` can be used to specify additional v
 The `hdf5` and `ffmpeg` features are enabled by default and used by the `IVW_MODULE_HDF5` and `IVW_MODULE_FFMPEG` modules, but can be disabled by setting `VCPKG_MANIFEST_NO_DEFAULT_FEATURES` to `ON`. The features are defined in `inviwo-project/ìnviwo/vcpkg.json`.
 
 ### Vcpkg Binary Caching
-Build all the dependencies using vcpkg can be time consuming, hence we provide a binary caching server (`https://jenkins.inviwo.org`) to speed up the process. To enable the cache simply inherit your cmake preset from `vcpkg-cache-read`. This is already done for the default presets. This will configure the `VCPKG_BINARY_SOURCES` appropriately. To also write ot the can one can use `vcpkg-cache-write` but that will require you to ask the inviwo maintainers for a token to be provided as a environment variable `VCPKG_CACHE_TOKEN`.
+Build all the dependencies using vcpkg can be time consuming, hence we provide a binary caching server (`https://jenkins.inviwo.org`) to speed up the process. To enable the cache simply inherit your cmake preset from `vcpkg-cache-read`. This is already done for the default presets. This will configure the `VCPKG_BINARY_SOURCES` appropriately. To also write to the cache one can use `vcpkg-cache-write` but that will require you to ask the inviwo maintainers for a token to be provided as an environment variable `VCPKG_CACHE_TOKEN`.
 
 Vcpkg will automatically hash the abi version of the dependencies to avoid any incompatibilities. This means it is easy to get cache misses if there are slight differences in the setups. We use `VCPKG_INSTALL_OPTIONS=--x-abi-tools-use-exact-versions` and on windows we also set `VCPKG_FEATURE_FLAGS=-compilertracking` to reduce the chance of cache misses. 
-It is also important to have the same version of the vcpkg tool it self. To ensure that one should ensure the the `vcpkg` repo is check out to the same commit as we define as baseline in `vcpkg.json` and then bootstrap vcpkg to acquire the corresponding vcpkg executable. This can be done as follows, From the `inviwo-project/vcpkg` directory run:
+It is also important to have the same version of the vcpkg tool itself. To ensure that, one should make sure that the `vcpkg` repo is checked out to the same commit as is defined as the baseline in the `vcpkg.json` file. Then bootstrap vcpkg to acquire the corresponding vcpkg executable. This can be done as follows, From the `inviwo-project/vcpkg` directory run:
 
 - On Windows:
    ```powershell
@@ -246,7 +246,7 @@ It is also important to have the same version of the vcpkg tool it self. To ensu
    ```
 - On macOS/Linux (requires that you have jq installed):
    ```bash
-   git reset --hard `jq -r ‘.[“vcpkg-configuration”].[“default-registry”].baseline’ ../inviwo/vcpkg.json`
+   git reset --hard `jq -r ".[\"vcpkg-configuration\"].[\"default-registry\"].baseline" ../inviwo/vcpkg.json`
    ./bootstrap-vcpkg.sh
    ```
 
