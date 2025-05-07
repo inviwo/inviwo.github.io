@@ -77,6 +77,8 @@ We recommend that you compile Inviwo on Windows using the latest version of [Vis
    ./builds/msvc-user/bin/RelWithDebInfo/inviwo.exe
    ```
 
+When you gotten this far you might want to customize your build with a different [cmake preset](#cmake-presets) or by adding more inviwo modules from the [inviwo modules repo](#the-modules-repo) or by creating your own [module](manual-devguide-meta.html) and [processor](manual-devguide-build-processor.html).
+
 ## Macos
 
 ### Compiler
@@ -121,6 +123,7 @@ brew install cmake qt python3 numpy
    ```shell
    open ./builds/xcode-user/bin/RelWithDebInfo/inviwo.app
    ```
+When you gotten this far you might want to customize your build with a different [cmake preset](#cmake-presets) or by adding more inviwo modules from the [inviwo modules repo](#the-modules-repo) or by creating your own [module](manual-devguide-meta.html) and [processor](manual-devguide-build-processor.html).
 
 ## Linux
 
@@ -161,7 +164,7 @@ sudo apt install \
     ```
 4. Configure CMake. From the `inviwo-project` directory run:
    ```shell
-   cmake -S inviwo --preset ninja-user
+   cmake -S inviwo --preset ninja-user -DVCPKG_TARGET_TRIPLET=x64-linux-dynamic -DVCPKG_HOST_TRIPLET=x64-linux-dynamic
    ```
 5. Compile Inviwo. From the `inviwo-project` directory run:
    ```shell
@@ -171,6 +174,8 @@ sudo apt install \
    ```shell
    ./builds/ninja-user/bin/inviwo
    ```
+   
+When you gotten this far you might want to customize your build with a different [cmake preset](#cmake-presets) or by adding more inviwo modules from the [inviwo modules repo](#the-modules-repo) or by creating your own [module](manual-devguide-meta.html) and [processor](manual-devguide-build-processor.html).
 
 ## Notes
 
@@ -207,7 +212,7 @@ The Presets above are composed from a set of building blocks
 ##### Generator Config
 * **msvc**: This sets the cmake generator to Visual Studio, and defines the vcpkg triplet `x64-windows`.  
 * **xcode**: This sets the cmake generator to Xcode, and defines the vcpkg triplet `arm64-osx-dynamic`.
-* **ninja**: This sets the cmake generator to Ninja.
+* **ninja**: This sets the cmake generator to Ninja, and you need to specify the vcpkg triplet manually. For example on linux you might pass `-DVCPKG_TARGET_TRIPLET=x64-linux-dynamic -DVCPKG_HOST_TRIPLET=x64-linux-dynamic` on the command line.
 
 ##### Build Config
 * **build**: This sets the build directory to `builds/<preset name>`.
