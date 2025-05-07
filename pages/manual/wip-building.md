@@ -188,23 +188,31 @@ Out of the box, Inviwo provides the following presets:
 * **ninja-developer**: Ninja Developer configuration
 * **ninja-developer-modules**: Ninja Developer configuration with Modules
 
-These are composed of a set of building blocks:
-* **user**: This is the base configuration for using the Inviwo editor
-* **developer**: This is the base configuration for developing new inviwo modules
+#### Preset Building Blocks.
+The Presets above are composed from a set of building blocks
 
+##### Base Config
+* **user**: This is the base configuration for using the Inviwo editor. This will only build the inviwo application and is best when you only want to run inviwo. 
+* **developer**: This is the base configuration for developing inviwo. This will build inviwo and all tests etc. It will also enable various asserts and profiling tools to make developing easier. 
+
+##### Vcpkg Config
 * **vcpkg**: This sets the cmake toolchain file to the one provided by vcpkg. This assumes that the vcpkg repo is next to the inviwo repo. 
 * **vcpkg-cache-read**: This enables reading of cached vcpkg binary artifacts to speed up building dependencies. See binary caching below for more detail. 
 * **vcpkg-cache-write**: This also enables writing to the vcpkg cache. This requires setting the environment variable `VCPKG_CACHE_TOKEN` to a valid value.
 
+##### Modules Config
 * **modules**: This adds the [inviwo modules repo](https://github.com/inviwo/modules) to `IVW_EXTERNAL_MODULES` variable
 * **modules-vcpkg**: This adds additional vcpkg overlay ports needed for module dependencies.
 
-* **build**: This sets the build directory to `builds/<preset name>`.
-
+##### Generator Config
 * **msvc**: This sets the cmake generator to Visual Studio, and defines the vcpkg triplet `x64-windows`.  
 * **xcode**: This sets the cmake generator to Xcode, and defines the vcpkg triplet `arm64-osx-dynamic`.
 * **ninja**: This sets the cmake generator to Ninja.
 
+##### Build Config
+* **build**: This sets the build directory to `builds/<preset name>`.
+
+#### Custom Presets
 You can easily compose your own preset in your `CMakeUserPresets.json` file, for example:
 ```json
 {
@@ -239,29 +247,16 @@ Build all the dependencies using vcpkg can be time consuming, hence we provide a
 Vcpkg will automatically hash the abi version of the dependencies to avoid any incompatibilities. This means it is easy to get cache misses if there are slight differences in the setups. We use `VCPKG_INSTALL_OPTIONS=--x-abi-tools-use-exact-versions` and on windows we also set `VCPKG_FEATURE_FLAGS=-compilertracking` to reduce the chance of cache misses. 
 It is also important to have the same version of the vcpkg tool itself. To ensure that, one should make sure that the `vcpkg` repo is checked out to the same commit as is defined as the baseline in the `vcpkg.json` file. Then bootstrap vcpkg to acquire the corresponding vcpkg executable. This can be done as follows, From the `inviwo-project/vcpkg` directory run:
 
-- On Windows:
+- On Windows (using powershell):
   ```powershell
   git reset --hard ((get-content ..\inviwo\vcpkg.json | ConvertFrom-Json).'vcpkg-configuration'.'default-registry'.'baseline')
-  ./bootstrap.bat
+  ./bootstrap-vcpkg.bat
   ```
 - On macOS/Linux (requires that you have jq installed):
   ```bash
   git reset --hard `jq -r ".[\"vcpkg-configuration\"].[\"default-registry\"].baseline" ../inviwo/vcpkg.json`
   ./bootstrap-vcpkg.sh
   ```
-
-## Updating Master
-To update Inviwo to the latest version, use your graphical git client to pull the latest master of the Inviwo repository and, optionally, the Inviwo modules repository. Alternatively, run the following commands in the `inviwo-project` directory:
-```bash
-cd inviwo
-git pull
-cd ../modules
-git pull
-cd ../vcpkg
-git pull
-```
-Make sure to set vcpkg to the correct baseline, see [Vcpkg Binary Caching](#vcpkg-binary-caching). Then rerun CMake and build.
-
 
 ### External Modules
 Inviwo supports adding additional `Inviwo Modules`. An `Inviwo Module` is a self-contained package of functionality, such as processors, data formats, or utilities, that extends the capabilities of the Inviwo framework. For more details, see the [Inviwo Modules Documentation](https://inviwo.org/documentation/modules/). 
@@ -290,7 +285,6 @@ git clone https://github.com/inviwo/modules
 ``` 
 And then using one of the `*-modules` presets. Or by adding the them to the `IVW_EXTERNAL_MODULES` cmake variable.
 
-
 ### Python
 Python enables you to use Inviwo from Python, write Processors in Python, or perform batch operations. The easiest way is to use the regular [Python distribution](https://www.python.org/downloads/).
 If you are sure you don't want Python it can be disabled in cmake by turning off `IVW_ENABLE_PYTHON`
@@ -299,7 +293,8 @@ Inviwo will not access user site-package folders. Make sure to install the packa
 
 For example:
 - On Windows: `PYTHONPATH=%appdata%\\Python\\Python311\\site-packages\`
-- On macOS/Linux: `PYTHONPATH=~/.local/lib/python3.11/site-packages`
+- On macOS: `PYTHONPATH=~/Library/Python/3.x/lib/python/site-packages`
+- On Linux: `PYTHONPATH=~/.local/lib/python3.11/site-packages`
 
 Inviwo will also look at the `VIRTUAL_ENV` when starting the python interpreter, and use that if it is set.
 
@@ -328,3 +323,15 @@ To help cmake find Qt it can be helpful to set the `CMAKE_PREFIX_PATH` to the Qt
       }
     }
 ```
+
+### Updating Master
+To update Inviwo to the latest version, use your graphical git client to pull the latest master of the Inviwo repository and, optionally, the Inviwo modules repository. Alternatively, run the following commands in the `inviwo-project` directory:
+```bash
+cd inviwo
+git pull
+cd ../modules
+git pull
+cd ../vcpkg
+git pull
+```
+Make sure to set vcpkg to the correct baseline, see [Vcpkg Binary Caching](#vcpkg-binary-caching). Then rerun CMake and build.
