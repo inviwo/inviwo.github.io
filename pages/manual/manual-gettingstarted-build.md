@@ -142,7 +142,8 @@ sudo apt-get update
 sudo apt install \
      build-essential git ninja-build curl gcc-{{page.state.gcc}} g++-{{page.state.gcc}} \
      cmake python3 python3-pip python3-numpy \
-     qt6-base-dev qt6-tools-dev qt6-tools-dev libqt6svg6-dev 
+     qt6-base-dev qt6-tools-dev qt6-tools-dev libqt6svg6-dev \
+     bison flex libxt-doc
 ```
 
 ### Building
