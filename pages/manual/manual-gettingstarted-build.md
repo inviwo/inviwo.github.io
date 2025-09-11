@@ -82,7 +82,12 @@ When you gotten this far you might want to customize your build with a different
 ## Macos
 
 ### Compiler
-We recommend that you compile Inviwo using the latest version of XCode from the Apple AppStore.
+We recommend that you compile Inviwo using the latest version of [XCode](https://apps.apple.com/se/app/xcode/id497799835) from the Apple AppStore.
+After installing XCode you also need to start it once to accept the license agreement and install additional components. Alternativly you can also run:
+```shell
+sudo xcodebuild -license accept
+xcodebuild -runFirstLaunch
+```
 
 ### Dependencies
  We recommend installing the dependencies using [brew](https://brew.sh).
@@ -165,7 +170,7 @@ sudo apt install \
     ```
 4. Configure CMake. From the `inviwo-project` directory run:
    ```shell
-   cmake -S inviwo --preset ninja-user -DVCPKG_TARGET_TRIPLET=x64-linux-dynamic -DVCPKG_HOST_TRIPLET=x64-linux-dynamic
+   cmake -S inviwo --preset ninja-user
    ```
 5. Compile Inviwo. From the `inviwo-project` directory run:
    ```shell
